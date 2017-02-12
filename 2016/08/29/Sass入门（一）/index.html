@@ -1,0 +1,944 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Sass," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是CSS预处理CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。
+通俗的说，“CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。CSS 预处理器为 CSS 增加一些编程的特性，无需考虑浏览器的兼容性问题”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass入门（一）">
+<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/29/Sass入门（一）/index.html">
+<meta property="og:site_name" content="ZTF'Blogs">
+<meta property="og:description" content="什么是CSS预处理CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。
+通俗的说，“CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。CSS 预处理器为 CSS 增加一些编程的特性，无需考虑浏览器的兼容性问题”">
+<meta property="og:updated_time" content="2016-08-30T08:56:04.042Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sass入门（一）">
+<meta name="twitter:description" content="什么是CSS预处理CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。
+通俗的说，“CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。CSS 预处理器为 CSS 增加一些编程的特性，无需考虑浏览器的兼容性问题”">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/29/Sass入门（一）/"/>
+
+  <title> Sass入门（一） | ZTF'Blogs </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZTF'Blogs</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Web开发、Java、</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Sass入门（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-29T22:29:11+08:00" content="2016-08-29">
+              2016-08-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Sass/" itemprop="url" rel="index">
+                    <span itemprop="name">Sass</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/29/Sass入门（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/29/Sass入门（一）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="什么是CSS预处理"><a href="#什么是CSS预处理" class="headerlink" title="什么是CSS预处理"></a>什么是CSS预处理</h4><p>CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。</p>
+<p>通俗的说，“CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。CSS 预处理器为 CSS 增加一些编程的特性，无需考虑浏览器的兼容性问题”，例如你可以在 CSS 中使用变量、简单的逻辑程序、函数（如右侧代码编辑器中就使用了变量$color）等等在编程语言中的一些基本特性，可以让你的 CSS 更加简洁、适应性更强、可读性更佳，更易于代码的维护等诸多好处。</p>
+<p>CSS 预处理器技术已经非常的成熟，而且也涌现出了很多种不同的CSS 预处理器语言，比如说：<br><a id="more"></a></p>
+<ul>
+<li>Sass(SCSS)</li>
+<li>LESS</li>
+<li>Stylus</li>
+<li>Turbine</li>
+<li>Swithch CSS</li>
+<li>CSS Cacheer</li>
+<li>DT CSS</li>
+</ul>
+<p>到目前为止，在众多优秀的 CSS 预处理器语言中就属 Sass、LESS 和 Stylus 最优秀。</p>
+<pre><code>$color: red;
+.test {
+    color: $color;
+}
+</code></pre><h4 id="什么是-Sass？"><a href="#什么是-Sass？" class="headerlink" title="什么是 Sass？"></a>什么是 Sass？</h4><p>Sass 官网上是这样描述 Sass 的：</p>
+<blockquote>
+<p>Sass 是一门高于 CSS 的元语言，它能用来清晰地、结构化地描述文件样式，有着比普通 CSS 更加强大的功能。<br>Sass 能够提供更简洁、更优雅的语法，同时提供多种功能来创建可维护和管理的样式表。</p>
+</blockquote>
+<p>Sass 前世今生：<br>Sass 是最早的 CSS 预处理语言，有比 LESS 更为强大的功能，不过其一开始的缩进式语法（Sass 老版本语法，后面课程会详细介绍 ）并不能被大众接受，不过由于其强大的功能和 Ruby on Rails 的大力推动，还是有很多开发者选择了 Sass。</p>
+<p>Sass 是采用 Ruby 语言编写的一款 CSS 预处理语言，它诞生于2007年，是最大的成熟的 CSS 预处理语言。最初它是为了配合 HAML（一种缩进式 HTML 预编译器）而设计的，因此有着和 HTML 一样的缩进式风格。<br>为什么早期不如 LESS 普及？<br>虽然缩进式风格可以有效缩减代码量，强制规范编码风格，但它一方面并不为大多数程序接受，另一方面无法兼容已有的 CSS 代码。这也是 Sass 虽然出现得最早，但远不如 LESS 普及的原因。</p>
+<h4 id="Sass-和-SCSS-有什么区别？"><a href="#Sass-和-SCSS-有什么区别？" class="headerlink" title="Sass 和 SCSS 有什么区别？"></a>Sass 和 SCSS 有什么区别？</h4><p>Sass 和 SCSS 其实是同一种东西，我们平时都称之为 Sass，两者之间不同之处有以下两点：</p>
+<ol>
+<li>文件扩展名不同，Sass 是以“.sass”后缀为扩展名，而 SCSS 是以“.scss”后缀为扩展名</li>
+<li>语法书写方式不同，Sass 是以严格的缩进式语法规则来书写，不带大括号({})和分号(;)，而 SCSS 的语法书写和我们的 CSS 语法书写方式非常类似。</li>
+</ol>
+<p>Sass语法：</p>
+<pre><code>$font-stack: Helvetica, sans-serif  //定义变量
+$primary-color: #333 //定义变量
+
+body
+  font: 100% $font-stack
+  color: $primary-color
+</code></pre><p>SCSS语法：</p>
+<pre><code>$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+</code></pre><p>编译出来的CSS</p>
+<pre><code>body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+</code></pre><h4 id="Sass-SCSS-和纯-CSS-写法差很多吗？"><a href="#Sass-SCSS-和纯-CSS-写法差很多吗？" class="headerlink" title="Sass/SCSS 和纯 CSS 写法差很多吗？"></a>Sass/SCSS 和纯 CSS 写法差很多吗？</h4><p>Sass 和 CSS 写法有差别：</p>
+<p>Sass 和 CSS 写法的确存在一定的差异，由于 Sass 是基于 Ruby 写出来，所以其延续了 Ruby 的书写规范。在书写 Sass 时不带有大括号和分号，其主要是依靠严格的缩进方式来控制的。如：<br>Sass写法：</p>
+<pre><code>body
+  color: #fff
+  background: #f36    
+</code></pre><p>而在 CSS 我们是这样书写：</p>
+<pre><code>body{
+  color:#fff;
+  background:#f36;
+}
+</code></pre><p>SCSS 和 CSS 写法无差别，这也是 Sass 后来越来越受大众喜欢原因之一。简单点说，把你现有的“.css”文件直接修改成“.scss”即可使用。</p>
+<h4 id="Sass安装"><a href="#Sass安装" class="headerlink" title="Sass安装"></a>Sass安装</h4><p>安装Ruby<br>Rudy:官网（<a href="http://rubyinstaller.org/downloads）下载安装对应需要的" target="_blank" rel="external">http://rubyinstaller.org/downloads）下载安装对应需要的</a> Ruby 版本。</p>
+<p>1、通过命令行： gem install sass  || sudo gem  install sass</p>
+<p>2、通过Compass来安装Sass。除了使用 gem 命令来安装 Sass 之外，还可以通过安装 compass 来安装 Sass，因为 Compass 是基于 Sass 开发的一个框架。也就是说，你安装了 Compass，也就同时安装好了 Sass。</p>
+<p>同样在你的命令终端输入：sudo gem  install Compass</p>
+<p>注：Compass 是一个成熟的、基于 Sass 开发的一个框架，这里面集成了很多写好的 mixins 和 Sass 函数。不过在此暂不做过多阐述。</p>
+<p>3、本地安装 Sass。到  Rubygems(<a href="http://rubygems.org/" target="_blank" rel="external">http://rubygems.org/</a>) 网站上将  Sass 的安装包（<a href="http://rubygems.org/gems/sass）下载下来，然后在命令终端输入：" target="_blank" rel="external">http://rubygems.org/gems/sass）下载下来，然后在命令终端输入：</a></p>
+<pre><code>gem install &lt;把下载的安装包拖到这里&gt;
+</code></pre><p>4、淘宝 RubyGems 镜像安装 Sass。通过 gem sources 命令来配置源，先移除默认的 <a href="https://rubygems.org" target="_blank" rel="external">https://rubygems.org</a> 源，然后添加淘宝的源 <a href="https://ruby.taobao.org：" target="_blank" rel="external">https://ruby.taobao.org：</a></p>
+<ul>
+<li><p>移动默认的源</p>
+<p> gem sources –remove <a href="https://rubygems.org/" target="_blank" rel="external">https://rubygems.org/</a></p>
+</li>
+</ul>
+<ul>
+<li><p>指定淘宝的源</p>
+<p>  gem sources -a <a href="https://ruby.taobao.org/" target="_blank" rel="external">https://ruby.taobao.org/</a></p>
+</li>
+<li><p>查看指定的源是不是淘宝源</p>
+<p>  gem sources -l</p>
+</li>
+</ul>
+<p>返回结果：</p>
+<pre><code>*** CURRENT SOURCES ***
+https://ruby.taobao.org
+</code></pre><p>请确保只有 ruby.taobao.org。如果无误之后，执行下面的命令：</p>
+<pre><code>gem install sass
+</code></pre><p>通过命令行输入：sass -v验证是否安装成功。看到版本信息，安装成功。<br>更新Sass.命令行输入: gem update sass。<br>卸载删除Sass.命令行输入：gem uninstall sass。</p>
+<h4 id="Sass语法格式"><a href="#Sass语法格式" class="headerlink" title="Sass语法格式"></a>Sass语法格式</h4><p>这里说的 Sass 语法是 Sass 的最初语法格式，他是通过 tab 键控制缩进的一种语法规则，而且这种缩进要求非常严格。另外其不带有任何的分号和大括号。常常把这种格式称为 Sass 老版本，其文件名以“.sass”为扩展名。<br>Sass 语法格式的简单示例：</p>
+<pre><code>body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+</code></pre><p>现在用 Sass 的语法格式来编写：</p>
+<pre><code>$font-stack: Helvetica, sans-serif
+$primary-color: #333
+
+body
+  font: 100% $font-stack
+  color: $primary-color
+</code></pre><p>SCSS语法格式</p>
+<p>SCSS 是 Sass 的新语法格式，从外形上来判断他和 CSS 长得几乎是一模一样，代码都包裹在一对大括号里，并且末尾结束处都有一个分号。其文件名格式常常以“.scss”为扩展名。</p>
+<pre><code>body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+</code></pre><p>使用 SCSS 语法格式将按下面这样来书写：</p>
+<pre><code>$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+</code></pre><p>不管是 Sass 的语法格式还是 SCSS 的语法格式，他们的功能都是一样的，不同的是其书写格式和文件扩展名不同。</p>
+<h4 id="Sass-编译"><a href="#Sass-编译" class="headerlink" title="Sass 编译"></a>Sass 编译</h4><p>使用Sass进行开发，在项目中还是引入.css文件，Sass只不过做为一个预处理工具。因为 Sass 开发之后，要让 Web 页面能调用 Sass 写好的东西，就得有这么一个过程，这个过程就称之为 Sass 编译过程。Sass 的编译有多种方法：</p>
+<ul>
+<li>命令编译</li>
+<li>GUI工具编译</li>
+<li>自动化编译</li>
+</ul>
+<h5 id="命令编译"><a href="#命令编译" class="headerlink" title="命令编译"></a>命令编译</h5><p>命令编译是指使用你电脑中的命令终端，通过输入 Sass 指令来编译 Sass。这种编译方式是最直接也是最简单的一种方式。因为只需要在你的命令终端输入：</p>
+<p>单文件编译：</p>
+<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
+</code></pre><p>这是一个单文件进行编译，如果相对整个项目所有的Sass文件编译成CSS，可以这样操作：<br>多文件编译：</p>
+<pre><code>sass sass/:css/
+</code></pre><p>上面的命令表示将项目中sass文件夹中所有.scss文件编译成.css文件，并且将这些CSS文件都放在项目中css文件夹中。<br>缺点及解决方法：</p>
+<p>在实际编译过程中，你会发现上面的命令，只能一次性编译。每次个性保存“.scss”文件之后，都得重新执行一次这样的命令。如此操作太麻烦，其实还有一种方法，就是在编译 Sass 时，开启“watch”功能，这样只要你的代码进行任保修改，都能自动监测到代码的变化，并且给你直接编译出来：</p>
+<pre><code>sass --watch &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
+</code></pre><h5 id="GUI-界面工具编译"><a href="#GUI-界面工具编译" class="headerlink" title="GUI 界面工具编译"></a>GUI 界面工具编译</h5><p>GUI 界面编译工具，目前较为流行的主要有：</p>
+<ol>
+<li>Koala (<a href="http://koala-app.com/" target="_blank" rel="external">http://koala-app.com/</a>) *</li>
+<li>Compass.app（<a href="http://compass.kkbox.com/）" target="_blank" rel="external">http://compass.kkbox.com/）</a></li>
+<li>Scout（<a href="http://mhs.github.io/scout-app/）" target="_blank" rel="external">http://mhs.github.io/scout-app/）</a></li>
+<li>CodeKit（<a href="https://incident57.com/codekit/index.html）*" target="_blank" rel="external">https://incident57.com/codekit/index.html）*</a></li>
+<li>Prepros（<a href="https://prepros.io/）" target="_blank" rel="external">https://prepros.io/）</a></li>
+</ol>
+<h5 id="自动化编译"><a href="#自动化编译" class="headerlink" title="自动化编译"></a>自动化编译</h5><p>1、Grunt 配置 Sass 编译的示例代码</p>
+<pre><code>module.exports = function(grunt) {
+    grunt.initConfig({
+        pkg: grunt.file.readJSON(&apos;package.json&apos;),
+        sass: {
+            dist: {
+                files: {
+                    &apos;style/style.css&apos; : &apos;sass/style.scss&apos;
+                }
+            }
+        },
+        watch: {
+            css: {
+                files: &apos;**/*.scss&apos;,
+                tasks: [&apos;sass&apos;]
+            }
+        }
+    });
+    grunt.loadNpmTasks(&apos;grunt-contrib-sass&apos;);
+    grunt.loadNpmTasks(&apos;grunt-contrib-watch&apos;);
+    grunt.registerTask(&apos;default&apos;,[&apos;watch&apos;]);
+}
+</code></pre><p>2、Gulp 配置 Sass 编译的示例代码</p>
+<pre><code>var gulp = require(&apos;gulp&apos;);
+var sass = require(&apos;gulp-sass&apos;);
+
+gulp.task(&apos;sass&apos;, function () {
+    gulp.src(&apos;./scss/*.scss&apos;)
+        .pipe(sass())
+        .pipe(gulp.dest(&apos;./css&apos;));
+});
+
+gulp.task(&apos;watch&apos;, function() {
+    gulp.watch(&apos;scss/*.scss&apos;, [&apos;sass&apos;]);
+});
+
+gulp.task(&apos;default&apos;, [&apos;sass&apos;,&apos;watch&apos;]);
+</code></pre><p>常见的编译错误：<br>字符编译引起的。在Sass的编译的过程中，是不是支持“GBK”编码的。所以在创建 Sass 文件时，就需要将文件编码设置为“utf-8”。<br>中文字符引起的。建议在项目中文件命名或者文件目录命名不要使用中文字符。而至于人为失误造成的编译失败，在编译过程中都会有具体的说明，大家可以根据编译器提供的错误信息进行对应的修改。</p>
+<h4 id="不同样式风格的输出方法"><a href="#不同样式风格的输出方法" class="headerlink" title="不同样式风格的输出方法"></a>不同样式风格的输出方法</h4><p>在 Sass 中编译出来的样式风格也可以按不同的样式风格显示。其主要包括以下几种样式风格：</p>
+<ol>
+<li>嵌套输出方式 nested</li>
+<li>展开输出方式 expanded  </li>
+<li>紧凑输出方式 compact </li>
+<li>压缩输出方式 compressed</li>
+</ol>
+<h5 id="嵌套输出方式-nested"><a href="#嵌套输出方式-nested" class="headerlink" title="嵌套输出方式 nested"></a>嵌套输出方式 nested</h5><p>1、嵌套输出方式 nested<br>Sass 提供了一种嵌套显示 CSS 文件的方式。例如</p>
+<pre><code>nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+</code></pre><p>在编译的时候带上参数“ –style nested”:</p>
+<pre><code>sass --watch test.scss:test.css --style nested
+</code></pre><p>编译出来的 CSS 样式风格：</p>
+<pre><code>nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+nav li {
+  display: inline-block; }
+nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none; }  
+</code></pre><h5 id="展开输出方式-expanded"><a href="#展开输出方式-expanded" class="headerlink" title="展开输出方式 expanded"></a>展开输出方式 expanded</h5><pre><code>nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+</code></pre><p>在编译的时候带上参数“ –style expanded”:</p>
+<pre><code>sass --watch test.scss:test.css --style expanded
+</code></pre><p>这个输出的 CSS 样式风格和 nested 类似，只是大括号在另起一行，同样上面的代码，编译出来：</p>
+<pre><code>nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  display: inline-block;
+}
+nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+</code></pre><h5 id="紧凑输出方式-compact"><a href="#紧凑输出方式-compact" class="headerlink" title="紧凑输出方式 compact"></a>紧凑输出方式 compact</h5><pre><code>nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+</code></pre><p>}</p>
+<p>在编译的时候带上参数“ –style compact”:</p>
+<pre><code>sass --watch test.scss:test.css --style compact    
+</code></pre><p>该方式适合那些喜欢单行 CSS 样式格式的朋友，编译后的代码如下：</p>
+<pre><code>nav ul { margin: 0; padding: 0; list-style: none; }
+nav li { display: inline-block; }
+nav a { display: block; padding: 6px 12px; text-decoration: none; }
+</code></pre><h5 id="压缩输出方式-compressed"><a href="#压缩输出方式-compressed" class="headerlink" title="压缩输出方式 compressed"></a>压缩输出方式 compressed</h5><pre><code>nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+</code></pre><p>在编译的时候带上参数“ –style compressed”:    </p>
+<pre><code>sass --watch test.scss:test.css --style compressed
+</code></pre><p>压缩输出方式会去掉标准的 Sass 和 CSS 注释及空格。也就是压缩好的 CSS 代码样式风格：    </p>
+<pre><code>nav ul{margin:0;padding:0;list-style:none}nav li{display:inline-block}nav a{display:block;padding:6px 12px;text-decoration:none}
+</code></pre><h4 id="Sass调试"><a href="#Sass调试" class="headerlink" title="Sass调试"></a>Sass调试</h4><p>Sass 调试一直以来都是一件头痛的事情，使用 Sass 的同学都希望能在浏览器中直接调试 Sass 文件，能找到对应的行数。值得庆幸的是，现在实现并不是一件难事，只要你的浏览器支持“sourcemap”功能即可。早一点的版本，需要在编译的时候添加“–sourcemap”  参数：</p>
+<pre><code>sass --watch --scss --sourcemap style.scss:style.css
+</code></pre><p>在 Sass3.3 版本之上（我测试使用的版本是 3.4.7），不需要添加这个参数也可以：</p>
+<pre><code>sass --watch style.scss:style.css
+</code></pre><p>在命令终端，你将看到一个信息：</p>
+<blockquote>
+<p>Change detected to: style.scss<br>   write style.css<br>   write style.css.map<br>这时你就可以像前面展示的 gif 图一样，调试你的 Sass 代码。   </p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sass/" rel="tag">#Sass</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/28/hexo基本用法/" rel="next" title="hexo基本用法">
+                <i class="fa fa-chevron-left"></i> hexo基本用法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/30/Sass入门（二）/" rel="prev" title="Sass入门（二）">
+                Sass入门（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/29/Sass入门（一）/"
+           data-title="Sass入门（一）" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/29/Sass入门（一）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="shengteng" />
+          <p class="site-author-name" itemprop="name">shengteng</p>
+          <p class="site-description motion-element" itemprop="description">新长征路上的blogs</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shengteng9" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005051821208013/home?from=page_100505_profile&wvr=6&mod=data#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是CSS预处理"><span class="nav-number">1.</span> <span class="nav-text">什么是CSS预处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-Sass？"><span class="nav-number">2.</span> <span class="nav-text">什么是 Sass？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sass-和-SCSS-有什么区别？"><span class="nav-number">3.</span> <span class="nav-text">Sass 和 SCSS 有什么区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sass-SCSS-和纯-CSS-写法差很多吗？"><span class="nav-number">4.</span> <span class="nav-text">Sass/SCSS 和纯 CSS 写法差很多吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sass安装"><span class="nav-number">5.</span> <span class="nav-text">Sass安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sass语法格式"><span class="nav-number">6.</span> <span class="nav-text">Sass语法格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sass-编译"><span class="nav-number">7.</span> <span class="nav-text">Sass 编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#命令编译"><span class="nav-number">7.1.</span> <span class="nav-text">命令编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GUI-界面工具编译"><span class="nav-number">7.2.</span> <span class="nav-text">GUI 界面工具编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自动化编译"><span class="nav-number">7.3.</span> <span class="nav-text">自动化编译</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同样式风格的输出方法"><span class="nav-number">8.</span> <span class="nav-text">不同样式风格的输出方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#嵌套输出方式-nested"><span class="nav-number">8.1.</span> <span class="nav-text">嵌套输出方式 nested</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#展开输出方式-expanded"><span class="nav-number">8.2.</span> <span class="nav-text">展开输出方式 expanded</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#紧凑输出方式-compact"><span class="nav-number">8.3.</span> <span class="nav-text">紧凑输出方式 compact</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#压缩输出方式-compressed"><span class="nav-number">8.4.</span> <span class="nav-text">压缩输出方式 compressed</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sass调试"><span class="nav-number">9.</span> <span class="nav-text">Sass调试</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shengteng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shengteng9"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

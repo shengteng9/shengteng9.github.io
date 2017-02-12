@@ -1,0 +1,729 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是帧动画？所谓帧动画就是在“连续的关键帧”中分解动画动作，也就是在时间轴的没帧上逐帧绘制不同的内容，使其连续播放而成动画由于是一帧一帧的画。所以帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容。
+常见的帧动画方式GIFCSS3 animationjavascript
+GIF和CSS3 animation实现帧动画存在着不足1.不能灵活的控制动画的暂停和播放2.不能捕捉到动画完成的事件3.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生JS实现帧动画库">
+<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/23/原生JS实现帧动画库/index.html">
+<meta property="og:site_name" content="ZTF'Blogs">
+<meta property="og:description" content="什么是帧动画？所谓帧动画就是在“连续的关键帧”中分解动画动作，也就是在时间轴的没帧上逐帧绘制不同的内容，使其连续播放而成动画由于是一帧一帧的画。所以帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容。
+常见的帧动画方式GIFCSS3 animationjavascript
+GIF和CSS3 animation实现帧动画存在着不足1.不能灵活的控制动画的暂停和播放2.不能捕捉到动画完成的事件3.">
+<meta property="og:updated_time" content="2016-08-27T03:48:52.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原生JS实现帧动画库">
+<meta name="twitter:description" content="什么是帧动画？所谓帧动画就是在“连续的关键帧”中分解动画动作，也就是在时间轴的没帧上逐帧绘制不同的内容，使其连续播放而成动画由于是一帧一帧的画。所以帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容。
+常见的帧动画方式GIFCSS3 animationjavascript
+GIF和CSS3 animation实现帧动画存在着不足1.不能灵活的控制动画的暂停和播放2.不能捕捉到动画完成的事件3.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/23/原生JS实现帧动画库/"/>
+
+  <title> 原生JS实现帧动画库 | ZTF'Blogs </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZTF'Blogs</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Web开发、Java、</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                原生JS实现帧动画库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-23T22:33:08+08:00" content="2016-08-23">
+              2016-08-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/23/原生JS实现帧动画库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/23/原生JS实现帧动画库/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="什么是帧动画？"><a href="#什么是帧动画？" class="headerlink" title="什么是帧动画？"></a>什么是帧动画？</h4><p>所谓帧动画就是在“连续的关键帧”中分解动画动作，也就是在时间轴的没帧上逐帧绘制不同的内容，使其连续播放而成动画由于是一帧一帧的画。所以帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容。</p>
+<h4 id="常见的帧动画方式"><a href="#常见的帧动画方式" class="headerlink" title="常见的帧动画方式"></a>常见的帧动画方式</h4><p>GIF<br>CSS3 animation<br>javascript</p>
+<h4 id="GIF和CSS3-animation实现帧动画存在着不足"><a href="#GIF和CSS3-animation实现帧动画存在着不足" class="headerlink" title="GIF和CSS3 animation实现帧动画存在着不足"></a>GIF和CSS3 animation实现帧动画存在着不足</h4><p>1.不能灵活的控制动画的暂停和播放<br>2.不能捕捉到动画完成的事件<br>3.不能对帧动画做更加灵活的扩展<br><a id="more"></a></p>
+<h4 id="JS实现帧动画的原理"><a href="#JS实现帧动画的原理" class="headerlink" title="JS实现帧动画的原理"></a>JS实现帧动画的原理</h4><p>1.如果有多张帧图片，用一个image标签去承载图片，定时改变image的src属性（不推荐）<br>2.把所有动画关键帧绘制在一张图片里，把图片作为元素的background-image，定时改变元素的background-position属性（推荐）</p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p>index.html</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;动画demo&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/demo.css&quot;&gt;    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;rabbit&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;js/demo.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>demo.css</p>
+<pre><code>#rabbit{
+    width:102px;
+    height:80px;
+}
+</code></pre><p>demo.js</p>
+<pre><code>var imgUrl=&apos;image/rabbit-big.png&apos;;
+var positions=[&apos;0 -854&apos;,&apos;-174 -852&apos;,&apos;-349 -852&apos;,&apos;-524 -852&apos;,&apos;-698 -852&apos;,&apos;-873 -848&apos;];
+var ele= document.getElementById(&apos;rabbit&apos;);
+
+animation(ele,positions,imgUrl);
+function animation(ele,positions,imgUrl){
+
+    ele.style.backgroundImage=&apos;url(&apos;+imgUrl+&apos;)&apos;;
+    ele.style.backgroundRepeat=&apos;no-repeat&apos;;
+    var index=0;
+    function run(){
+        var position=positions[index].split(&apos; &apos;);
+
+        ele.style.backgroundPosition=position[0]+&apos;px &apos;+position[1]+&apos;px&apos;;
+        index++;
+
+        if(index&gt;=positions.length){
+            index=0;
+        }
+        setTimeout(run,80);
+    }
+    run();    
+}
+</code></pre><h4 id="帧动画库"><a href="#帧动画库" class="headerlink" title="帧动画库"></a>帧动画库</h4><pre><code>&gt;https://github.com/shengteng9/js-animation-update 
+</code></pre><p>1.支持图片预加载</p>
+<p>2.支持2种动画播放方式，及自定义每帧动画。</p>
+<p>3.支持单组动画控制循环次数（可支持无限循环）</p>
+<p>4.支持一组动画完成，进行下一组动画</p>
+<p>5.支持每个动画完成后有等待时间</p>
+<p>6.支持动画暂停和继续播放</p>
+<p>7.支持动画完成后执行回调函数</p>
+<h4 id="编程接口"><a href="#编程接口" class="headerlink" title="编程接口"></a>编程接口</h4><p>1.loadImage(imglist)//预加载图片</p>
+<p>2.changePosition(ele,positions,imageUrl)//通过改变元素的background-position实现动画</p>
+<p>3.changeSrc(ele,imglist)//通过改变image元素的src</p>
+<p>4.enterFrame(callback)//每一帧动画执行的函数，相当于用户可以自定义每一帧动画的callback</p>
+<p>5.repeat(times)//动画重复执行的次数，times为空时表示无限次</p>
+<p>6.repeatForever()//无限重复上一次动画，相当于repeat()，更友好的一个接口吧</p>
+<p>7.wait(time)//每个动画执行完后等待的时间</p>
+<p>8.then(callback)//动画执行完成后的回调函数</p>
+<p>9.start(interval)//动画开始执行，interval表示动画执行的间隔</p>
+<p>10.pause()//动画暂停</p>
+<p>11.restart()//动画从上一次暂停处重新执行</p>
+<p>12.dispose()//释放资源</p>
+<h5 id="调用方式"><a href="#调用方式" class="headerlink" title="调用方式"></a>调用方式</h5><p>1.支持链式调用，希望动词的方式描述接口，调用方式如下：<br>    var animation=require(‘animation’);<br>    var domeAnimation=animation().loadImage(images).changePosition(ele,positions).repeat(2).then(function(){</p>
+<pre><code>//动画执行完后调用此函数
+
+});
+demoAnimation.start(80);    
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/20/JS创建对象的不同方式/" rel="next" title="JS创建对象的不同方式">
+                <i class="fa fa-chevron-left"></i> JS创建对象的不同方式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/28/REM/" rel="prev" title="REM">
+                REM <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/23/原生JS实现帧动画库/"
+           data-title="原生JS实现帧动画库" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/23/原生JS实现帧动画库/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="shengteng" />
+          <p class="site-author-name" itemprop="name">shengteng</p>
+          <p class="site-description motion-element" itemprop="description">新长征路上的blogs</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shengteng9" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005051821208013/home?from=page_100505_profile&wvr=6&mod=data#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是帧动画？"><span class="nav-number">1.</span> <span class="nav-text">什么是帧动画？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的帧动画方式"><span class="nav-number">2.</span> <span class="nav-text">常见的帧动画方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GIF和CSS3-animation实现帧动画存在着不足"><span class="nav-number">3.</span> <span class="nav-text">GIF和CSS3 animation实现帧动画存在着不足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JS实现帧动画的原理"><span class="nav-number">4.</span> <span class="nav-text">JS实现帧动画的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">5.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#帧动画库"><span class="nav-number">6.</span> <span class="nav-text">帧动画库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编程接口"><span class="nav-number">7.</span> <span class="nav-text">编程接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#调用方式"><span class="nav-number">7.1.</span> <span class="nav-text">调用方式</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shengteng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shengteng9"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

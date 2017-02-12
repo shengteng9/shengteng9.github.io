@@ -1,0 +1,729 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Underscore.js," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Underscore对象封装Underscore并没有在原生的JavaScript对象原型中进行扩展，而是像jQuery一样，将数据封装在一个自定义对象中（下文中称“Underscore对象”）。你可以通过调用一个Underscore对象的value()方法来获取原生的JavaScript数据，例如：
+//定义一个JS内置对象
+var person={
+    name:&amp;apos;rudy&amp;ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="'Underscore.js笔记（一）'">
+<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/12/Underscore-js笔记（一）/index.html">
+<meta property="og:site_name" content="ZTF'Blogs">
+<meta property="og:description" content="Underscore对象封装Underscore并没有在原生的JavaScript对象原型中进行扩展，而是像jQuery一样，将数据封装在一个自定义对象中（下文中称“Underscore对象”）。你可以通过调用一个Underscore对象的value()方法来获取原生的JavaScript数据，例如：
+//定义一个JS内置对象
+var person={
+    name:&amp;apos;rudy&amp;ap">
+<meta property="og:updated_time" content="2016-09-12T14:14:38.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="'Underscore.js笔记（一）'">
+<meta name="twitter:description" content="Underscore对象封装Underscore并没有在原生的JavaScript对象原型中进行扩展，而是像jQuery一样，将数据封装在一个自定义对象中（下文中称“Underscore对象”）。你可以通过调用一个Underscore对象的value()方法来获取原生的JavaScript数据，例如：
+//定义一个JS内置对象
+var person={
+    name:&amp;apos;rudy&amp;ap">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/12/Underscore-js笔记（一）/"/>
+
+  <title> 'Underscore.js笔记（一）' | ZTF'Blogs </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZTF'Blogs</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Web开发、Java、</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                'Underscore.js笔记（一）'
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-12T22:00:37+08:00" content="2016-09-12">
+              2016-09-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Underscore-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Underscore.js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/12/Underscore-js笔记（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/Underscore-js笔记（一）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="Underscore对象封装"><a href="#Underscore对象封装" class="headerlink" title="Underscore对象封装"></a>Underscore对象封装</h4><p>Underscore并没有在原生的JavaScript对象原型中进行扩展，而是像jQuery一样，将数据封装在一个自定义对象中（下文中称“Underscore对象”）。<br>你可以通过调用一个Underscore对象的value()方法来获取原生的JavaScript数据，例如：</p>
+<pre><code>//定义一个JS内置对象
+var person={
+    name:&apos;rudy&apos;
+}
+
+//通过_()方法将对象创建为一个Underscore对象
+//创建的underscoreData对象的原型中包含了Undersocre中定义的所有方法。
+var unserscoreData=_(person);
+
+//通过value方法获取原生数据，即person
+underscoreData.value();
+</code></pre><a id="more"></a>
+<h4 id="链式操作"><a href="#链式操作" class="headerlink" title="链式操作"></a>链式操作</h4><p>jq中的链式操作：</p>
+<pre><code>$(&apos;a&apos;).css(&apos;position&apos;,&apos;relative&apos;)
+      .attr(&apos;href&apos;,&apos;#&apos;)
+      .show();
+</code></pre><p>Underscore调用chain()方法进行声明,返回一个封装的对象. 在封装的对象上调用方法会返回封装的对象本身, 直道 value 方法调用为止. </p>
+<pre><code>var arr=[10,20,30];
+_(arr).chain()
+      .map(function(item){return item++;})
+      .first()
+      .value();
+</code></pre><p>value_(obj).value() 获取封装对象的最终值. </p>
+<pre><code>_([1, 2, 3]).value();
+=&gt; [1, 2, 3]
+</code></pre><h4 id="遍历集合"><a href="#遍历集合" class="headerlink" title="遍历集合"></a>遍历集合</h4><p>each  _.each(list, iteratee, [context]) 别名： forEach<br>遍历list中的所有元素，按顺序用遍历输出每个元素。如果传递了context参数，则把iteratee绑定到context对象上。每次调用iteratee都会传递三个参数：(element, index, list)。如果list是个JavaScript对象，iteratee的参数是 (value, key, list))。返回list以方便链式调用。（注：如果存在原生的forEach方法，Underscore就使用它代替。） </p>
+<pre><code>_.each([1, 2, 3], alert);
+=&gt; alerts each number in turn...
+_.each({one: 1, two: 2, three: 3}, alert);
+=&gt; alerts each number value in turn...
+</code></pre><p>map_.map(list, iteratee, [context]) 别名： collect<br>通过变换函数（iteratee迭代器）把list中的每个值映射到一个新的数组中（注：产生一个新的数组）。如果存在原生的map方法，就用原生map方法来代替。如果list是个JavaScript对象，iteratee的参数是(value, key, list)。 </p>
+<pre><code>_.map([1, 2, 3], function(num){ return num * 3; });
+=&gt; [3, 6, 9]
+_.map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
+=&gt; [3, 6, 9]
+</code></pre><h4 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h4><p>template _.template(templateString,data, [settings])<br>将 JavaScript 模板编译为可以用于页面呈现的函数, 对于通过JSON数据源生成复杂的HTML并呈现出来的操作非常有用。</p>
+<p>第一个参数也是必须的参数是模版字符串，你可以通过&lt;%= ?%&gt; 来插入变量，还可以通过&lt;% ?%&gt;来插入js代码，也可以通过&lt;%- ?%&gt;来进行html转义，如果变量很多，可以使用&lt;% print() %&gt;来简化。</p>
+<p>第二个参数是传入模版的数据，如果不传第二个参数，那么这个方法会返回一个模版函数，这个模版函数可以穿入数据返回完成的模版，如果传入data参数则会直接返回一个已完成的模版。</p>
+<p>第三个参数是设置，比如这个方法默认是寻找&lt;% ?%&gt;来进行替换，可以通过设置它来改变具体的方法可以</p>
+<pre><code>&lt;script type=&quot;text/template&quot; id=&quot;tpl&quot;&gt;
+
+    &lt;% _.each(data,function(person){ %&gt;
+        &lt;p&gt;NAME: &lt;%=person.name %&gt; , AGE:&lt;%=person.age %&gt; , SEX:&lt;%=person.sex%&gt;
+    &lt;%}); %&gt;
+&lt;/script&gt;
+&lt;script&gt;
+    var data=[
+
+        {
+            name : &apos;rudy&apos;,
+            age : 18,
+            sex : &apos;男&apos;
+        },
+        {
+            name : &apos;july&apos;,
+            age : 20,
+            sex : &apos;女&apos;
+        }
+
+    ];
+
+    $(&apos;body&apos;).append(_.template($(&apos;#tpl&apos;).html(),data));
+&lt;/script&gt;
+</code></pre><blockquote>
+<p>详情：<a href="http://www.bootcss.com/p/underscore/#template" target="_blank" rel="external">http://www.bootcss.com/p/underscore/#template</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Underscore-js/" rel="tag">#Underscore.js</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/08/RequireJS（一）/" rel="next" title="RequireJS（一）">
+                <i class="fa fa-chevron-left"></i> RequireJS（一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/13/RequireJS(二)/" rel="prev" title="RequireJS  text插件">
+                RequireJS  text插件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/12/Underscore-js笔记（一）/"
+           data-title="'Underscore.js笔记（一）'" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/12/Underscore-js笔记（一）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="shengteng" />
+          <p class="site-author-name" itemprop="name">shengteng</p>
+          <p class="site-description motion-element" itemprop="description">新长征路上的blogs</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shengteng9" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005051821208013/home?from=page_100505_profile&wvr=6&mod=data#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Underscore对象封装"><span class="nav-number">1.</span> <span class="nav-text">Underscore对象封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链式操作"><span class="nav-number">2.</span> <span class="nav-text">链式操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历集合"><span class="nav-number">3.</span> <span class="nav-text">遍历集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板引擎"><span class="nav-number">4.</span> <span class="nav-text">模板引擎</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shengteng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shengteng9"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

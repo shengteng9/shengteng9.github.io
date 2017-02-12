@@ -1,0 +1,1431 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Sass," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="声明变量在有些编程语言中（如，JavaScript）声明变量都是使用关键词“var”开头，但是在 Sass 不使用这个关键词，而是使用大家都喜欢的美元符号“$”开头。
+$width:300px;
+
+声明变量的符号$
+变量名称
+赋予变量的值
+
+普通变量与默认变量普通变量，定义之后可以在全局范围内使用。
+$fontSize: 12px;
+body{
+    font-size:$fontSize;
+}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass入门（二）">
+<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/30/Sass入门（二）/index.html">
+<meta property="og:site_name" content="ZTF'Blogs">
+<meta property="og:description" content="声明变量在有些编程语言中（如，JavaScript）声明变量都是使用关键词“var”开头，但是在 Sass 不使用这个关键词，而是使用大家都喜欢的美元符号“$”开头。
+$width:300px;
+
+声明变量的符号$
+变量名称
+赋予变量的值
+
+普通变量与默认变量普通变量，定义之后可以在全局范围内使用。
+$fontSize: 12px;
+body{
+    font-size:$fontSize;
+}">
+<meta property="og:updated_time" content="2016-08-30T09:01:38.115Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sass入门（二）">
+<meta name="twitter:description" content="声明变量在有些编程语言中（如，JavaScript）声明变量都是使用关键词“var”开头，但是在 Sass 不使用这个关键词，而是使用大家都喜欢的美元符号“$”开头。
+$width:300px;
+
+声明变量的符号$
+变量名称
+赋予变量的值
+
+普通变量与默认变量普通变量，定义之后可以在全局范围内使用。
+$fontSize: 12px;
+body{
+    font-size:$fontSize;
+}">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/30/Sass入门（二）/"/>
+
+  <title> Sass入门（二） | ZTF'Blogs </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZTF'Blogs</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Web开发、Java、</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Sass入门（二）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T16:54:27+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Sass/" itemprop="url" rel="index">
+                    <span itemprop="name">Sass</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/Sass入门（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/Sass入门（二）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h4><p>在有些编程语言中（如，JavaScript）声明变量都是使用关键词“var”开头，但是在 Sass 不使用这个关键词，而是使用大家都喜欢的美元符号“$”开头。</p>
+<pre><code>$width:300px;
+</code></pre><ol>
+<li>声明变量的符号$</li>
+<li>变量名称</li>
+<li>赋予变量的值</li>
+</ol>
+<h4 id="普通变量与默认变量"><a href="#普通变量与默认变量" class="headerlink" title="普通变量与默认变量"></a>普通变量与默认变量</h4><p>普通变量，定义之后可以在全局范围内使用。</p>
+<pre><code>$fontSize: 12px;
+body{
+    font-size:$fontSize;
+}
+</code></pre><p>编译后的Css代码：</p>
+<pre><code>body{
+    font-size:12px;
+}
+</code></pre><p>默认变量，sass 的默认变量仅需要在值后面加上 !default 即可。<br><a id="more"></a><br>    $baseLineHeight:1.5 !default;<br>    body{<br>        line-height: $baseLineHeight;<br>    }</p>
+<p>编译后的Css代码：</p>
+<pre><code>body{
+    line-height:1.5;
+}
+</code></pre><p>sass 的默认变量一般是用来设置默认值，然后根据需求来覆盖的，覆盖的方式也很简单，只需要在默认变量之前重新声明下变量即可。</p>
+<pre><code>$baseLineHeight: 2;
+$baseLineHeight: 1.5 !default;
+body{
+    line-height: $baseLineHeight; 
+}
+</code></pre><p>编译后的css代码：</p>
+<pre><code>body{
+    line-height:2;
+}
+</code></pre><p>可以看出现在编译后的 line-height 为 2，而不是我们默认的 1.5。默认变量的价值在进行组件化开发的时候会非常有用。</p>
+<h4 id="变量的调用"><a href="#变量的调用" class="headerlink" title="变量的调用"></a>变量的调用</h4><p>比如在定义了变量</p>
+<pre><code>$brand-primary : darken(#428bca, 6.5%) !default; // #337ab7
+$btn-primary-color: #fff !default;
+$btn-primary-bg : $brand-primary !default;
+$btn-primary-border : darken($btn-primary-bg, 5%) !default;
+</code></pre><p>在按钮 button 中调用，可以按下面的方式调用</p>
+<pre><code>.btn-primary {
+   background-color: $btn-primary-bg;
+   color: $btn-primary-color;
+   border: 1px solid $btn-primary-border;
+}
+</code></pre><p>编译出来的Css</p>
+<pre><code>.btn-primary {
+    background-color: #337ab7;
+    color: #fff;
+    border: 1px solid #2e6da4;
+}
+</code></pre><h4 id="局部变量和全局变量"><a href="#局部变量和全局变量" class="headerlink" title="局部变量和全局变量"></a>局部变量和全局变量</h4><p>Sass 中变量的作用域在过去几年已经发生了一些改变。直到最近，规则集和其他范围内声明变量的作用域才默认为本地。如果已经存在同名的全局变量，从 3.4 版本开始，Sass 已经可以正确处理作用域的概念，并通过创建一个新的局部变量来代替。</p>
+<h5 id="全局变量与局部变量"><a href="#全局变量与局部变量" class="headerlink" title="全局变量与局部变量"></a>全局变量与局部变量</h5><p>先来看一下代码例子：</p>
+<pre><code>//SCSS
+$color: orange !default;//定义全局变量(在选择器、函数、混合宏...的外面定义的变量为全局变量)
+.block {
+  color: $color;//调用全局变量
+}
+em {
+  $color: red;//定义局部变量
+  a {
+    color: $color;//调用局部变量
+  }
+}
+span {
+  color: $color;//调用全局变量
+}
+</code></pre><p>css 的结果：</p>
+<pre><code>//CSS
+.block {
+  color: orange;
+}
+em a {
+  color: red;
+}
+span {
+  color: orange;
+}
+</code></pre><p>color 就是一个全局变量，而定义在元素内部的变量，比如 $color:red; 是一个局部变量。</p>
+<p>除此之外，Sass 现在还提供一个 !global 参数。!global 和 !default 对于定义变量都是很有帮助的。我们之后将会详细介绍这两个参数的使用以及其功能。</p>
+<h5 id="全局变量的影子"><a href="#全局变量的影子" class="headerlink" title="全局变量的影子"></a>全局变量的影子</h5><p>当在局部范围（选择器内、函数内、混合宏内…）声明一个已经存在于全局范围内的变量时，局部变量就成为了全局变量的影子。基本上局部变量只会在局部范围内覆盖全局变量</p>
+<p>上面例子中的 em 选择器内的变量 $color 就是一个全局变量的影子。</p>
+<pre><code>//SCSS
+$color: orange !default;//定义全局变量
+.block {
+  color: $color;//调用全局变量
+}
+em {
+  $color: red;//定义局部变量（全局变量 $color 的影子）
+  a {
+    color: $color;//调用局部变量
+  }
+}
+</code></pre><h5 id="什么时候声明变量？"><a href="#什么时候声明变量？" class="headerlink" title="什么时候声明变量？"></a>什么时候声明变量？</h5><p>满足所有下述标准时方可创建新变量：</p>
+<ol>
+<li>该值至少重复出现了两次；</li>
+<li>该值至少可能会被更新一次；</li>
+<li>该值所有的表现都与变量有关（非巧合）。</li>
+</ol>
+<p>tips:sass在线编辑器网址如下:<a href="http://sassmeister.com/" target="_blank" rel="external">http://sassmeister.com/</a></p>
+<h4 id="嵌套-选择器嵌套"><a href="#嵌套-选择器嵌套" class="headerlink" title="嵌套-选择器嵌套"></a>嵌套-选择器嵌套</h4><p>选择器嵌套为样式表的作者提供了一个通过局部选择器相互嵌套实现全局选择的方法，Sass 的嵌套分为三种：</p>
+<ul>
+<li>选择器嵌套</li>
+<li>属性嵌套</li>
+<li>伪类嵌套</li>
+</ul>
+<ol>
+<li>选择器嵌套<br> <header><br> <nav><pre><code>&lt;a href=“##”&gt;Home&lt;/a&gt;
+&lt;a href=“##”&gt;About&lt;/a&gt;
+&lt;a href=“##”&gt;Blog&lt;/a&gt;
+</code></pre> </nav> <header>
+
+</header></header></li>
+</ol>
+<p>想选中 header 中的 a 标签，在写 CSS 会这样写：</p>
+<pre><code>nav a {
+  color:red;
+}
+
+header nav a {
+  color:green;
+}
+</code></pre><p>那么在Sass中，就可以使用选择器来嵌套来实现：</p>
+<pre><code>nav {
+  a {
+    color: red;
+
+    header &amp; {
+      color:green;
+    }
+  }  
+}
+</code></pre><h4 id="嵌套-属性嵌套"><a href="#嵌套-属性嵌套" class="headerlink" title="嵌套-属性嵌套"></a>嵌套-属性嵌套</h4><p>Sass 中还提供属性嵌套，CSS 有一些属性前缀相同，只是后缀不一样，比如：border-top/border-right，与这个类似的还有 margin、padding、font 等属性。假设你的样式中用到了：</p>
+<pre><code>.box {
+    border-top: 1px solid red;
+    border-bottom: 1px solid green;
+}
+</code></pre><p>在 Sass 中我们可以这样写：</p>
+<pre><code>.box {
+  border: {
+   top: 1px solid red;
+   bottom: 1px solid green;
+  }
+}
+</code></pre><h4 id="嵌套-伪类嵌套"><a href="#嵌套-伪类嵌套" class="headerlink" title="嵌套-伪类嵌套"></a>嵌套-伪类嵌套</h4><p>其实伪类嵌套和属性嵌套非常类似，只不过他需要借助<code>&amp;</code>符号一起配合使用。我们就拿经典的“clearfix”为例吧：</p>
+<pre><code>.clearfix{
+&amp;:before,
+&amp;:after {
+    content:&quot;&quot;;
+    display: table;
+  }
+&amp;:after {
+    clear:both;
+    overflow: hidden;
+  }
+}
+</code></pre><p>编译出来CSS：</p>
+<pre><code>clearfix:before, .clearfix:after {
+  content: &quot;&quot;;
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+  overflow: hidden;
+}
+</code></pre><p>避免选择器嵌套：</p>
+<ul>
+<li>选择器嵌套最大的问题是将使最终的代码难以阅读。开发者需要花费巨大精力计算不同缩进级别下的选择器具体的表现效果。</li>
+<li>选择器越具体则声明语句越冗长，而且对最近选择器的引用(&amp;)也越频繁。在某些时候，出现混淆选择器路径和探索下一级选择器的错误率很高，这非常不值得。<br>为了防止此类情况，我们应该尽可能避免选择器嵌套。然而，显然只有少数情况适应这一措施。</li>
+</ul>
+<h4 id="混合宏-声明混合宏"><a href="#混合宏-声明混合宏" class="headerlink" title="混合宏-声明混合宏"></a>混合宏-声明混合宏</h4><p>如果你的整个网站中有几处小样式类似，比如颜色，字体等，在 Sass 可以使用变量来统一处理，那么这种选择还是不错的。但当你的样式变得越来越复杂，需要重复使用大段的样式时，使用变量就无法达到我们目了。这个时候 Sass 中的混合宏就会变得非常有意义。在这一节中，主要向大家介绍 Sass 的混合宏。</p>
+<p>声明混合宏</p>
+<p>不带参数混合宏：</p>
+<p>在 Sass 中，使用“@mixin”来声明一个混合宏。如：</p>
+<pre><code>@mixin border-radius{
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+</code></pre><p>其中 @mixin 是用来声明混合宏的关键词，有点类似 CSS 中的 @media、@font-face 一样。border-radius 是混合宏的名称。大括号里面是复用的样式代码。</p>
+<p>带参数混合宏：</p>
+<pre><code>@mixin border-radius($radius:5px){
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+</code></pre><p>复杂的混合宏：</p>
+<p>上面是一个简单的定义混合宏的方法，当然， Sass 中的混合宏还提供更为复杂的，你可以在大括号里面写上带有逻辑关系，帮助更好的做你想做的事情,如：</p>
+<pre><code>@mixin box-shadow($shadow...) {
+  @if length($shadow) &gt;= 1 {
+    @include prefixer(box-shadow, $shadow);
+  } @else{
+    $shadow:0 0 4px rgba(0,0,0,.3);
+    @include prefixer(box-shadow, $shadow);
+  }
+}
+</code></pre><p>这个 box-shadow 的混合宏，带有多个参数，这个时候可以使用“ … ”来替代。简单的解释一下，当 $shadow 的参数数量值大于或等于“ 1 ”时，表示有多个阴影值，反之调用默认的参数值“ 0 0 4px rgba(0,0,0,.3) ”。</p>
+<p>注：复杂的混合宏中的逻辑关系（@if…@else）后面小节会有讲解。    </p>
+<h4 id="混合宏-调用混合宏"><a href="#混合宏-调用混合宏" class="headerlink" title="混合宏-调用混合宏"></a>混合宏-调用混合宏</h4><p>在 Sass 中通过 @mixin 关键词声明了一个混合宏，那么在实际调用中，其匹配了一个关键词“@include”来调用声明好的混合宏。例如在你的样式中定义了一个圆角的混合宏“border-radius”:</p>
+<pre><code>@mixin border-radius{
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}    
+</code></pre><p>在一个按钮中要调用定义好的混合宏“border-radius”，可以这样使用：    </p>
+<pre><code>button {
+    @include border-radius;
+}    
+</code></pre><p>这个时候编译出来的 CSS:    </p>
+<pre><code>button {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}    
+</code></pre><h4 id="混合宏的参数–传一个不带值的参数"><a href="#混合宏的参数–传一个不带值的参数" class="headerlink" title="混合宏的参数–传一个不带值的参数"></a>混合宏的参数–传一个不带值的参数</h4><p>Sass 的混合宏有一个强大的功能，可以传参，那么在 Sass 中传参主要有以下几种情形：</p>
+<p>A) 传一个不带值的参数<br>在混合宏中，可以传一个不带任何值的参数，比如：</p>
+<pre><code>@mixin border-radius($radius){
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+</code></pre><p>在混合宏“border-radius”中定义了一个不带任何值的参数“$radius”。</p>
+<p>在调用的时候可以给这个混合宏传一个参数值：</p>
+<pre><code>.box {
+  @include border-radius(3px);
+}        
+</code></pre><p>这里表示给混合宏传递了一个“border-radius”的值为“3px”。</p>
+<p>编译出来的 CSS:</p>
+<pre><code>.box {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}    
+</code></pre><h4 id="混合宏的参数–传一个带值的参数"><a href="#混合宏的参数–传一个带值的参数" class="headerlink" title="混合宏的参数–传一个带值的参数"></a>混合宏的参数–传一个带值的参数</h4><p>在 Sass 的混合宏中，还可以给混合宏的参数传一个默认值，例如：</p>
+<pre><code>@mixin border-radius($radius:3px){
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}    
+</code></pre><p>在混合宏“border-radius”传了一个参数“$radius”，而且给这个参数赋予了一个默认值“3px”。</p>
+<p>在调用类似这样的混合宏时，会多有一个机会，假设你的页面中的圆角很多地方都是“3px”的圆角，那么这个时候只需要调用默认的混合宏“border-radius”:</p>
+<pre><code>.btn {
+  @include border-radius;
+}    
+</code></pre><p>编译出来的 CSS:</p>
+<pre><code>.btn {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}    
+</code></pre><p>但有的时候，页面中有些元素的圆角值不一样，那么可以随机给混合宏传值，如：</p>
+<pre><code>.box {
+  @include border-radius(50%);
+}
+</code></pre><p>编译出来的 CSS:    </p>
+<pre><code>.box {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}    
+</code></pre><h4 id="混合宏的参数–传多个参数"><a href="#混合宏的参数–传多个参数" class="headerlink" title="混合宏的参数–传多个参数"></a>混合宏的参数–传多个参数</h4><p>Sass 混合宏除了能传一个参数之外，还可以传多个参数，如：</p>
+<pre><code>@mixin center($width,$height){
+  width: $width;
+  height: $height;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -($height) / 2;
+  margin-left: -($width) / 2;
+}        
+</code></pre><p>在混合宏“center”就传了多个参数。在实际调用和其调用其他混合宏是一样的：</p>
+<pre><code>.box-center {
+  @include center(500px,300px);
+}    
+</code></pre><p>编译出来 CSS:</p>
+<pre><code>.box-center {
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -250px;
+}    
+</code></pre><p>有一个特别的参数“…”。当混合宏传的参数过多之时，可以使用参数来替代，如：    </p>
+<pre><code>@mixin box-shadow($shadows...){
+  @if length($shadows) &gt;= 1 {
+    -webkit-box-shadow: $shadows;
+    box-shadow: $shadows;
+  } @else {
+    $shadows: 0 0 2px rgba(#000,.25);
+    -webkit-box-shadow: $shadow;
+    box-shadow: $shadow;
+  }
+}    
+</code></pre><p>在实际调用中：</p>
+<pre><code>.box {
+  @include box-shadow(0 0 1px rgba(#000,.5),0 0 2px rgba(#000,.2));
+}
+</code></pre><p>编译出来的CSS:</p>
+<pre><code>.box {
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.5), 0 0 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5), 0 0 2px rgba(0, 0, 0, 0.2);
+}
+</code></pre><h4 id="混合宏的参数–混合宏的不足"><a href="#混合宏的参数–混合宏的不足" class="headerlink" title="混合宏的参数–混合宏的不足"></a>混合宏的参数–混合宏的不足</h4><p>混合宏在实际编码中给我们带来很多方便之处，特别是对于复用重复代码块。但其最大的不足之处是会生成冗余的代码块。比如在不同的地方调用一个相同的混合宏时。如：</p>
+<pre><code>@mixin border-radius{
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.box {
+  @include border-radius;
+  margin-bottom: 5px;
+}
+
+.btn {
+  @include border-radius;
+}    
+</code></pre><p>示例在“.box”和“.btn”中都调用了定义好的“border-radius”混合宏。先来看编译出来的 CSS：</p>
+<pre><code>.box {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.btn {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}    
+</code></pre><p>上例明显可以看出，Sass 在调用相同的混合宏时，并不能智能的将相同的样式代码块合并在一起。这也是 Sass 的混合宏最不足之处。    </p>
+<h4 id="扩展-继承"><a href="#扩展-继承" class="headerlink" title="扩展/继承"></a>扩展/继承</h4><p>在 Sass 中也具有继承一说，也是继承类中的样式代码块。在 Sass 中是通过关键词 “@extend”来继承已存在的类样式块，从而实现代码的继承。如下所示：</p>
+<pre><code>//SCSS
+.btn {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.btn-primary { 
+  background-color: #f36;
+  color: #fff;
+  @extend .btn;
+}
+
+.btn-second {
+  background-color: orange;
+  color: #fff;
+  @extend .btn;
+}    
+</code></pre><p>编译出来：</p>
+<pre><code>//CSS
+.btn, .btn-primary, .btn-second {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #f36;
+  color: #fff;
+}
+
+.btn-second {
+  background-clor: orange;
+  color: #fff;
+}    
+</code></pre><p>从示例代码可以看出，在 Sass 中的继承，可以继承类样式块中所有样式代码，而且编译出来的 CSS 会将选择器合并在一起，形成组合选择器：    </p>
+<pre><code>.btn, .btn-primary, .btn-second {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  font-size: 14px;
+}    
+</code></pre><h4 id="占位符-placeholder"><a href="#占位符-placeholder" class="headerlink" title="占位符 %placeholder"></a>占位符 %placeholder</h4><p>Sass 中的占位符 %placeholder 功能是一个很强大，很实用的一个功能，这也是我非常喜欢的功能。他可以取代以前 CSS 中的基类造成的代码冗余的情形。因为 %placeholder 声明的代码，如果不被 @extend 调用的话，不会产生任何代码。来看一个演示：    </p>
+<pre><code>%mt5 {
+  margin-top: 5px;
+}
+%pt5{
+  padding-top: 5px;
+}    
+</code></pre><p>这段代码没有被 @extend 调用，他并没有产生任何代码块，只是静静的躺在你的某个 SCSS 文件中。只有通过 @extend 调用才会产生代码：</p>
+<pre><code>//SCSS
+%mt5 {
+  margin-top: 5px;
+}
+%pt5{
+  padding-top: 5px;
+}
+
+.btn {
+  @extend %mt5;
+  @extend %pt5;
+}
+
+.block {
+  @extend %mt5;
+
+  span {
+    @extend %pt5;
+  }
+}    
+</code></pre><p>编译出来的CSS</p>
+<pre><code>//CSS
+.btn, .block {
+  margin-top: 5px;
+}
+
+.btn, .block span {
+  padding-top: 5px;
+}    
+</code></pre><p>从编译出来的 CSS 代码可以看出，通过 @extend 调用的占位符，编译出来的代码会将相同的代码合并在一起。这也是我们希望看到的效果，也让你的代码变得更为干净。    </p>
+<h4 id="混合宏-VS-继承-VS-占位符"><a href="#混合宏-VS-继承-VS-占位符" class="headerlink" title="混合宏 VS 继承 VS 占位符"></a>混合宏 VS 继承 VS 占位符</h4><p>什么时候用混合宏，什么时候用继承，什么时候使用占位符？”其实他们各有各的优点与缺点，先来看看他们使用效果：    </p>
+<p>a)Sass 中的混合宏使用</p>
+<p>//SCSS中混合宏使用<br>@mixin mt($var){<br>  margin-top: $var;<br>}</p>
+<p>.block {<br>  @include mt(5px);</p>
+<p>  span {<br>    display:block;<br>    @include mt(5px);<br>  }<br>}</p>
+<p>.header {<br>  color: orange;<br>  @include mt(5px);</p>
+<p>  span{<br>    display:block;<br>    @include mt(5px);<br>  }<br>}</p>
+<p>总结：编译出来的 CSS 清晰告诉了大家，他不会自动合并相同的样式代码，如果在样式文件中调用同一个混合宏，会产生多个对应的样式代码，造成代码的冗余，这也是 CSSer 无法忍受的一件事情。不过他并不是一无事处，他可以传参数。    </p>
+<p>b)Sass中继承</p>
+<p>同样的，将上面代码中的混合宏，使用类名来表示，然后通过继承来调用：    </p>
+<pre><code>.mt{
+  margin-top: 5px;  
+}
+
+.block {
+  @extend .mt;
+
+  span {
+    display:block;
+    @extend .mt;
+  }
+}
+
+.header {
+  color: orange;
+  @extend .mt;
+
+  span{
+    display:block;
+    @extend .mt;
+  }
+}
+</code></pre><p>总结：使用继承后，编译出来的 CSS 会将使用继承的代码块合并到一起，通过组合选择器的方式向大家展现，比如 .mt, .block, .block span, .header, .header span。这样编译出来的代码相对于混合宏来说要干净的多，也是 CSSer 期望看到。但是他不能传变量参数。</p>
+<p>个人建议：如果你的代码块不需要专任何变量参数，而且有一个基类已在文件中存在，那么建议使用 Sass 的继承。</p>
+<p>C)占位符：</p>
+<pre><code>//SCSS中占位符的使用
+%mt{
+  margin-top: 5px;  
+}
+
+.block {
+  @extend %mt;
+
+  span {
+    display:block;
+    @extend %mt;
+  }
+}
+
+.header {
+  color: orange;
+  @extend %mt;
+
+  span{
+    display:block;
+    @extend %mt;
+  }
+}    
+</code></pre><p>总结：编译出来的 CSS 代码和使用继承基本上是相同，只是不会在代码中生成占位符 mt 的选择器。那么占位符和继承的主要区别的，“占位符是独立定义，不调用的时候是不会在 CSS 中产生任何代码；继承是首先有一个基类存在，不管调用与不调用，基类的样式都将会出现在编译出来的 CSS 代码中。”    </p>
+<pre><code>$properties: (margin, padding);
+@mixin set-value($side, $value) {
+    @each $prop in $properties {
+        #{$prop}-#{$side}: $value;
+    }
+}
+.login-box {
+    @include set-value(top, 14px);
+}
+</code></pre><p>它可以让变量和属性工作的很完美，上面的代码编译成 CSS：</p>
+<pre><code>.login-box {
+    margin-top: 14px;
+    padding-top: 14px;
+}    
+</code></pre><p>这是 Sass 插值中一个简单的实例。当你想设置属性值的时候你可以使用字符串插入进来。另一个有用的用法是构建一个选择器。可以这样使用：    </p>
+<pre><code>@mixin generate-sizes($class, $small, $medium, $big) {
+    .#{$class}-small { font-size: $small; }
+    .#{$class}-medium { font-size: $medium; }
+    .#{$class}-big { font-size: $big; }
+}
+@include generate-sizes(&quot;header-text&quot;, 12px, 20px, 40px);
+</code></pre><p>编译出来的 CSS:</p>
+<pre><code>.header-text-small { font-size: 12px; }
+.header-text-medium { font-size: 20px; }
+.header-text-big { font-size: 40px; }    
+</code></pre><p>一旦你发现这一点，你就会想到超级酷的 mixins，用来生成代码或者生成另一个 mixins。然而，这并不完全是可能的。第一个限制，这可能会很删除用于 Sass 变量的插值。</p>
+<pre><code>$margin-big: 40px;
+$margin-medium: 20px;
+$margin-small: 12px;
+@mixin set-value($size) {
+    margin-top: $margin-#{$size};
+}
+.login-box {
+    @include set-value(big);
+}    
+</code></pre><p>上面的 Sass 代码编译出来，你会得到下面的信息：</p>
+<p>error style.scss (Line 5: Undefined variable: “$margin-“.)    </p>
+<p>所以，#{}语法并不是随处可用，你也不能在 mixin 中调用：    </p>
+<pre><code>@mixin updated-status {
+    margin-top: 20px;
+    background: #F00;
+}
+$flag: &quot;status&quot;;
+.navigation {
+    @include updated-#{$flag};
+}           
+</code></pre><p>上面的代码在编译成 CSS 时同样会报错：<br>error style.scss (Line 7: Invalid CSS after “…nclude updated-“: expected “}”, was “#{$flag};”)<br>幸运的是，可以使用 @extend 中使用插值。例如：</p>
+<pre><code>%updated-status {
+    margin-top: 20px;
+    background: #F00;
+}
+.selected-status {
+    font-weight: bold;
+}
+$flag: &quot;status&quot;;
+.navigation {
+    @extend %updated-#{$flag};
+    @extend .selected-#{$flag};
+}    
+</code></pre><p>上面的 Sass 代码是可以运行的，因为他给了我们力量，可以动态的插入 .class 和 %placeholder。当然他们不能接受像 mixin 这样的参数，上面的代码编译出来的 CSS:</p>
+<pre><code>.navigation {
+    margin-top: 20px;
+    background: #F00;
+}
+.selected-status, .navigation {
+    font-weight: bold;
+}    
+</code></pre><h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>注释对于一名程序员来说，是极其重要，良好的注释能帮助自己或者别人阅读源码。在 Sass 中注释有两种方式，我暂且将其命名为：</p>
+<p>1、类似 CSS 的注释方式，使用 ”/<em> ”开头，结属使用 ”</em>/ ”<br>2、类似 JavaScript 的注释方式，使用“//”</p>
+<p>两者区别，前者会在编译出来的 CSS 显示，后者在编译出来的 CSS 中不会显示，来看一个示例：    </p>
+<pre><code>//定义一个占位符
+
+%mt5 {
+  margin-top: 5px;
+}
+
+/*调用一个占位符*/
+
+.box {
+  @extend %mt5;
+}    
+</code></pre><p>编译出来CSS：</p>
+<pre><code>.box {
+  margin-top: 5px;
+}
+
+/*调用一个占位符*/    
+</code></pre><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p> Sass 和 JavaScript 语言类似，也具有自己的数据类型，在 Sass 中包含以下几种数据类型：</p>
+<ul>
+<li>数字: 如，1、 2、 13、 10px；</li>
+<li>字符串：有引号字符串或无引号字符串，如，”foo”、 ‘bar’、 baz；</li>
+<li>颜色：如，blue、 #04a3f9、 rgba(255,0,0,0.5)；</li>
+<li>布尔型：如，true、 false；</li>
+<li>空值：如，null；</li>
+<li>值列表：用空格或者逗号分开，如，1.5em 1em 0 2em 、 Helvetica, Arial, sans-serif。 </li>
+</ul>
+<p>SassScript 也支持其他 CSS 属性值（property value），比如 Unicode 范围，或 !important 声明。然而，Sass 不会特殊对待这些属性值，一律视为无引号字符串 (unquoted strings)。    </p>
+<h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>SassScript 支持 CSS 的两种字符串类型：</p>
+<ul>
+<li>有引号字符串 (quoted strings)，如 “Lucida Grande” 、’<a href="http://sass-lang.com&#39;；" target="_blank" rel="external">http://sass-lang.com&#39;；</a></li>
+<li>无引号字符串 (unquoted strings)，如 sans-serifbold。    </li>
+</ul>
+<p>在编译 CSS 文件时不会改变其类型。只有一种情况例外，使用 #{ }插值语句 (interpolation) 时，有引号字符串将被编译为无引号字符串，这样方便了在混合指令 (mixin) 中引用选择器名。    </p>
+<pre><code>@mixin firefox-message($selector) {
+  body.firefox #{$selector}:before {
+    content: &quot;Hi, Firefox users!&quot;;
+  }
+}
+@include firefox-message(&quot;.header&quot;);    
+</code></pre><p>编译为：</p>
+<pre><code>body.firefox .header:before {
+  content: &quot;Hi, Firefox users!&quot;; }        
+</code></pre><p>需要注意的是：当 deprecated = property syntax 时 （暂时不理解是怎样的情况），所有的字符串都将被编译为无引号字符串，不论是否使用了引号。    </p>
+<h5 id="值列表"><a href="#值列表" class="headerlink" title="值列表"></a>值列表</h5><p>所谓值列表 (lists) 是指 Sass 如何处理 CSS 中： </p>
+<pre><code>rgin: 10px 15px 0 0    
+</code></pre><p>或者： </p>
+<pre><code>font-face: Helvetica, Arial, sans-serif
+</code></pre><p>像上面这样通过空格或者逗号分隔的一系列的值。    </p>
+<p>事实上，独立的值也被视为值列表——只包含一个值的值列表。</p>
+<p>Sass列表函数（Sass list functions）赋予了值列表更多功能（Sass进级会有讲解）：    </p>
+<ol>
+<li>nth函数（nth function） 可以直接访问值列表中的某一项；</li>
+<li>join函数（join function） 可以将多个值列表连结在一起；</li>
+<li>append函数（append function） 可以在值列表中添加值； </li>
+<li>@each规则（@each rule） 则能够给值列表中的每个项目添加样式。</li>
+</ol>
+<p>值列表中可以再包含值列表，比如 1px 2px, 5px 6px 是包含 1px 2px 与 5px 6px 两个值列表的值列表。如果内外两层值列表使用相同的分隔方式，要用圆括号包裹内层，所以也可以写成 (1px 2px) (5px 6px)。当值列表被编译为 CSS 时，Sass 不会添加任何圆括号，因为 CSS 不允许这样做。(1px 2px) (5px 6px)与 1px 2px 5px 6px 在编译后的 CSS 文件中是一样的，但是它们在 Sass 文件中却有不同的意义，前者是包含两个值列表的值列表，而后者是包含四个值的值列表。    </p>
+<p>可以用 () 表示空的列表，这样不可以直接编译成 CSS，比如编译 font-family: ()时，Sass 将会报错。如果值列表中包含空的值列表或空值，编译时将清除空值，比如 1px 2px () 3px 或 1px 2px null 3px。    </p>
+<h4 id="Sass基本特性-运算"><a href="#Sass基本特性-运算" class="headerlink" title="Sass基本特性-运算"></a>Sass基本特性-运算</h4><h5 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h5><p>程序中的运算是常见的一件事情，但在 CSS 中能做运算的，到目前为止仅有 calc() 函数可行。但在 Sass 中，运算只是其基本特性之一。在 Sass 中可以做各种数学计算，在接下来的章节中，主要和大家一起探讨有关于 Sass 中的数学运算。    </p>
+<p>（一）、加法<br>加法运算是 Sass 中运算中的一种，在变量或属性中都可以做加法运算。如：</p>
+<pre><code>.box {
+  width: 20px + 8in;
+}    
+</code></pre><p>编译出来的 CSS:</p>
+<pre><code>.box {
+  width: 788px;
+}    
+</code></pre><p>但对于携带不同类型的单位时，在 Sass 中计算会报错，如下例所示：</p>
+<pre><code>.box {
+  width: 20px + 1em;
+}    
+</code></pre><p>编译的时候，编译器会报错：“Incompatible units: ‘em’ and ‘px’.”    </p>
+<h5 id="减法"><a href="#减法" class="headerlink" title="减法"></a>减法</h5><p>Sass 的减法运算和加法运算类似，我们通过一个简单的示例来做阐述：    </p>
+<pre><code>$full-width: 960px;
+$sidebar-width: 200px;
+
+.content {
+  width: $full-width -  $sidebar-width;
+}    
+</code></pre><p>编译出来的 CSS 如下：</p>
+<pre><code>.content {
+  width: 760px;
+}    
+</code></pre><p>同样的，运算时碰到不同类型的单位时，编译也会报错，如：</p>
+<pre><code>$full-width: 960px;
+
+.content {
+  width: $full-width -  1em;
+}    
+</code></pre><p>编译的时候，编译器报“Incompatible units: ‘em’ and ‘px’.”错误。</p>
+<h5 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h5><p>Sass 中的乘法运算和前面介绍的加法与减法运算还略有不同。虽然他也能够支持多种单位（比如 em ,px , %），但当一个单位同时声明两个值时会有问题。比如下面的示例：</p>
+<p>.box {<br>  width:10px * 2px;<br>}</p>
+<p>编译的时候报“20px*px isn’t a valid CSS value.”错误信息。<br>如果进行乘法运算时，两个值单位相同时，只需要为一个数值提供单位即可。上面的示例可以修改成：</p>
+<pre><code>.box {
+  width: 10px * 2;
+}    
+</code></pre><p>编译出来的 CSS:</p>
+<pre><code>.box {
+  width: 20px;
+}    
+</code></pre><p>Sass 的乘法运算和加法、减法运算一样，在运算中有不同类型的单位时，也将会报错。如下面的示例：    </p>
+<pre><code>.box {
+  width: 20px * 2em;
+}    
+</code></pre><p>编译时报“40em*px isn’t a valid CSS value.”错误信息。</p>
+<h5 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h5><p>Sass 的乘法运算规则也适用于除法运算。不过除法运算还有一个特殊之处。众所周知“/”符号在 CSS 中已做为一种符号使用。因此在 Sass 中做除法运算时，直接使用“/”符号做为除号时，将不会生效，编译时既得不到我们需要的效果，也不会报错。一起先来看一个简单的示例：</p>
+<pre><code>.box {
+  width: 100px / 2;  
+}
+</code></pre><p>编译出来的 CSS 如下：</p>
+<pre><code>.box {
+  width: 100px / 2;
+}
+</code></pre><p>这样的结果对于大家来说没有任何意义。要修正这个问题，只需要给运算的外面添加一个小括号( )即可：</p>
+<pre><code>.box {
+  width: (100px / 2);  
+}
+</code></pre><p>编译出来的 CSS 如下：</p>
+<pre><code>.box {
+  width: 50px;
+}
+</code></pre><p>除了上面情况带有小括号，“/”符号会当作除法运算符之外，如果“/”符号在已有的数学表达式中时，也会被认作除法符号。如下面示例：</p>
+<pre><code>.box {
+  width: 100px / 2 + 2in;  
+}
+</code></pre><p>编译出来的CSS：</p>
+<pre><code>.box {
+  width: 242px;
+}
+</code></pre><p>另外，在 Sass 除法运算中，当用变量进行除法运算时，“/”符号也会自动被识别成除法，如下例所示：</p>
+<pre><code>$width: 1000px;
+$nums: 10;
+
+.item {
+  width: $width / 10;  
+}
+
+.list {
+  width: $width / $nums;
+}
+</code></pre><p>编译出来的CSS:</p>
+<pre><code>.item {
+  width: 100px;
+}
+
+.list {
+  width: 100px;
+}
+</code></pre><p>综合上述，”/  ”符号被当作除法运算符时有以下几种情况：</p>
+<ul>
+<li>如果数值或它的任意部分是存储在一个变量中或是函数的返回值。</li>
+<li>如果数值被圆括号包围。</li>
+<li>如果数值是另一个数学表达式的一部分。</li>
+</ul>
+<h5 id="变量计算"><a href="#变量计算" class="headerlink" title="变量计算"></a>变量计算</h5><p>在 Sass 中除了可以使用数值进行运算之外，还可以使用变量进行计算，其实在前面章节的示例中也或多或少的向大家展示了。在 Sass 中使用变量进行计算，这使得 Sass 的数学运算功能变得更加实用。一起来看一个简单的示例：</p>
+<pre><code>$content-width: 720px;
+$sidebar-width: 220px;
+$gutter: 20px;
+
+.container {
+  width: $content-width + $sidebar-width + $gutter;
+  margin: 0 auto;
+}
+</code></pre><p>编译出来的CSS</p>
+<pre><code>.container {
+  width: 960px;
+  margin: 0 auto;
+}
+</code></pre><h5 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a>数字运算</h5><p>在 Sass 运算中数字运算是较为常见的，数字运算包括前面介绍的：加法、减法、乘法和除法等运算。而且还可以通过括号来修改他们的运算先后顺序。和我们数学运算是一样的，一起来看个示例。</p>
+<pre><code>.box {
+  width: ((220px + 720px) - 11 * 20 ) / 12 ;  
+}
+</code></pre><p>编译出来的 CSS:</p>
+<pre><code>.box {
+  width: 60px;
+}
+</code></pre><h5 id="颜色运算"><a href="#颜色运算" class="headerlink" title="颜色运算"></a>颜色运算</h5><p>所有算数运算都支持颜色值，并且是分段运算的。也就是说，红、绿和蓝各颜色分段单独进行运算。如：</p>
+<p>p {<br>  color: #010203 + #040506;<br>}</p>
+<p>计算公式为 01 + 04 = 05、02 + 05 = 07 和 03 + 06 = 09， 并且被合成为：</p>
+<p>如此编译出来的 CSS 为：</p>
+<pre><code>p {
+  color: #050709;
+}
+</code></pre><p>算数运算也能将数字和颜色值 一起运算，同样也是分段运算的。如：    </p>
+<pre><code>p {
+  color: #010203 * 2;
+}    
+</code></pre><p>计算公式为 01 <em> 2 = 02、02 </em> 2 = 04 和 03 * 2 = 06， 并且被合成为：    </p>
+<pre><code>p {
+  color: #020406;
+}    
+</code></pre><h5 id="字符运算"><a href="#字符运算" class="headerlink" title="字符运算"></a>字符运算</h5><p>在 Sass 中可以通过加法符号“+”来对字符串进行连接。例如：</p>
+<pre><code>$content: &quot;Hello&quot; + &quot;&quot; + &quot;Sass!&quot;;
+.box:before {
+  content: &quot; #{$content} &quot;;
+}    
+</code></pre><p>编译出来的CSS：</p>
+<pre><code>.box:before {
+  content: &quot; Hello Sass! &quot;;
+}    
+</code></pre><p>除了在变量中做字符连接运算之外，还可以直接通过 +，把字符连接在一起：</p>
+<pre><code>div {
+  cursor: e + -resize;
+}    
+</code></pre><p>编译出来的CSS:</p>
+<pre><code>div {
+  cursor: e-resize;
+}    
+</code></pre><p>注意，如果有引号的字符串被添加了一个没有引号的字符串 （也就是，带引号的字符串在 + 符号左侧）， 结果会是一个有引号的字符串。 同样的，如果一个没有引号的字符串被添加了一个有引号的字符串 （没有引号的字符串在 + 符号左侧）， 结果将是一个没有引号的字符串。 例如：</p>
+<pre><code>p:before {
+  content: &quot;Foo &quot; + Bar;
+  font-family: sans- + &quot;serif&quot;;
+}    
+</code></pre><p>编译出来的 CSS：</p>
+<pre><code>p:before {
+  content: &quot;Foo Bar&quot;;
+  font-family: sans-serif; }    
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sass/" rel="tag">#Sass</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/29/Sass入门（一）/" rel="next" title="Sass入门（一）">
+                <i class="fa fa-chevron-left"></i> Sass入门（一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/01/Sass进阶（一）/" rel="prev" title="Sass进阶（一）">
+                Sass进阶（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/30/Sass入门（二）/"
+           data-title="Sass入门（二）" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/30/Sass入门（二）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="shengteng" />
+          <p class="site-author-name" itemprop="name">shengteng</p>
+          <p class="site-description motion-element" itemprop="description">新长征路上的blogs</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shengteng9" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005051821208013/home?from=page_100505_profile&wvr=6&mod=data#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明变量"><span class="nav-number">1.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#普通变量与默认变量"><span class="nav-number">2.</span> <span class="nav-text">普通变量与默认变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的调用"><span class="nav-number">3.</span> <span class="nav-text">变量的调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部变量和全局变量"><span class="nav-number">4.</span> <span class="nav-text">局部变量和全局变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#全局变量与局部变量"><span class="nav-number">4.1.</span> <span class="nav-text">全局变量与局部变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#全局变量的影子"><span class="nav-number">4.2.</span> <span class="nav-text">全局变量的影子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#什么时候声明变量？"><span class="nav-number">4.3.</span> <span class="nav-text">什么时候声明变量？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套-选择器嵌套"><span class="nav-number">5.</span> <span class="nav-text">嵌套-选择器嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套-属性嵌套"><span class="nav-number">6.</span> <span class="nav-text">嵌套-属性嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套-伪类嵌套"><span class="nav-number">7.</span> <span class="nav-text">嵌套-伪类嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合宏-声明混合宏"><span class="nav-number">8.</span> <span class="nav-text">混合宏-声明混合宏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合宏-调用混合宏"><span class="nav-number">9.</span> <span class="nav-text">混合宏-调用混合宏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合宏的参数–传一个不带值的参数"><span class="nav-number">10.</span> <span class="nav-text">混合宏的参数–传一个不带值的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合宏的参数–传一个带值的参数"><span class="nav-number">11.</span> <span class="nav-text">混合宏的参数–传一个带值的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合宏的参数–传多个参数"><span class="nav-number">12.</span> <span class="nav-text">混合宏的参数–传多个参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合宏的参数–混合宏的不足"><span class="nav-number">13.</span> <span class="nav-text">混合宏的参数–混合宏的不足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展-继承"><span class="nav-number">14.</span> <span class="nav-text">扩展/继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#占位符-placeholder"><span class="nav-number">15.</span> <span class="nav-text">占位符 %placeholder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合宏-VS-继承-VS-占位符"><span class="nav-number">16.</span> <span class="nav-text">混合宏 VS 继承 VS 占位符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">17.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型"><span class="nav-number">18.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串"><span class="nav-number">18.1.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#值列表"><span class="nav-number">18.2.</span> <span class="nav-text">值列表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sass基本特性-运算"><span class="nav-number">19.</span> <span class="nav-text">Sass基本特性-运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#加法"><span class="nav-number">19.1.</span> <span class="nav-text">加法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#减法"><span class="nav-number">19.2.</span> <span class="nav-text">减法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#乘法"><span class="nav-number">19.3.</span> <span class="nav-text">乘法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#除法"><span class="nav-number">19.4.</span> <span class="nav-text">除法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变量计算"><span class="nav-number">19.5.</span> <span class="nav-text">变量计算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数字运算"><span class="nav-number">19.6.</span> <span class="nav-text">数字运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#颜色运算"><span class="nav-number">19.7.</span> <span class="nav-text">颜色运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符运算"><span class="nav-number">19.8.</span> <span class="nav-text">字符运算</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shengteng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shengteng9"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

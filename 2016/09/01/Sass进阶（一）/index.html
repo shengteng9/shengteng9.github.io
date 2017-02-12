@@ -1,0 +1,1717 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Sass," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="@if@if 指令是一个 SassScript，它可以根据条件来处理样式块，如果条件为 true 返回一个样式块，反之 false 返回另一个样式块。在 Sass 中除了 @if 之，还可以配合 @else if 和 @else 一起使用。
+假设要控制一个元素隐藏或显示，我们就可以定义一个混合宏，通过 @if…@else… 来判断传进参数的值来控制 display 的值。如下所示：
+//SCSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass进阶（一）">
+<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/01/Sass进阶（一）/index.html">
+<meta property="og:site_name" content="ZTF'Blogs">
+<meta property="og:description" content="@if@if 指令是一个 SassScript，它可以根据条件来处理样式块，如果条件为 true 返回一个样式块，反之 false 返回另一个样式块。在 Sass 中除了 @if 之，还可以配合 @else if 和 @else 一起使用。
+假设要控制一个元素隐藏或显示，我们就可以定义一个混合宏，通过 @if…@else… 来判断传进参数的值来控制 display 的值。如下所示：
+//SCSS">
+<meta property="og:updated_time" content="2016-09-01T07:56:52.702Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sass进阶（一）">
+<meta name="twitter:description" content="@if@if 指令是一个 SassScript，它可以根据条件来处理样式块，如果条件为 true 返回一个样式块，反之 false 返回另一个样式块。在 Sass 中除了 @if 之，还可以配合 @else if 和 @else 一起使用。
+假设要控制一个元素隐藏或显示，我们就可以定义一个混合宏，通过 @if…@else… 来判断传进参数的值来控制 display 的值。如下所示：
+//SCSS">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/01/Sass进阶（一）/"/>
+
+  <title> Sass进阶（一） | ZTF'Blogs </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZTF'Blogs</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Web开发、Java、</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Sass进阶（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-01T15:53:24+08:00" content="2016-09-01">
+              2016-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Sass/" itemprop="url" rel="index">
+                    <span itemprop="name">Sass</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/01/Sass进阶（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/Sass进阶（一）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="if"><a href="#if" class="headerlink" title="@if"></a>@if</h4><p>@if 指令是一个 SassScript，它可以根据条件来处理样式块，如果条件为 true 返回一个样式块，反之 false 返回另一个样式块。在 Sass 中除了 @if 之，还可以配合 @else if 和 @else 一起使用。</p>
+<p>假设要控制一个元素隐藏或显示，我们就可以定义一个混合宏，通过 @if…@else… 来判断传进参数的值来控制 display 的值。如下所示：</p>
+<pre><code>//SCSS
+@mixin blockOrHidden($boolean:true) {
+  @if $boolean {
+      @debug &quot;$boolean is #{$boolean}&quot;;
+      display: block;
+    }
+  @else {
+      @debug &quot;$boolean is #{$boolean}&quot;;
+      display: none;
+    }
+}
+
+.block {
+  @include blockOrHidden;
+}
+
+.hidden{
+  @include blockOrHidden(false);
+}
+</code></pre><p>编译出来的CSS:</p>
+<pre><code>.block {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}    
+</code></pre><p>@for循环（上）<br><a id="more"></a><br>在制作网格系统的时候，大家应该对 .col1~.col12 这样的印象较深。在 CSS 中你需要一个一个去书写，但在 Sass 中，可以使用 @for 循环来完成。在 Sass 的 @for 循环中有两种方式：</p>
+<pre><code>@for $i from &lt;start&gt; through &lt;end&gt;
+@for $i from &lt;start&gt; to &lt;end&gt;    
+</code></pre><ul>
+<li>$i表示变量</li>
+<li>start 表示起始值</li>
+<li>end 表示结束值    </li>
+</ul>
+<p>这两个的区别是关键字 through 表示包括 end 这个数，而 to 则不包括 end 这个数。    </p>
+<p>如下代码，先来个使用 through 关键字的例子：</p>
+<pre><code>@for $i from 1 through 3 {
+  .item-#{$i} { width: 2em * $i; }
+}    
+</code></pre><p>编译出来的 CSS:</p>
+<pre><code>.item-1 {
+  width: 2em;
+}
+
+.item-2 {
+  width: 4em;
+}
+
+.item-3 {
+  width: 6em;
+}    
+</code></pre><p>再来个 to 关键字的例子：</p>
+<pre><code>@for $i from 1 to 3 {
+  .item-#{$i} { width: 2em * $i; }
+}    
+</code></pre><p>编译出来的 CSS:</p>
+<pre><code>.item-1 {
+  width: 2em;
+}
+
+.item-2 {
+  width: 4em;
+}    
+</code></pre><h4 id="for循环-（下）"><a href="#for循环-（下）" class="headerlink" title="@for循环 （下）"></a>@for循环 （下）</h4><p>@for应用在网格系统生成各个格子 class 的代码：    </p>
+<pre><code>//SCSS 
+$grid-prefix: span !default;
+$grid-width: 60px !default;
+$grid-gutter: 20px !default;
+
+%grid {
+  float: left;
+  margin-left: $grid-gutter / 2;
+  margin-right: $grid-gutter / 2;
+}
+@for $i from 1 through 12 {
+  .#{$grid-prefix}#{$i}{
+    width: $grid-width * $i + $grid-gutter * ($i - 1);
+    @extend %grid;
+  }  
+}    
+</code></pre><p>编译出来的 CSS:</p>
+<pre><code>.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.span1 {
+  width: 60px;
+}
+
+.span2 {
+  width: 140px;
+}
+
+.span3 {
+  width: 220px;
+}
+
+.span4 {
+  width: 300px;
+}
+
+.span5 {
+  width: 380px;
+}
+
+.span6 {
+  width: 460px;
+}
+
+.span7 {
+  width: 540px;
+}
+
+.span8 {
+  width: 620px;
+}
+
+.span9 {
+  width: 700px;
+}
+
+.span10 {
+  width: 780px;
+}
+
+.span11 {
+  width: 860px;
+}
+
+.span12 {
+  width: 940px;
+}    
+</code></pre><p>将上面的示例稍做修改，将 @for through 方式换成 @for to:：    </p>
+<pre><code>//SCSS
+@for $i from 1 to 13 {
+  .#{$grid-prefix}#{$i}{
+    width: $grid-width * $i + $grid-gutter * ($i - 1);
+    @extend %grid;
+  }  
+}    
+</code></pre><p>其最终编译出来的 CSS 代码和上例所编译出来的一模一样。<br>这两段 Sass 代码并无太多差别，只是 @for中的 <end> 取值不同。配合 through 的 <end> 值是 12，其遍历出来的终点值也是 12，和 <end> 值一样。配合 to 的 <end> 值是 13，其遍历出来的终点值是 12，就是 <end> 对就的值减去 1 。    </end></end></end></end></end></p>
+<h4 id="while循环"><a href="#while循环" class="headerlink" title="@while循环"></a>@while循环</h4><p>@while 指令也需要 SassScript 表达式（像其他指令一样），并且会生成不同的样式块，直到表达式值为 false 时停止循环。这个和 @for 指令很相似，只要 @while 后面的条件为 true 就会执行。</p>
+<p>这里有一个 @while 指令的简单用例：</p>
+<pre><code>//SCSS
+$types: 4;
+$type-width: 20px;
+
+@while $types &gt; 0 {
+    .while-#{$types} {
+        width: $type-width + $types;
+    }
+    $types: $types - 1;
+}    
+</code></pre><p>编译出来的 CSS    </p>
+<pre><code>.while-4 {
+  width: 24px;
+}
+
+.while-3 {
+  width: 23px;
+}
+
+.while-2 {
+  width: 22px;
+}
+
+.while-1 {
+  width: 21px;
+}    
+</code></pre><h4 id="each循环"><a href="#each循环" class="headerlink" title="@each循环"></a>@each循环</h4><p>@each 循环就是去遍历一个列表，然后从列表中取出对应的值。</p>
+<p>@each 循环指令的形式：</p>
+<pre><code>@each $var in &lt;list&gt;
+</code></pre><p>如果你没有接触过列表，也不要紧，他也非常简单。    </p>
+<p>在下面的例子中你可以看到，$var 就是一个变量名，<list> 是一个 SassScript 表达式，他将返回一个列表值。变量 $var 会在列表中做遍历，并且遍历出与 $var 对应的样式块。</list></p>
+<p>这有一个 @each 指令的简单示例：</p>
+<pre><code>$list: adam john wynn mason kuroir;//$list 就是一个列表
+
+@mixin author-images {
+    @each $author in $list {
+        .photo-#{$author} {
+            background: url(&quot;/images/avatars/#{$author}.png&quot;) no-repeat;
+        }
+    }
+}
+
+.author-bio {
+    @include author-images;
+}    
+</code></pre><p>编译出 CSS:</p>
+<pre><code>.author-bio .photo-adam {
+  background: url(&quot;/images/avatars/adam.png&quot;) no-repeat; }
+.author-bio .photo-john {
+  background: url(&quot;/images/avatars/john.png&quot;) no-repeat; }
+.author-bio .photo-wynn {
+  background: url(&quot;/images/avatars/wynn.png&quot;) no-repeat; }
+.author-bio .photo-mason {
+  background: url(&quot;/images/avatars/mason.png&quot;) no-repeat; }
+.author-bio .photo-kuroir {
+  background: url(&quot;/images/avatars/kuroir.png&quot;) no-repeat; }    
+</code></pre><h3 id="Sass的函数简介"><a href="#Sass的函数简介" class="headerlink" title="Sass的函数简介"></a>Sass的函数简介</h3><p>在 Sass 中除了可以定义变量，具有 @extend、%placeholder 和 mixins 等特性之外，还自备了一系列的函数功能。其主要包括：</p>
+<ul>
+<li>字符串函数</li>
+<li>数字函数</li>
+<li>列表函数</li>
+<li>颜色函数</li>
+<li>Introspection 函数</li>
+<li>三元函数等</li>
+</ul>
+<p>当然除了自备的函数功能之外，我们还可以根据自己的需求定义函数功能，常常称之为自定义函数。接下来介绍四种常用函数</p>
+<h5 id="字符串函数-unquote-函数"><a href="#字符串函数-unquote-函数" class="headerlink" title="字符串函数-unquote()函数"></a>字符串函数-unquote()函数</h5><p>字符串函数顾名思意是用来处理字符串的函数。Sass 的字符串函数主要包括两个函数：    </p>
+<ul>
+<li>unquote($string)：删除字符串中的引号；</li>
+<li>quote($string)：给字符串添加引号。</li>
+</ul>
+<p>unquote()函数    </p>
+<p>unquote() 函数主要是用来删除一个字符串中的引号，如果这个字符串没有带有引号，将返回原始的字符串。简单的使用终端来测试这个函数的运行结果：</p>
+<pre><code>//SCSS
+.test1 {
+    content:  unquote(&apos;Hello Sass!&apos;) ;
+}
+.test2 {
+    content: unquote(&quot;&apos;Hello Sass!&quot;);
+}
+.test3 {
+    content: unquote(&quot;I&apos;m Web Designer&quot;);
+}
+.test4 {
+    content: unquote(&quot;&apos;Hello Sass!&apos;&quot;);
+}
+.test5 {
+    content: unquote(&apos;&quot;Hello Sass!&quot;&apos;);
+}
+.test6 {
+    content: unquote(Hello Sass);
+}    
+</code></pre><p>编译后的 css 代码：</p>
+<pre><code>//CSS
+.test1 {
+  content: Hello Sass!; }
+
+.test2 {
+  content: &apos;Hello Sass!; }
+
+.test3 {
+  content: I&apos;m Web Designer; }
+
+.test4 {
+  content: &apos;Hello Sass!&apos;; }
+
+.test5 {
+  content: &quot;Hello Sass!&quot;; }
+
+.test6 {
+  content: Hello Sass; }
+</code></pre><p>注意：从测试的效果中可以看出，unquote( ) 函数只能删除字符串最前和最后的引号（双引号或单引号），而无法删除字符串中间的引号。如果字符没有带引号，返回的将是字符串本身。</p>
+<h5 id="字符串函数-quote-函数"><a href="#字符串函数-quote-函数" class="headerlink" title="字符串函数-quote()函数"></a>字符串函数-quote()函数</h5><p>quote() 函数刚好与 unquote() 函数功能相反，主要用来给字符串添加引号。如果字符串，自身带有引号会统一换成双引号 “”。如：    </p>
+<pre><code>//SCSS
+.test1 {
+    content:  quote(&apos;Hello Sass!&apos;);
+}
+.test2 {
+    content: quote(&quot;Hello Sass!&quot;);
+}
+.test3 {
+    content: quote(ImWebDesigner);
+}
+.test4 {
+    content: quote(&apos; &apos;);
+}    
+</code></pre><p>编译出来的 css 代码：</p>
+<pre><code>//CSS
+.test1 {
+  content: &quot;Hello Sass!&quot;;
+}
+.test2 {
+  content: &quot;Hello Sass!&quot;;
+}
+.test3 {
+  content: &quot;ImWebDesigner&quot;;
+}
+.test4 {
+  content: &quot;&quot;;
+}    
+</code></pre><p>使用 quote() 函数只能给字符串增加双引号，而且字符串中间有单引号或者空格时，需要用单引号或双引号括起，否则编译的时候将会报错。</p>
+<pre><code>.test1 {
+    content:  quote(Hello Sass);
+}    
+</code></pre><p>这样使用，编译器马上会报错：    </p>
+<pre><code>error style.scss (Line 13: $string: (&quot;Hello&quot;&quot;Sass&quot;) is not a string for `quote&apos;)        
+</code></pre><p>解决方案就是去掉空格，或者加上引号：</p>
+<pre><code>.test1 {
+    content:  quote(HelloSass);
+}
+.test1 {
+    content:  quote(&quot;Hello Sass&quot;);
+}    
+</code></pre><p>同时 quote() 碰到特殊符号，比如： !、?、&gt; 等，除中折号 - 和 下划线_ 都需要使用双引号括起，否则编译器在进行编译的时候同样会报错：    </p>
+<pre><code>error style.scss (Line 13: Invalid CSS after &quot;...quote(HelloSass&quot;: expected &quot;)&quot;, was &quot;!);&quot;)
+error style.scss (Line 16: Invalid CSS after &quot;...t:  quote(Hello&quot;: expected &quot;)&quot;, was “?);&quot;)    
+</code></pre><h5 id="字符串函数-To-upper-case-、To-lower-case"><a href="#字符串函数-To-upper-case-、To-lower-case" class="headerlink" title="字符串函数-To-upper-case()、To-lower-case()"></a>字符串函数-To-upper-case()、To-lower-case()</h5><p>1、To-upper-case()</p>
+<p>To-upper-case() 函数将字符串小写字母转换成大写字母。如：</p>
+<pre><code>//SCSS
+.test {
+  text: to-upper-case(aaaaa);
+  text: to-upper-case(aA-aAAA-aaa);
+}    
+</code></pre><p>编译出来的 css 代码：</p>
+<pre><code>//CSS
+.test {
+  text: AAAAA;
+  text: AA-AAAA-AAA;
+}    
+</code></pre><p>2、To-lower-case()</p>
+<pre><code>//SCSS
+.test {
+  text: to-lower-case(AAAAA);
+  text: to-lower-case(aA-aAAA-aaa);
+}
+</code></pre><p>编译出来的 css 代码：</p>
+<pre><code>//CSS
+.test {
+  text: aaaaa;
+  text: aa-aaaa-aaa;
+}    
+</code></pre><h4 id="数字函数简介"><a href="#数字函数简介" class="headerlink" title="数字函数简介"></a>数字函数简介</h4><p>Sass 中的数字函数提要针对数字方面提供一系列的函数功能：    </p>
+<ul>
+<li>percentage($value)：将一个不带单位的数转换成百分比值；</li>
+<li>round($value)：将数值四舍五入，转换成一个最接近的整数；</li>
+<li>ceil($value)：将大于自己的小数转换成下一位整数；</li>
+<li>floor($value)：将一个数去除他的小数部分；</li>
+<li>abs($value)：返回一个数的绝对值；</li>
+<li>min($numbers…)：找出几个数值之间的最小值；</li>
+<li>max($numbers…)：找出几个数值之间的最大值；</li>
+<li>random(): 获取随机数</li>
+</ul>
+<p>看到上面函数的简介，对于熟悉Javascript 同学而言并不会感觉陌生。因为他们有很多功能都非常类似，接下来对每个函数进行一些简单的测试 。    </p>
+<h5 id="数字函数-percentage"><a href="#数字函数-percentage" class="headerlink" title="数字函数-percentage()"></a>数字函数-percentage()</h5><p>percentage()函数主要是将一个不带单位的数字转换成百分比形式：    </p>
+<pre><code>&gt;&gt; percentage(.2)
+20%
+&gt;&gt; percentage(2px / 10px)
+20%
+&gt;&gt; percentage(2em / 10em)
+20%
+&gt;&gt;    
+
+.footer{
+    width : percentage(.2)
+}    
+</code></pre><p>编译后的 css 代码：</p>
+<pre><code>.footer{
+    width : 20%
+}    
+</code></pre><p>如果您转换的值是一个带有单位的值，那么在编译的时候会报错误信息：    </p>
+<pre><code>&gt;&gt; percentage(2px / 10em)
+SyntaxError: $value: 0.2px/em is not a unitless number for `percentage&apos;    
+</code></pre><h5 id="数字函数-round-函数"><a href="#数字函数-round-函数" class="headerlink" title="数字函数-round()函数"></a>数字函数-round()函数</h5><p>round() 函数可以将一个数四舍五入为一个最接近的整数：</p>
+<pre><code>&gt;&gt; round(12.3)
+12
+&gt;&gt; round(12.5)
+13
+&gt;&gt; round(1.49999)
+1
+&gt;&gt; round(2.0)
+2
+&gt;&gt; round(20%)
+20%
+&gt;&gt; round(2.2%)
+2%
+&gt;&gt; round(3.9em)
+4em
+&gt;&gt; round(2.3px)
+2px
+&gt;&gt; round(2px / 3px)
+1
+&gt;&gt; round(1px / 3px)
+0
+&gt;&gt; round(3px / 2em)
+2px/em
+</code></pre><h5 id="数字函数-ceil-函数"><a href="#数字函数-ceil-函数" class="headerlink" title="数字函数-ceil()函数"></a>数字函数-ceil()函数</h5><p>ceil() 函数将一个数转换成最接近于自己的整数，会将一个大于自身的任何小数转换成大于本身 1 的整数。也就是只做入，不做舍的计算：    </p>
+<pre><code>&gt;&gt; ceil(2.0)
+2
+&gt;&gt; ceil(2.1)
+3
+&gt;&gt; ceil(2.6)
+3
+&gt;&gt; ceil(2.3%)
+3%
+&gt;&gt; ceil(2.3px)
+3px
+&gt;&gt; ceil(2.5px)
+3px
+&gt;&gt; ceil(2px / 3px)
+1
+&gt;&gt; ceil(2% / 3px)
+1%/px
+&gt;&gt; ceil(1em / 5px)
+1em/px    
+
+
+.footer {
+   width:ceil(12.3px);
+}    
+</code></pre><p>编译后的 css 代码：</p>
+<pre><code>.footer {
+  width: 13px;
+}    
+</code></pre><h5 id="数字函数-floor-函数"><a href="#数字函数-floor-函数" class="headerlink" title="数字函数-floor()函数"></a>数字函数-floor()函数</h5><p>floor() 函数刚好与 ceil() 函数功能相反，其主要将一个数去除其小数部分，并且不做任何的进位。也就是只做舍，不做入的计算：</p>
+<pre><code>&gt;&gt; floor(2.1)
+2
+&gt;&gt; floor(2.5)
+2
+&gt;&gt; floor(3.5%)
+3%
+&gt;&gt; floor(10.2px)
+10px
+&gt;&gt; floor(10.8em)
+10em
+&gt;&gt; floor(2px / 10px)
+0
+&gt;&gt; floor(3px / 1em)
+3px/em    
+
+.footer {
+   width:floor(12.3px);
+}    
+</code></pre><p>编译后的 css 代码：</p>
+<pre><code>.footer {
+  width: 12px;
+}    
+</code></pre><h5 id="数字函数-abs-函数"><a href="#数字函数-abs-函数" class="headerlink" title="数字函数-abs()函数"></a>数字函数-abs()函数</h5><p>abs( ) 函数会返回一个数的绝对值。</p>
+<pre><code>&gt;&gt; abs(10)
+10
+&gt;&gt; abs(-10)
+10
+&gt;&gt; abs(-10px)
+10px
+&gt;&gt; abs(-2em)
+2em
+&gt;&gt; abs(-.5%)
+0.5%
+&gt;&gt; abs(-1px / 2px)
+0.5
+
+.footer {
+   width:abs(-12.3px);
+}    
+</code></pre><p>编译后的 css 代码：    </p>
+<pre><code>.footer {
+  width: 12.3px;
+}    
+</code></pre><h5 id="数字函数-min-函数、max-函数"><a href="#数字函数-min-函数、max-函数" class="headerlink" title="数字函数-min()函数、max()函数"></a>数字函数-min()函数、max()函数</h5><p>min()函数</p>
+<p>min() 函数功能主要是在多个数之中找到最小的一个，这个函数可以设置任意多个参数：    </p>
+<pre><code>&gt;&gt; min(1,2,1%,3,300%)
+1%
+&gt;&gt; min(1px,2,3px)
+1px
+&gt;&gt; min(1em,2em,6em)
+1em    
+</code></pre><p>不过在 min() 函数中同时出现两种不同类型的单位，将会报错误信息：    </p>
+<pre><code>&gt;&gt; min(1px,1em)
+SyntaxError: Incompatible units: &apos;em&apos; and &apos;px&apos;.    
+</code></pre><p>max()函数    </p>
+<p>max() 函数和 min() 函数一样，不同的是，max() 函数用来获取一系列数中的最大那个值：</p>
+<pre><code>&gt;&gt; max(1,5)
+5
+&gt;&gt; max(1px,5px)
+5px    
+</code></pre><p>同样的，如果在 max() 函数中有不同单位，将会报错：</p>
+<pre><code>&gt;&gt; max(1,3px,5%,6)
+SyntaxError: Incompatible units: &apos;%&apos; and ‘px&apos;.    
+</code></pre><h5 id="数字函数-random-函数"><a href="#数字函数-random-函数" class="headerlink" title="数字函数-random()函数"></a>数字函数-random()函数</h5><p>random() 函数是用来获取一个随机数：</p>
+<pre><code>&gt;&gt; random()
+0.03886
+&gt;&gt; random()
+0.66527
+&gt;&gt; random()
+0.8125
+&gt;&gt; random()
+0.26839
+&gt;&gt; random()
+0.85063    
+</code></pre><h4 id="列表函数简介"><a href="#列表函数简介" class="headerlink" title="列表函数简介"></a>列表函数简介</h4><p>列表函数主要包括一些对列表参数的函数使用，主要包括以下几种：<br>? length($list)：返回一个列表的长度值；<br>? nth($list, $n)：返回一个列表中指定的某个标签值<br>? join($list1, $list2, [$separator])：将两个列给连接在一起，变成一个列表；<br>? append($list1, $val, [$separator])：将某个值放在列表的最后；<br>? zip($lists…)：将几个列表结合成一个多维的列表；<br>? index($list, $value)：返回一个值在列表中的位置值。</p>
+<p>列表函数中的每个函数都有其独特的作用与功能，接下来我们通过命令终端向大家展示每个列表函数的功能与使用。</p>
+<h5 id="length-函数"><a href="#length-函数" class="headerlink" title="length()函数"></a>length()函数</h5><p>length() 函数主要用来返回一个列表中有几个值，简单点说就是返回列表清单中有多少个值：    </p>
+<pre><code>&gt;&gt; length(10px)
+1
+&gt;&gt; length(10px 20px (border 1px solid) 2em)
+4
+&gt;&gt; length(border 1px solid)
+3    
+</code></pre><p>length() 函数中的列表参数之间使用空格隔开，不能使用逗号，否则函数将会出错：</p>
+<pre><code>&gt;&gt; length(10px,20px,(border 1px solid),2em)
+SyntaxError: wrong number of arguments (4 for 1) for `length&apos;
+&gt;&gt; length(1,2px)
+SyntaxError: wrong number of arguments (2 for 1) for `length&apos;    
+</code></pre><h5 id="nth-函数"><a href="#nth-函数" class="headerlink" title="nth()函数"></a>nth()函数</h5><p>语法:</p>
+<pre><code>nth($list,$n)    
+</code></pre><p>nth() 函数用来指定列表中某个位置的值。不过在 Sass 中，nth() 函数和其他语言不同，1 是指列表中的第一个标签值，2 是指列给中的第二个标签值，依此类推。如：</p>
+<pre><code>&gt;&gt; nth(10px 20px 30px,1)
+10px
+&gt;&gt; nth((Helvetica,Arial,sans-serif),2)
+&quot;Arial&quot;
+&gt;&gt; nth((1px solid red) border-top green,1)
+(1px &quot;solid&quot; #ff0000)
+</code></pre><p>注：在 nth($list,$n) 函数中的 $n 必须是大于 0 的整数：</p>
+<pre><code>&gt;&gt; nth((1px solid red) border-top green 1 ,0)
+SyntaxError: List index 0 must be a non-zero integer for `nth&apos;        
+</code></pre><h5 id="join-函数"><a href="#join-函数" class="headerlink" title="join()函数"></a>join()函数</h5><p>join() 函数是将两个列表连接合并成一个列表。</p>
+<pre><code>&gt;&gt; join(10px 20px, 30px 40px)
+(10px 20px 30px 40px)
+&gt;&gt; join((blue,red),(#abc,#def))
+(#0000ff, #ff0000, #aabbcc, #ddeeff)
+&gt;&gt; join((blue,red),(#abc #def))
+(#0000ff, #ff0000, #aabbcc, #ddeeff)    
+</code></pre><p>不过 join() 只能将两个列表连接成一个列表，如果直接连接两个以上的列表将会报错：</p>
+<pre><code>&gt;&gt; join((blue red),(#abc, #def),(#dee #eff))
+SyntaxError: $separator: (#ddeeee #eeffff) is not a string for `join&apos;    
+</code></pre><p>但很多时候不只碰到两个列表连接成一个列表，这个时候就需要将多个 join() 函数合并在一起使用：</p>
+<pre><code>&gt;&gt; join((blue red), join((#abc #def),(#dee #eff)))
+(#0000ff #ff0000 #aabbcc #ddeeff #ddeeee #eeffff)    
+</code></pre><p>在 join() 函数中还有一个很特别的参数 $separator，这个参数主要是用来给列表函数连接列表值是，使用的分隔符号，默认值为 auto。</p>
+<p>join() 函数中 $separator 除了默认值 auto 之外，还有 comma 和 space 两个值，其中 comma 值指定列表中的列表项值之间使用逗号（,）分隔，space 值指定列表中的列表项值之间使用空格（ ）分隔。    </p>
+<p>在 join() 函数中除非明确指定了 $separator值，否则将会有多种情形发生：    </p>
+<p>如果列表中的第一个列表中每个值之间使用的是逗号（,），那么 join() 函数合并的列表中每个列表项之间使用逗号,分隔：    </p>
+<pre><code>&gt;&gt; join((blue, red, #eff),(green orange))
+(#0000ff, #ff0000, #eeffff, #008000, #ffa500)    
+</code></pre><p>但当第一个列表中只有一个列表项，那么 join() 函数合并的列表项目中每个列表项目这间使用的分隔符号会根据第二个列表项中使用的，如果第二列表项中使用是,分隔，则使用逗号分隔；如果第二列项之间使用的空格符，则使用空格分隔：</p>
+<pre><code>&gt;&gt; join(blue,(green, orange))
+(#0000ff, #008000, #ffa500)
+&gt;&gt; join(blue,(green orange))
+(#0000ff #008000 #ffa500)    
+</code></pre><p>如果列表中的第一个列表中每个值之间使用的是空格，那么 join() 函数合并的列表中每个列表项之间使用空格分隔：</p>
+<pre><code>&gt;&gt; join((blue green),(red,orange))
+(#0000ff #008000 #ff0000 #ffa500)
+&gt;&gt; join((blue green),(red orange))
+(#0000ff #008000 #ff0000 #ffa500)    
+</code></pre><p>如果当两个列表中的列表项小于1时，将会以空格分隔：    </p>
+<pre><code>&gt;&gt; join(blue,red)
+(#0000ff #ff0000)    
+</code></pre><p>如此一来，会有多种情形发生，造成使用混乱的情形，如果你无法记得，什么时候会是用逗号分隔合并的列表项，什么时候是使用空格分隔合并 的列表项，在些建议大家使用 join() 函数合并列表项的时候就明确指定 $separator 参数，用来指定合并的列表中使用什么方式来分隔列表项：</p>
+<pre><code>&gt;&gt; join(blue,red,comma)
+(#0000ff, #ff0000)
+&gt;&gt; join(blue,red,space)
+(#0000ff #ff0000)
+&gt;&gt; join((blue green),(red,orange),comma)
+(#0000ff, #008000, #ff0000, #ffa500)
+&gt;&gt; join((blue green),(red,orange),space)
+(#0000ff #008000 #ff0000 #ffa500)
+&gt;&gt; join((blue, green),(red,orange),comma)
+(#0000ff, #008000, #ff0000, #ffa500)
+&gt;&gt; join((blue, green),(red,orange),space)
+(#0000ff #008000 #ff0000 #ffa500)
+&gt;&gt; join(blue,(red,orange),comma)
+(#0000ff, #ff0000, #ffa500)
+&gt;&gt; join(blue,(red,orange),space)
+(#0000ff #ff0000 #ffa500)
+&gt;&gt; join(blue,(red orange),comma)
+(#0000ff, #ff0000, #ffa500)
+&gt;&gt; join(blue,(red orange),space)
+(#0000ff #ff0000 #ffa500)
+</code></pre><h5 id="append-函数"><a href="#append-函数" class="headerlink" title="append()函数"></a>append()函数</h5><p>append() 函数是用来将某个值插入到列表中，并且处于最末位。</p>
+<pre><code>&gt;&gt; append(10px 20px ,30px)
+(10px 20px 30px)
+&gt;&gt; append((10px,20px),30px)
+(10px, 20px, 30px)
+&gt;&gt; append(green,red)
+(#008000 #ff0000)
+&gt;&gt; append(red,(green,blue))
+(#ff0000 (#008000, #0000ff))
+</code></pre><p>如果没有明确的指定 $separator 参数值，其默认值是 auto。    </p>
+<p>? 如果列表只有一个列表项时，那么插入进来的值将和原来的值会以空格的方式分隔。<br>? 如果列表中列表项是以空格分隔列表项，那么插入进来的列表项也将以空格分隔；<br>? 如果列表中列表项是以逗号分隔列表项，那么插入进来的列表项也将以逗号分隔。</p>
+<p>当然，在 append() 函数中，可以显示的设置 $separator 参数，</p>
+<p>? 如果取值为 comma 将会以逗号分隔列表项<br>? 如果取值为 space 将会以空格分隔列表项</p>
+<pre><code>&gt;&gt; append((blue green),red,comma)
+(#0000ff, #008000, #ff0000)
+&gt;&gt; append((blue green),red,space)
+(#0000ff #008000 #ff0000)
+&gt;&gt; append((blue, green),red,comma)
+(#0000ff, #008000, #ff0000)
+&gt;&gt; append((blue, green),red,space)
+(#0000ff #008000 #ff0000)
+&gt;&gt; append(blue,red,comma)
+(#0000ff, #ff0000)
+&gt;&gt; append(blue,red,space)
+(#0000ff #ff0000)    
+</code></pre><h5 id="zip-函数"><a href="#zip-函数" class="headerlink" title="zip()函数"></a>zip()函数</h5><p>zip()函数将多个列表值转成一个多维的列表：</p>
+<pre><code>&gt;&gt; zip(1px 2px 3px,solid dashed dotted,green blue red)
+((1px &quot;solid&quot; #008000), (2px &quot;dashed&quot; #0000ff), (3px &quot;dotted&quot; #ff0000))    
+</code></pre><p>在使用zip()函数时，每个单一的列表个数值必须是相同的：</p>
+<pre><code>&gt;&gt; zip(1px 2px 3px, solid , green blue red)
+NoMethodError: undefined method `options=&apos; for nil:NilClass
+  Use --trace for backtrace.    
+</code></pre><p>否则将会出错。    </p>
+<p>zip()函数中每个单一列表的值对应的取其相同位置值：<br>|— List —|— nth(1) —|— nth(2) —|— nth(3) —|<br> |————|————–|————–|————–|<br> |    List1   |      1px     |      2px     |      3px     |<br> |————|————–|————–|————–|<br> |    List2   |      solid   |      dashed  |     dotted   |<br> |————|————–|————–|————–|<br> |    List3   |      green   |      blue    |      red     |<br> |————|————–|————–|————–|    </p>
+<p>zip()函数组合出来就成了：    </p>
+<pre><code>1px solid green, 2px dashed blue, 3px dotted red    
+</code></pre><h5 id="index-函数"><a href="#index-函数" class="headerlink" title="index()函数"></a>index()函数</h5><p>index() 函数类似于索引一样，主要让你找到某个值在列表中所处的位置。在 Sass 中，第一个值就是1，第二个值就是 2，依此类推：</p>
+<pre><code>&gt;&gt; index(1px solid red, 1px)
+1
+&gt;&gt; index(1px solid red, solid)
+2
+&gt;&gt; index(1px solid red, red)
+3    
+</code></pre><p>在 index() 函数中，如果指定的值不在列表中（没有找到相应的值），那么返回的值将是 false，相反就会返回对应的值在列表中所处的位置。</p>
+<pre><code>&gt;&gt; index(1px solid red,dotted) //列表中没有找到 dotted
+false
+&gt;&gt; index(1px solid red,solid) //列表中找到 solid 值，并且返回他的位置值 2
+2    
+</code></pre><h4 id="Introspection函数"><a href="#Introspection函数" class="headerlink" title="Introspection函数"></a>Introspection函数</h4><p>Introspection 函数包括了几个判断型函数：    </p>
+<p>?type-of($value)：返回一个值的类型<br>?unit($number)：返回一个值的单位<br>?unitless($number)：判断一个值是否带有单位<br>?comparable($number-1, $number-2)：判断两个值是否可以做加、减和合并</p>
+<h5 id="Introspection-函数-type-of"><a href="#Introspection-函数-type-of" class="headerlink" title="Introspection 函数 -type-of()"></a>Introspection 函数 -type-of()</h5><p>?number 为数值型。<br>?string 为字符串型。<br>?bool 为布尔型。<br>?color 为颜色型。</p>
+<pre><code>&gt;&gt; type-of(100)
+&quot;number&quot;
+&gt;&gt; type-of(100px)
+&quot;number&quot;
+&gt;&gt; type-of(&quot;asdf&quot;)
+&quot;string&quot;
+&gt;&gt; type-of(asdf)
+&quot;string&quot;
+&gt;&gt; type-of(true)
+&quot;bool&quot;
+&gt;&gt; type-of(false)
+&quot;bool&quot;
+&gt;&gt; type-of(#fff)
+&quot;color&quot;
+&gt;&gt; type-of(blue)
+&quot;color&quot;
+&gt;&gt; type-of(1 / 2 = 1)
+&quot;string&quot;    
+</code></pre><h5 id="unit-函数"><a href="#unit-函数" class="headerlink" title="unit()函数"></a>unit()函数</h5><p>unit() 函数主要是用来获取一个值所使用的单位，碰到复杂的计算时，其能根据运算得到一个“多单位组合”的值，不过只充许乘、除运算：</p>
+<pre><code>&gt;&gt; unit(100)
+&quot;&quot;
+&gt;&gt; unit(100px)
+&quot;px&quot;
+&gt;&gt; unit(20%)
+&quot;%&quot;
+&gt;&gt; unit(1em)
+&quot;em&quot;
+&gt;&gt; unit(10px * 3em)
+&quot;em*px&quot;
+&gt;&gt; unit(10px / 3em)
+&quot;px/em&quot;
+&gt;&gt; unit(10px * 2em / 3cm / 1rem)
+&quot;em/rem&quot;    
+</code></pre><p>但加、减碰到不同单位时，unit() 函数将会报错，除 px 与 cm、mm 运算之外：    </p>
+<pre><code>&gt;&gt; unit(1px + 1cm)
+&quot;px&quot;
+&gt;&gt; unit(1px - 1cm)
+&quot;px&quot;
+&gt;&gt; unit(1px + 1mm)
+&quot;px&quot;
+&gt;&gt; unit(10px * 2em - 3cm / 1rem)
+SyntaxError: Incompatible units: &apos;cm&apos; and &apos;px*em&apos;.
+&gt;&gt; unit(10px * 2em - 1px / 1rem)
+SyntaxError: Incompatible units: &apos;&apos; and &apos;em&apos;.
+&gt;&gt; unit(1px - 1em)
+SyntaxError: Incompatible units: &apos;em&apos; and &apos;px&apos;.
+&gt;&gt; unit(1px - 1rem)
+SyntaxError: Incompatible units: &apos;rem&apos; and &apos;px&apos;.
+&gt;&gt; unit(1px - 1%)
+SyntaxError: Incompatible units: &apos;%&apos; and &apos;px&apos;.
+&gt;&gt; unit(1cm + 1em)
+SyntaxError: Incompatible units: &apos;em&apos; and &apos;cm&apos;.    
+</code></pre><p>unit() 函数对于单位运算相对来说也没有规律，而且有些单位也无法整合成一个单位，对于我们在 CSS 中运用中并不适合，比如：</p>
+<pre><code>&gt;&gt; unit(10px * 3em)
+&quot;em*px&quot;
+&gt;&gt; unit(10px / 3em)
+&quot;px/em&quot;
+&gt;&gt; unit(10px * 2em / 3cm / 1rem)
+&quot;em/rem&quot;    
+</code></pre><p>换句话说，上面运算出来的单位，对于在 CSS 中使用将是没有任何意义的。    </p>
+<h5 id="unitless-函数"><a href="#unitless-函数" class="headerlink" title="unitless()函数"></a>unitless()函数</h5><p>unitless() 函数相对来说简单明了些，只是用来判断一个值是否带有单位，如果不带单位返回的值为 true，带单位返回的值为 false：</p>
+<pre><code>&gt;&gt; unitless(100)
+true
+&gt;&gt; unitless(100px)
+false
+&gt;&gt; unitless(100em)
+false
+&gt;&gt; unitless(100%)
+false
+&gt;&gt; unitless(1 /2 )
+true
+&gt;&gt; unitless(1 /2 + 2 )
+true
+&gt;&gt; unitless(1px /2 + 2 )
+false    
+</code></pre><h5 id="comparable-函数"><a href="#comparable-函数" class="headerlink" title="comparable()函数"></a>comparable()函数</h5><p>comparable() 函数主要是用来判断两个数是否可以进行“加，减”以及“合并”。如果可以返回的值为 true，如果不可以返回的值是 false：</p>
+<pre><code>&gt;&gt;
+ comparable(2px,1px)    
+
+true
+&gt;&gt; comparable(2px,1%)
+false
+&gt;&gt; comparable(2px,1em)
+false
+&gt;&gt; comparable(2rem,1em)
+false
+&gt;&gt; comparable(2px,1cm)
+true
+&gt;&gt; comparable(2px,1mm)
+true
+&gt;&gt;
+
+comparable(2px,1rem)
+
+
+false
+&gt;&gt; comparable(2cm,1mm)
+true
+</code></pre><h5 id="Miscellaneous函数"><a href="#Miscellaneous函数" class="headerlink" title="Miscellaneous函数"></a>Miscellaneous函数</h5><p>在这里把 Miscellaneous 函数称为三元条件函数，主要因为他和 JavaScript 中的三元判断非常的相似。他有两个值，当条件成立返回一种值，当条件不成立时返回另一种值：</p>
+<pre><code>if($condition,$if-true,$if-false)
+</code></pre><p>上面表达式的意思是当 $condition 条件成立时，返回的值为 $if-true，否则返回的是 $if-false 值。</p>
+<pre><code>&gt;&gt; if(true,1px,2px)
+1px
+&gt;&gt; if(false,1px,2px)
+2px    
+</code></pre><h5 id="Miscellaneous函数-1"><a href="#Miscellaneous函数-1" class="headerlink" title="Miscellaneous函数"></a>Miscellaneous函数</h5><p>在这里把 Miscellaneous 函数称为三元条件函数，主要因为他和 JavaScript 中的三元判断非常的相似。他有两个值，当条件成立返回一种值，当条件不成立时返回另一种值：    </p>
+<pre><code>if($condition,$if-true,$if-false)
+</code></pre><p>上面表达式的意思是当 $condition 条件成立时，返回的值为 $if-true，否则返回的是 $if-false 值。    </p>
+<pre><code>&gt;&gt; if(true,1px,2px)
+1px
+&gt;&gt; if(false,1px,2px)
+2px    
+</code></pre><h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>Sass 的 map 常常被称为数据地图，也有人称其为数组，因为他总是以 key:value 成对的出现，但其更像是一个 JSON 数据。<br>    {<br>    “employees”: [<br>    { “firstName”:”John” , “lastName”:”Doe” },<br>    { “firstName”:”Anna” , “lastName”:”Smith” },<br>    { “firstName”:”Peter” , “lastName”:”Jones” }<br>    ]<br>    }    </p>
+<p>那么 Sass 的 map 长得与 JSON 极其相似：    </p>
+<pre><code>$map: (
+    $key1: value1,
+    $key2: value2,
+    $key3: value3
+)    
+</code></pre><p>首先有一个类似于 Sass 的变量一样，用个 $ 加上命名空间来声明 map。后面紧接是一个小括号 ()，将数据以 key:value 的形式赋予，其中 key 和 value 是成对出现，并且每对之间使用逗号 (,) 分隔，其中最后一组后面没有逗号。    </p>
+<p>其中键 key 是用来查找相关联的值 value。使用 map 可以很容易收集键的值和动态插入。我们来回忆一下，在 Sass 中常用下面的方式定义变量：    </p>
+<pre><code>$default-color: #fff !default;
+$primary-color: #22ae39 !default;    
+</code></pre><p>我们使用 map 可以更好的进行管理：</p>
+<pre><code>$color: (
+    default: #fff,
+    primary: #22ae39
+);    
+</code></pre><p>如果哪一天，你需要新增加颜色变量值，在 map 中可以非常随意的添加：    </p>
+<pre><code>$color: (
+    default: #fff,
+    primary: #22ae39,
+    negative: #d9534f
+);    
+</code></pre><p>对于 Sass 的 map，还可以让 map 嵌套 map。其实就是 map 的某一个 key 当成 map，里面可以继续放一对或者多对 key:value：</p>
+<pre><code>$map: (
+    key1: value1,
+    key2: (
+        key-1: value-1,
+        key-2: value-2,
+    ),
+    key3: value3
+);    
+</code></pre><p>map 的嵌套实用性也非常的强，大家可能有碰到过换皮肤的项目，可能每一套皮肤对应的颜色蛮多的，那么使用此功能来管理颜色的变量就非常的有条理性，便于维护与管理。你可以这样使用：</p>
+<pre><code>$theme-color: (
+    default: (
+        bgcolor: #fff,
+        text-color: #444,
+        link-color: #39f
+    ),
+    primary:(
+        bgcolor: #000,
+        text-color:#fff,
+        link-color: #93f
+    ),
+    negative: (
+        bgcolor: #f36,
+        text-color: #fefefe,
+        link-color: #d4e
+    )
+);
+</code></pre><p>在一些介绍 map 的老教程中，你会看到这样的方式声明 map:</p>
+<pre><code>$map: (
+    key1 value1,
+    key2 value2,
+    key3 value3
+);
+</code></pre><p>或者：</p>
+<pre><code>$map:(
+    key1 value1,
+    key2 value2,
+    key3 (
+        key-1 value-1,
+        key-2 value-2
+    ),
+    key4 value4
+);
+</code></pre><p>虽然也能编译出CSS,但建议不这样使用</p>
+<h5 id="Sass-Maps的函数"><a href="#Sass-Maps的函数" class="headerlink" title="Sass Maps的函数"></a>Sass Maps的函数</h5><p>前面介绍了使用 map 来管理变量，但要在 Sass 中获取变量，或者对 map 做更多有意义的操作，我们必须借助于 map 的函数功能。在 Sass 中 map 自身带了七个函数：</p>
+<p>? map-get($map,$key)：根据给定的 key 值，返回 map 中相关的值。<br>? map-merge($map1,$map2)：将两个 map 合并成一个新的 map。<br>? map-remove($map,$key)：从 map 中删除一个 key，返回一个新 map。<br>? map-keys($map)：返回 map 中所有的 key。<br>? map-values($map)：返回 map 中所有的 value。<br>? map-has-key($map,$key)：根据给定的 key 值判断 map 是否有对应的 value 值，如果有返回 true，否则返回 false。<br>? keywords($args)：返回一个函数的参数，这个参数可以动态的设置 key 和 value。</p>
+<h5 id="Sass-Maps的函数-map-get-map-key"><a href="#Sass-Maps的函数-map-get-map-key" class="headerlink" title="Sass Maps的函数-map-get($map,$key)"></a>Sass Maps的函数-map-get($map,$key)</h5><p>map-get($map,$key) 函数的作用是根据 $key 参数，返回 $key 在 $map 中对应的 value 值。如果 $key 不存在 $map中，将返回 null 值。此函数包括两个参数：</p>
+<p>?$map：定义好的 map。<br>?$key：需要遍历的 key。</p>
+<p>来看一个简单的示例，假设定义了一个 $social-colors 的 map:</p>
+<pre><code>$social-colors: (
+    dribble: #ea4c89,
+    facebook: #3b5998,
+    github: #171515,
+    google: #db4437,
+    twitter: #55acee
+);
+</code></pre><p>假设要获取 facebook 键值对应的值 #3b5998，我们就可以使用 map-get() 函数来实现：</p>
+<pre><code>.btn-dribble{
+  color: map-get($social-colors,facebook);
+}
+</code></pre><p>编译出来的CSS：</p>
+<pre><code>.btn-dribble {
+  color: #3b5998;
+}
+</code></pre><p>我们来看另一种情况，假设 $social-colors 这个 map 没有 $weibo 这个 key:</p>
+<pre><code>.btn-weibo{
+  font-size: 12px;
+  color: map-get($social-colors,weibo);
+}
+</code></pre><p>我们来看另一种情况，假设 $social-colors 这个 map 没有 $weibo 这个 key:</p>
+<pre><code>.btn-weibo{
+  font-size: 12px;
+  color: map-get($social-colors,weibo);
+}
+</code></pre><p>此时编译出来的是CSS：</p>
+<pre><code>.btn-weibo {
+  font-size: 12px;
+}
+</code></pre><h5 id="Sass-Maps的函数-map-has-key-map-key"><a href="#Sass-Maps的函数-map-has-key-map-key" class="headerlink" title="Sass Maps的函数-map-has-key($map,$key)"></a>Sass Maps的函数-map-has-key($map,$key)</h5><p>map-has-key($map,$key) 函数将返回一个布尔值。当 $map 中有这个 $key，则函数返回 true，否则返回 false。</p>
+<p>前面的示例，当 $key 不在 $map 中时，使用 map-get($map,$key) 函数将返回一个 null 值。但对于开发人员，并看不到任何提示信息。如果使用 map-has-key($map,$key) 函数就可以改变这一状态。我们来看一个简单的示例。</p>
+<pre><code>@if map-has-key($social-colors,facebook){
+    .btn-facebook {
+        color: map-get($social-colors,facebook);
+    }
+} @else {
+    @warn &quot;No color found for faceboo in $social-colors map. Property ommitted.&quot;
+}
+</code></pre><p>编译出来：</p>
+<pre><code>.btn-fackbook{
+    color: #3b5998;
+}   
+</code></pre><p>上面看到的示例是 facebook 这个 key 已存在 $social-colors 这个 map 当中。所以能正常编译。如果你手误，将 facebook 输错了：</p>
+<pre><code>@if map-has-key($social-colors,faceboo){
+    .btn-facebook {
+        color: map-get($social-colors,facebook);
+    }
+} @else {
+    @warn &quot;No color found for faceboo in $social-colors map. Property ommitted.&quot;
+}
+</code></pre><p>这个时候，你编译出来的 CSS 代码中，不会有新代码添加，但在命令终端可以看到提示信息：</p>
+<pre><code>WARNING: No color found for faceboo in $social-colors map. Property ommitted.
+         on line 25 of test.scss
+</code></pre><p>是不是非常的友好。但总觉得这样写是傻傻的，总不可能每获取一个 key 都写一个 @if 语句吧。其实不用这么复杂，我们可以自定义一个函数，比如 colors():</p>
+<pre><code>@function colors($color){
+    @if not map-has-key($social-colors,$color){
+        @warn &quot;No color found for `#{$color}` in $social-colors map. Property omitted.&quot;;
+    }
+    @return map-get($social-colors,$color);
+}
+</code></pre><p>有了这个函数之后，我们就可以这样使用</p>
+<pre><code>.btn-dribble {
+    color: colors(dribble);
+}
+.btn-facebook {
+    color: colors(facebook);
+}
+.btn-github {
+    color: colors(github);
+}
+.btn-google {
+    color: colors(google);
+}
+.btn-twitter {
+    color: colors(twitter);
+}
+.btn-weibo {
+    color: colors(weibo);
+}
+</code></pre><p>编译出来的 CSS:</p>
+<pre><code>.btn-dribble {
+  color: #ea4c89;
+}
+
+.btn-facebook {
+  color: #3b5998;
+}
+
+.btn-github {
+  color: #171515;
+}
+
+.btn-google {
+  color: #db4437;
+}
+
+.btn-twitter {
+  color: #55acee;
+}
+</code></pre><p>同时你不难发现，命令终端提示信息：</p>
+<pre><code>WARNING: No color found for `weibo` in $social-colors map. Property omitted.
+         on line 13 of test.scss
+</code></pre><p>那是在 $social-colors 这个 map 中没有 weibo 这个 key。是不是很有意思。</p>
+<p>当然，如果你对 Sass 的指令熟悉的话，上面编译出来的 CSS 可以使用 @each：</p>
+<pre><code>@each $social-network,$social-color in $social-colors {
+    .btn-#{$social-network} {
+        color: colors($social-network);
+    }
+}
+</code></pre><p>当然，如果你对 Sass 的指令熟悉的话，上面编译出来的 CSS 可以使用 @each：</p>
+<pre><code>@each $social-network,$social-color in $social-colors {
+    .btn-#{$social-network} {
+        color: colors($social-network);
+    }
+}
+</code></pre><h5 id="Sass-Maps的函数-map-keys-map"><a href="#Sass-Maps的函数-map-keys-map" class="headerlink" title="Sass Maps的函数-map-keys($map)"></a>Sass Maps的函数-map-keys($map)</h5><p>map-keys($map) 函数将会返回 $map 中的所有 key。这些值赋予给一个变量，那他就是一个列表。如：</p>
+<pre><code>map-keys($social-colors);
+</code></pre><p>其返回的值为：</p>
+<pre><code>&quot;dribble&quot;,&quot;facebook&quot;,&quot;github&quot;,&quot;google&quot;,&quot;twitter&quot;
+</code></pre><p>换句话说：</p>
+<pre><code>$list: map-keys($social-colors);
+</code></pre><p>相当于：</p>
+<pre><code>$list:&quot;dribble&quot;,&quot;facebook&quot;,&quot;github&quot;,&quot;google&quot;,&quot;twitter&quot;;
+</code></pre><p>这个时候，就可以配合 Sass 的 list 做很多事情。</p>
+<p>上面的示例，可以做通过 map-keys($map) 来做一个修改：</p>
+<pre><code>@function colors($color){
+    $names: map-keys($social-colors);
+    @if not index($names,$color){
+        @warn &quot;Waring: `#{$color} is not a valid color name.`&quot;;
+    }
+    @return map-get($social-colors,$color);
+}
+</code></pre><p>上面代码中最不同之处，我们使 用map-key s将 $social-colors 这个 map 的所有 key 取出，并赋予给一个名 为 $names 的列表。然后通过 index($names,$color) 返回 $color 在 $names 位置，如果这个位置不存在，将返回提示信息，如果存在将返回正确的值。</p>
+<pre><code>.btn-weibo{
+    color: colors(weibo);
+}
+</code></pre><p>例如，weibo 不在 $social-color s中，那么不会编译出 CSS，而且在命令终端同样会有提示信息：</p>
+<pre><code>WARNING: Waring: `weibo is not a valid color name.`
+         on line 27 of test.scss
+</code></pre><p>同样，也可以通过 @each 或者 @for 遍历出所有值：</p>
+<pre><code>@each $name in map-keys($social-colors){
+    .btn-#{$name}{
+        color: colors($name);
+    }
+}
+
+@for $i from 1 through length(map-keys($social-colors)){
+    .btn-#{nth(map-keys($social-colors),$i)} {
+        color: colors(nth(map-keys($social-colors),$i));
+    }
+}
+</code></pre><p>虽然使用的方法不一样，但最终得到的 CSS 是一样的：</p>
+<pre><code>.btn-dribble {
+  color: #ea4c89;
+}
+
+.btn-facebook {
+  color: #3b5998;
+}
+
+.btn-github {
+  color: #171515;
+}
+
+.btn-google {
+  color: #db4437;
+}
+
+.btn-twitter {
+  color: #55acee;
+}
+</code></pre><h5 id="Sass-Maps的函数-map-values-map-、map-merge-map1-map2"><a href="#Sass-Maps的函数-map-values-map-、map-merge-map1-map2" class="headerlink" title="Sass Maps的函数-map-values($map)、map-merge($map1,$map2)"></a>Sass Maps的函数-map-values($map)、map-merge($map1,$map2)</h5><h6 id="map-values-map"><a href="#map-values-map" class="headerlink" title="map-values($map)"></a>map-values($map)</h6><p>map-values($map) 函数类似于 map-keys($map) 功能，不同的是 map-values($map )获取的是 $map 的所有 value 值，可以说也将是一个列表。而且，map-values($map) 中如果有相同的 value 也将会全部获取出来。</p>
+<p>如前面的示例，使用：</p>
+<pre><code>map-values($social-colors)
+</code></pre><p>将会返回：</p>
+<pre><code>#ea4c89,#3b5998,#171515,#db4437,#55acee
+</code></pre><p>值与值之前同样用逗号分隔。</p>
+<pre><code>map-merge($map1,$map2)
+</code></pre><h6 id="map-merge-map1-map2"><a href="#map-merge-map1-map2" class="headerlink" title="map-merge($map1,$map2)"></a>map-merge($map1,$map2)</h6><p>map-merge($map1,$map2) 函数是将 $map1 和 $map2 合并，然后得到一个新的 $map。如果你要快速将新的值插入到 $map 中的话，这种方法是最佳方法。假设我们有两个 $map:</p>
+<pre><code>$color: (
+    text: #f36,
+    link: #f63,
+    border: #ddd,
+    backround: #fff
+);
+$typo:(
+    font-size: 12px,
+    line-height: 1.6
+);
+</code></pre><p>如果希望将这两个 $map 合并成一个 map，我们只要这样做：</p>
+<pre><code>$newmap: map-merge($color,$typo);
+</code></pre><p>将会生成一个新的 map:    </p>
+<pre><code>$newmap:(
+    text: #f36,
+    link: #f63,
+    border: #ddd,
+    background: #fff,
+    font-size: 12px,
+    line-height: 1.6
+);    
+</code></pre><p>这样你就可以借助 map-get( ) 等函数做其他事情了。</p>
+<p>不过有一点需要注意，如果 $map1 和 $map2 中有相同的 $key 名，那么将 $map2 中的 $key 会取代 $map1 中的：</p>
+<pre><code>$color: (
+    text: #f36,
+    link: #f63,
+    border: #ddd,
+    backround: #fff
+);
+$typo:(
+    font-size: 12px,
+    line-height: 1.6,
+    border: #ccc,
+    background: #000
+);    
+</code></pre><p>执行：</p>
+<pre><code>$newmap: map-merge($color,$typo);    
+</code></pre><p>得到的新 map:</p>
+<pre><code>$newmap:(
+    text: #f36,
+    link: #f63,
+    font-size: 12px,
+    line-height: 1.6,
+    border: #ccc,
+    background: #000
+);    
+</code></pre><h5 id="Sass-Maps的函数-map-remove-map-key-、keywords-args"><a href="#Sass-Maps的函数-map-remove-map-key-、keywords-args" class="headerlink" title="Sass Maps的函数-map-remove($map,$key)、keywords($args)"></a>Sass Maps的函数-map-remove($map,$key)、keywords($args)</h5><h6 id="map-remove-map-key"><a href="#map-remove-map-key" class="headerlink" title="map-remove($map,$key)"></a>map-remove($map,$key)</h6><p>map-remove($map,$key) 函数是用来删除当前 $map 中的某一个 $key，从而得到一个新的 map。其返回的值还是一个 map。他并不能直接从一个 map 中删除另一个 map，仅能通过删除 map 中的某个 key 得到新 map。如：</p>
+<pre><code>$map:map-remove($social-colors,dribble);    
+</code></pre><p>返回的是一个新 map:</p>
+<pre><code>$map:(
+    facebook: #3b5998,
+    github: #171515,
+    google: #db4437,
+    twitter: #55acee
+);    
+</code></pre><p>如果删除的 key 并不存在于 $map 中，那么 map-remove() 函数返回的新 map 和以前的 map 一样。</p>
+<pre><code>$map:map-remove($social-colors,weibo);    
+</code></pre><p>返回的值：</p>
+<pre><code>$map: (
+    dribble: #ea4c89,
+    facebook: #3b5998,
+    github: #171515,
+    google: #db4437,
+    twitter: #55acee
+);
+keywords($args)    
+</code></pre><h6 id="keywords-args"><a href="#keywords-args" class="headerlink" title="keywords($args)"></a>keywords($args)</h6><p>keywords($args) 函数可以说是一个动态创建 map 的函数。可以通过混合宏或函数的参数变创建 map。参数也是成对出现，其中 $args 变成 key(会自动去掉$符号)，而 $args 对应的值就是value。    </p>
+<pre><code>@mixin map($args...){
+    @debug keywords($args);
+}
+
+@include map(
+  $dribble: #ea4c89,
+  $facebook: #3b5998,
+  $github: #171515,
+  $google: #db4437,
+  $twitter: #55acee
+);    
+</code></pre><p>在命令终端可以看到一个输入的 @debug 信息：</p>
+<pre><code>DEBUG: (dribble: #ea4c89, facebook: #3b5998, github: #171515, google: #db4437, twitter: #55acee)    
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sass/" rel="tag">#Sass</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/30/Sass入门（二）/" rel="next" title="Sass入门（二）">
+                <i class="fa fa-chevron-left"></i> Sass入门（二）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/02/H5-DeviceMotionEvent/" rel="prev" title="Html5重力感应事件-DeviceMotionEvent">
+                Html5重力感应事件-DeviceMotionEvent <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/01/Sass进阶（一）/"
+           data-title="Sass进阶（一）" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/01/Sass进阶（一）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="shengteng" />
+          <p class="site-author-name" itemprop="name">shengteng</p>
+          <p class="site-description motion-element" itemprop="description">新长征路上的blogs</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shengteng9" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005051821208013/home?from=page_100505_profile&wvr=6&mod=data#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#if"><span class="nav-number">1.</span> <span class="nav-text">@if</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for循环-（下）"><span class="nav-number">2.</span> <span class="nav-text">@for循环 （下）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while循环"><span class="nav-number">3.</span> <span class="nav-text">@while循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#each循环"><span class="nav-number">4.</span> <span class="nav-text">@each循环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sass的函数简介"><span class="nav-number"></span> <span class="nav-text">Sass的函数简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串函数-unquote-函数"><span class="nav-number">0.1.</span> <span class="nav-text">字符串函数-unquote()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串函数-quote-函数"><span class="nav-number">0.2.</span> <span class="nav-text">字符串函数-quote()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串函数-To-upper-case-、To-lower-case"><span class="nav-number">0.3.</span> <span class="nav-text">字符串函数-To-upper-case()、To-lower-case()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字函数简介"><span class="nav-number">1.</span> <span class="nav-text">数字函数简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数字函数-percentage"><span class="nav-number">1.1.</span> <span class="nav-text">数字函数-percentage()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数字函数-round-函数"><span class="nav-number">1.2.</span> <span class="nav-text">数字函数-round()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数字函数-ceil-函数"><span class="nav-number">1.3.</span> <span class="nav-text">数字函数-ceil()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数字函数-floor-函数"><span class="nav-number">1.4.</span> <span class="nav-text">数字函数-floor()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数字函数-abs-函数"><span class="nav-number">1.5.</span> <span class="nav-text">数字函数-abs()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数字函数-min-函数、max-函数"><span class="nav-number">1.6.</span> <span class="nav-text">数字函数-min()函数、max()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数字函数-random-函数"><span class="nav-number">1.7.</span> <span class="nav-text">数字函数-random()函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表函数简介"><span class="nav-number">2.</span> <span class="nav-text">列表函数简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#length-函数"><span class="nav-number">2.1.</span> <span class="nav-text">length()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nth-函数"><span class="nav-number">2.2.</span> <span class="nav-text">nth()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#join-函数"><span class="nav-number">2.3.</span> <span class="nav-text">join()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#append-函数"><span class="nav-number">2.4.</span> <span class="nav-text">append()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#zip-函数"><span class="nav-number">2.5.</span> <span class="nav-text">zip()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#index-函数"><span class="nav-number">2.6.</span> <span class="nav-text">index()函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Introspection函数"><span class="nav-number">3.</span> <span class="nav-text">Introspection函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Introspection-函数-type-of"><span class="nav-number">3.1.</span> <span class="nav-text">Introspection 函数 -type-of()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unit-函数"><span class="nav-number">3.2.</span> <span class="nav-text">unit()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unitless-函数"><span class="nav-number">3.3.</span> <span class="nav-text">unitless()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#comparable-函数"><span class="nav-number">3.4.</span> <span class="nav-text">comparable()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Miscellaneous函数"><span class="nav-number">3.5.</span> <span class="nav-text">Miscellaneous函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Miscellaneous函数-1"><span class="nav-number">3.6.</span> <span class="nav-text">Miscellaneous函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map"><span class="nav-number">4.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Sass-Maps的函数"><span class="nav-number">4.1.</span> <span class="nav-text">Sass Maps的函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sass-Maps的函数-map-get-map-key"><span class="nav-number">4.2.</span> <span class="nav-text">Sass Maps的函数-map-get($map,$key)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sass-Maps的函数-map-has-key-map-key"><span class="nav-number">4.3.</span> <span class="nav-text">Sass Maps的函数-map-has-key($map,$key)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sass-Maps的函数-map-keys-map"><span class="nav-number">4.4.</span> <span class="nav-text">Sass Maps的函数-map-keys($map)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sass-Maps的函数-map-values-map-、map-merge-map1-map2"><span class="nav-number">4.5.</span> <span class="nav-text">Sass Maps的函数-map-values($map)、map-merge($map1,$map2)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#map-values-map"><span class="nav-number">4.5.1.</span> <span class="nav-text">map-values($map)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#map-merge-map1-map2"><span class="nav-number">4.5.2.</span> <span class="nav-text">map-merge($map1,$map2)</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sass-Maps的函数-map-remove-map-key-、keywords-args"><span class="nav-number">4.6.</span> <span class="nav-text">Sass Maps的函数-map-remove($map,$key)、keywords($args)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#map-remove-map-key"><span class="nav-number">4.6.1.</span> <span class="nav-text">map-remove($map,$key)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#keywords-args"><span class="nav-number">4.6.2.</span> <span class="nav-text">keywords($args)</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shengteng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shengteng9"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,737 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Html5 DeviceMotionEvent," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="相关文档：http://w3c.github.io/deviceorientation/spec-source-orientation.html
+
+事件介绍
+
+deviceorientation 提供设备的物理方向信息，表示为一系列本地坐标系的旋角。
+
+devicemotion 提供设备的加速信息，表示为定义在设备上的坐标系中的卡尔迪坐标。其还提供了设备在坐标系中的自转速率。若可行的话，事件应该">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Html5重力感应事件-DeviceMotionEvent">
+<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/02/H5-DeviceMotionEvent/index.html">
+<meta property="og:site_name" content="ZTF'Blogs">
+<meta property="og:description" content="相关文档：http://w3c.github.io/deviceorientation/spec-source-orientation.html
+
+事件介绍
+
+deviceorientation 提供设备的物理方向信息，表示为一系列本地坐标系的旋角。
+
+devicemotion 提供设备的加速信息，表示为定义在设备上的坐标系中的卡尔迪坐标。其还提供了设备在坐标系中的自转速率。若可行的话，事件应该">
+<meta property="og:updated_time" content="2016-09-02T06:05:49.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Html5重力感应事件-DeviceMotionEvent">
+<meta name="twitter:description" content="相关文档：http://w3c.github.io/deviceorientation/spec-source-orientation.html
+
+事件介绍
+
+deviceorientation 提供设备的物理方向信息，表示为一系列本地坐标系的旋角。
+
+devicemotion 提供设备的加速信息，表示为定义在设备上的坐标系中的卡尔迪坐标。其还提供了设备在坐标系中的自转速率。若可行的话，事件应该">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/02/H5-DeviceMotionEvent/"/>
+
+  <title> Html5重力感应事件-DeviceMotionEvent | ZTF'Blogs </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZTF'Blogs</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Web开发、Java、</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Html5重力感应事件-DeviceMotionEvent
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-02T14:00:21+08:00" content="2016-09-02">
+              2016-09-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Html5/" itemprop="url" rel="index">
+                    <span itemprop="name">Html5</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/02/H5-DeviceMotionEvent/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/02/H5-DeviceMotionEvent/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>相关文档：<a href="http://w3c.github.io/deviceorientation/spec-source-orientation.html" target="_blank" rel="external">http://w3c.github.io/deviceorientation/spec-source-orientation.html</a></p>
+</blockquote>
+<h3 id="事件介绍"><a href="#事件介绍" class="headerlink" title="事件介绍"></a>事件介绍</h3><blockquote>
+<ol>
+<li><p>deviceorientation 提供设备的物理方向信息，表示为一系列本地坐标系的旋角。</p>
+</li>
+<li><p>devicemotion 提供设备的加速信息，表示为定义在设备上的坐标系中的卡尔迪坐标。其还提供了设备在坐标系中的自转速率。若可行的话，事件应该提供设备重心处的加速信息。</p>
+</li>
+<li><p>compassneedscalibration 用于通知Web站点使用罗盘信息校准上述事件。</p>
+<a id="more"></a>
+<h3 id="用法简介"><a href="#用法简介" class="headerlink" title="用法简介"></a>用法简介</h3></li>
+</ol>
+</blockquote>
+<p>注册一个deviceorientation事件的接收器：</p>
+<pre><code>window.addEventListener(&quot;deviceorientation&quot;, function(event) {
+     // 处理event.alpha、event.beta及event.gamma
+}, true);
+</code></pre><p>将设备放置在水平表面，屏幕顶端指向西方，则其方向信息如下：</p>
+<pre><code>{alpha: 90,
+   beta: 0,
+   gamma: 0};
+</code></pre><p>为了获得罗盘指向，可以简单的使用360度减去alpha。若设被平行于水平表面，其罗盘指向为(360 - alpha)。 若用户手持设备，屏幕处于一个垂直平面且屏幕顶端指向上方。beta的值为90，alpha和gamma无关。 用户手持设备，面向alpha角度，屏幕处于一个垂直屏幕，屏幕顶端指向右方，则其方向信息如下：</p>
+<pre><code>{alpha: 270 - alpha,
+   beta: 0,
+   gamma: 90};
+</code></pre><p>只用自定义界面通知用户校准罗盘：</p>
+<pre><code>window.addEventListener(&quot;compassneedscalibration&quot;, function(event) {
+    alert(&apos;您的罗盘需要校准，请将设备沿数字8方向移动。&apos;);
+    event.preventDefault();
+}, true);
+</code></pre><p>注册一个devicemotion时间的接收器：</p>
+<pre><code>window.addEventListener(&quot;devicemotion&quot;, function(event) {
+  // 处理event.acceleration、event.accelerationIncludingGravity、
+  // event.rotationRate和event.interval
+}, true);
+</code></pre><p>将设备放置在水平表面，屏幕向上，acceleration为零，则其accelerationIncludingGravity信息如下：</p>
+<pre><code>{x: 0,
+y: 0,
+z: 9.81};
+</code></pre><p>设备做自由落体，屏幕水平向上，accelerationIncludingGravity为零，则其acceleration信息如下：</p>
+<pre><code>{    x: 0,
+    y: 0,
+    z: -9.81};
+</code></pre><p>将设备安置于车辆至上，屏幕处于一个垂直平面，顶端向上，面向车辆后部。车辆行驶速度为v，向右侧进行半径为r的转弯。设备记录acceleration和accelerationIncludingGravity在位置x处的情况，同时设备还会记录rotationRate.gamma的负值：</p>
+<pre><code>{acceleration: {x: v^2/r, y: 0, z: 0},
+   accelerationIncludingGravity: {x: v^2/r, y: 0, z: 9.81},
+   rotationRate: {alpha: 0, beta: 0, gamma: -v/r*180/pi} };
+</code></pre><h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><pre><code>if (window.DeviceMotionEvent) { 
+                 window.addEventListener(&apos;devicemotion&apos;,deviceMotionHandler, false);  
+        } 
+        var speed = 30;//speed
+        var x = y = z = lastX = lastY = lastZ = 0;
+        function deviceMotionHandler(eventData) {  
+          var acceleration =eventData.accelerationIncludingGravity;
+                x = acceleration.x;
+                y = acceleration.y;
+                z = acceleration.z;
+                if(Math.abs(x-lastX) &gt; speed || Math.abs(y-lastY) &gt; speed || Math.abs(z-lastZ) &gt; speed) {
+                    //简单的摇一摇触发代码
+                    alert(1);
+                }
+                lastX = x;
+                lastY = y;
+                lastZ = z;
+        }
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Html5-DeviceMotionEvent/" rel="tag">#Html5 DeviceMotionEvent</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/01/Sass进阶（一）/" rel="next" title="Sass进阶（一）">
+                <i class="fa fa-chevron-left"></i> Sass进阶（一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/08/RequireJS（一）/" rel="prev" title="RequireJS（一）">
+                RequireJS（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/02/H5-DeviceMotionEvent/"
+           data-title="Html5重力感应事件-DeviceMotionEvent" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/02/H5-DeviceMotionEvent/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="shengteng" />
+          <p class="site-author-name" itemprop="name">shengteng</p>
+          <p class="site-description motion-element" itemprop="description">新长征路上的blogs</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shengteng9" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005051821208013/home?from=page_100505_profile&wvr=6&mod=data#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件介绍"><span class="nav-number">1.</span> <span class="nav-text">事件介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用法简介"><span class="nav-number">2.</span> <span class="nav-text">用法简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用案例"><span class="nav-number">3.</span> <span class="nav-text">应用案例</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shengteng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shengteng9"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
