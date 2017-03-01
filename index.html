@@ -248,6 +248,279 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/20/React简单实例/" itemprop="url">
+                  React简单实例
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-20T15:00:23+08:00" content="2017-02-20">
+              2017-02-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/20/React简单实例/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/React简单实例/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="简单实例，十分钟上手"><a href="#简单实例，十分钟上手" class="headerlink" title="简单实例，十分钟上手"></a>简单实例，十分钟上手</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><p>使用node安装依赖，以下我的package.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"test"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"react"</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"start"</span>: <span class="string">"webpack-dev-server --hot"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">    <span class="attr">"babel"</span>: <span class="string">"^6.5.2"</span>,</div><div class="line">    <span class="attr">"babel-core"</span>: <span class="string">"^6.22.1"</span>,</div><div class="line">    <span class="attr">"babel-loader"</span>: <span class="string">"^6.2.10"</span>,</div><div class="line">    <span class="attr">"babel-preset-es2015"</span>: <span class="string">"^6.22.0"</span>,</div><div class="line">    <span class="attr">"react"</span>: <span class="string">"^15.4.2"</span>,</div><div class="line">    <span class="attr">"react-dom"</span>: <span class="string">"^15.4.2"</span>,</div><div class="line">    <span class="attr">"webpack"</span>: <span class="string">"^1.14.0"</span>,</div><div class="line">    <span class="attr">"webpack-dev-server"</span>: <span class="string">"^1.16.2"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="配置webpack-config-js"><a href="#配置webpack-config-js" class="headerlink" title="配置webpack.config.js"></a>配置webpack.config.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> config = &#123;</div><div class="line">    <span class="comment">// 指定打包的入口文件</span></div><div class="line">    entry: <span class="string">'./main.js'</span>,</div><div class="line">    <span class="comment">// 配置打包结果，path定义了输出的文件夹，filename则定义了打包结果文件的名称</span></div><div class="line">    output: &#123;</div><div class="line">        path: <span class="string">'./'</span>,</div><div class="line">        filename: <span class="string">'index.js'</span>,</div><div class="line">    &#125;,</div><div class="line">    devServer: &#123;</div><div class="line">        inline: <span class="literal">true</span>,</div><div class="line">        port: <span class="number">7777</span></div><div class="line">    &#125;,</div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        loaders: [&#123;</div><div class="line">            test: <span class="regexp">/\.jsx?$/</span>,</div><div class="line">            exclude: <span class="regexp">/node_modules/</span>,</div><div class="line">            loader: <span class="string">'babel'</span>,</div><div class="line">            query: &#123;</div><div class="line">                presets: [<span class="string">'es2015'</span>, <span class="string">'react'</span>]</div><div class="line">            &#125;</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = config;</div></pre></td></tr></table></figure>
+<p>在index.html中引入index.js:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>React-todo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">      *&#123;</div><div class="line">        font-family: "comic sans ms";</div><div class="line">      &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<pre><code>&lt;!-- more --&gt;    
+</code></pre><h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><p>组件的生命周期分成三个状态：</p>
+<ol>
+<li>Mounting：已插入真实 DOM</li>
+<li>Updating：正在被重新渲染</li>
+<li>Unmounting：已移出真实 DOM</li>
+</ol>
+<p>React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数。</p>
+<ul>
+<li>componentWillMount()</li>
+<li>componentDidMount()</li>
+<li>componentWillUpdate(object nextProps, object nextState)</li>
+<li>componentDidUpdate(object prevProps, object prevState)</li>
+<li>componentWillUnmount()</li>
+</ul>
+<p>此外，React 还提供两种特殊状态的处理函数。</p>
+<ul>
+<li>componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用</li>
+<li>shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用</li>
+</ul>
+<p>父组件：App.js:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> Jello <span class="keyword">from</span> <span class="string">'./src/Jello'</span>;</div><div class="line"><span class="keyword">import</span> World <span class="keyword">from</span> <span class="string">'./src/World'</span>;</div><div class="line"><span class="keyword">import</span> Website <span class="keyword">from</span> <span class="string">'./src/Website'</span>;</div><div class="line"><span class="keyword">import</span> LikeButton <span class="keyword">from</span> <span class="string">'./src/LikeButton'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">    render() &#123;</div><div class="line">        <span class="keyword">return</span> ( <span class="xml"><span class="tag">&lt; <span class="attr">div</span> &gt;</span></span></div><div class="line">            <span class="tag">&lt; <span class="attr">Jello</span> / &gt;</span></div><div class="line">            <span class="tag">&lt; <span class="attr">World</span> / &gt;</span></div><div class="line">            <span class="tag">&lt; <span class="attr">Website</span> <span class="attr">name</span> = <span class="string">"study hard"</span></span></div><div class="line">            <span class="attr">site</span> = <span class="string">"www.baidu.com"</span> / &gt;</div><div class="line">            <span class="tag">&lt; <span class="attr">LikeButton</span> / &gt;</span></div><div class="line">            <span class="tag">&lt; /<span class="attr">div</span>&gt;</span></div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</div></pre></td></tr></table></figure></p>
+<p>子组件（取一举例）：</p>
+<p>LikeButton.js:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">import React from 'react';</div><div class="line"></div><div class="line">var LikeButton = React.createClass(&#123;</div><div class="line">    getInitialState: function() &#123;</div><div class="line">        return &#123; liked: false &#125;;</div><div class="line">    &#125;,</div><div class="line">    handleClick: function(event) &#123;</div><div class="line">        this.setState(&#123; liked: !this.state.liked &#125;);</div><div class="line">    &#125;,</div><div class="line">    render: function() &#123;</div><div class="line">        var text = this.state.liked ? '喜欢de ' : '不喜欢de';</div><div class="line">        return ( &lt; p onClick = &#123; this.handleClick &#125; &gt;</div><div class="line">            你 &lt; b &gt; &#123; text &#125; &lt; /b&gt;我。点我切换状态。 &lt; /p&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">export default LikeButton;</div></pre></td></tr></table></figure></p>
+<h4 id="挂载到元素-main-js"><a href="#挂载到元素-main-js" class="headerlink" title="挂载到元素(main.js)"></a>挂载到元素(main.js)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span>;</div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.js'</span>;</div><div class="line"></div><div class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span>,document.getElementById('app'))</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/10/hexo部署出的一些问题/" itemprop="url">
+                  hexo部署出的一些问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-10T19:14:22+08:00" content="2017-02-10">
+              2017-02-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/10/hexo部署出的一些问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/10/hexo部署出的一些问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>自己用hexo搭的博客部署碰到些问题，在此总结。</p>
+<p>1._config.yml配置文件要保证缩进、空格的正确，否则如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">You should configure deployment settings in _config.yml first!</div><div class="line"></div><div class="line">Available deployer plugins:</div><div class="line">git</div><div class="line"></div><div class="line">For more help, you can check the online docs: http://hexo.io/</div></pre></td></tr></table></figure></p>
+<p>以下是在下正确的配置：username为你的用户名，branch name为你的分支名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:shengteng9/shengteng9.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>2.安装npm i hexo-deployer-git –save 否则报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RROR Deployer not found: git</div></pre></td></tr></table></figure></p>
+<p>3.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div><div class="line">INFO  Deploying: git</div><div class="line">INFO  Clearing .deploy_git folder...</div><div class="line">INFO  Copying files from public folder...</div><div class="line">fatal: Not a git repository (or any of the parent directories): .git</div><div class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</div><div class="line">Error: fatal: Not a git repository (or any of the parent directories): .git</div><div class="line"></div><div class="line">    at ChildProcess.&lt;anonymous&gt; (E:\web\Hexo\node_modules\hexo-util\lib\spawn.js:37:17)</div><div class="line">    at emitTwo (events.js:106:13)</div><div class="line">    at ChildProcess.emit (events.js:191:7)</div><div class="line">    at ChildProcess.cp.emit (E:\web\Hexo\node_modules\cross-spawn\lib\enoent.js:40:29)</div><div class="line">    at maybeClose (internal/child_process.js:850:16)</div><div class="line">    at Socket.&lt;anonymous&gt; (internal/child_process.js:323:11)</div><div class="line">    at emitOne (events.js:96:13)</div><div class="line">    at Socket.emit (events.js:188:7)</div><div class="line">    at Pipe._handle.close [as _onclose] (net.js:492:12)</div><div class="line">FATAL fatal: Not a git repository (or any of the parent directories): .git</div><div class="line"></div><div class="line">Error: fatal: Not a git repository (or any of the parent directories): .git</div><div class="line"></div><div class="line">    at ChildProcess.&lt;anonymous&gt; (E:\web\Hexo\node_modules\hexo-util\lib\spawn.js:37:17)</div><div class="line">    at emitTwo (events.js:106:13)</div><div class="line">    at ChildProcess.emit (events.js:191:7)</div><div class="line">    at ChildProcess.cp.emit (E:\web\Hexo\node_modules\cross-spawn\lib\enoent.js:40:29)</div><div class="line">    at maybeClose (internal/child_process.js:850:16)</div><div class="line">    at Socket.&lt;anonymous&gt; (internal/child_process.js:323:11)</div><div class="line">    at emitOne (events.js:96:13)</div><div class="line">    at Socket.emit (events.js:188:7)</div><div class="line">    at Pipe._handle.close [as _onclose] (net.js:492:12)</div></pre></td></tr></table></figure></p>
+<pre><code>&lt;!-- more --&gt;
+</code></pre><p>需要自己配置身份信息，打开node输入以下命令，然后删掉.deploy_git，重新deploy<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;yourname&quot;</div><div class="line">git config --global user.email &quot;youremail&quot;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/16/笔记（一）/" itemprop="url">
                   笔记（一）
                 </a>
@@ -1297,241 +1570,6 @@ body{
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/hexo基本用法/" itemprop="url">
-                  hexo基本用法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T13:49:34+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/28/hexo基本用法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/hexo基本用法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h5><p>写作之前当然得先创建一个.md文件，使用命令hexo new [layout] <title>，其中layout默认为post。<br>1.Layout布局<br>Hexo提供了3种默认的布局，post、page和draft，路径分别为：source/_posts、source、source/_draft。如果你将在文章前置申明中，将layout设置为false，那么这篇文章将不会有任何的布局。<br>2.Filename文件名<br>Hexo会默认将文章的标题当做文件名，但是你可以编辑_config.yml配置文件中的new_post_name来改变默认的文件名。</title></p>
-<blockquote>
-<p>例如：使用hexo new hello命令创建一篇为hello文章，Hexo会默认在_posts目录下给你创建一个名为hello.md的文件。假如你将new_post_name改为了:year-:month-:day-:title.md，那么hexo就自动帮你创建名为2015-05-16-hello.md（当前日期为2015年5月16）</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/REM/" itemprop="url">
-                  REM
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T01:46:32+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/28/REM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/REM/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="rem设置字体大小"><a href="#rem设置字体大小" class="headerlink" title="rem设置字体大小"></a>rem设置字体大小</h4><p>rem是（font size of the root element）,根据网页的根元素来设置字体大小，和em（font size of the element）的区别是，em是根据其父元素的字体大小来设置，而rem是根据网页的跟元素（html）来设置字体大小的，举一个简单的例子，</p>
-<p>现在大部分浏览器IE9+，Firefox、Chrome、Safari、Opera ，如果我们不修改相关的字体配置，都是默认显示font-size是16px即</p>
-<pre><code>html {
-    font-size:16px;
-}
-</code></pre><p>那么如果我们想给一个P标签设置12px的字体大小那么用rem来写就是</p>
-<pre><code>p {
-    font-size: 0.75rem; //12÷16=0.75（rem）
-}    
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/28/REM/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1577,7 +1615,7 @@ body{
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1585,7 +1623,7 @@ body{
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1594,7 +1632,7 @@ body{
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
