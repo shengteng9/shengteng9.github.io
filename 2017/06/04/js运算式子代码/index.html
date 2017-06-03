@@ -88,15 +88,15 @@
 通过表达式消灭分支语句单个分支的if语句，可以被转换成布尔表达式：12345if(tag&amp;gt;1)&amp;#123;    alert(&amp;apos;true&amp;apos;)&amp;#125;//转换成(tag&amp;gt;1)&amp;amp;&amp;amp;alert(&amp;apos;true&amp;apos;);
 if 条">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js运算式子代码">
+<meta property="og:title" content="js运算式代码">
 <meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2017/06/04/js运算式子代码/index.html">
 <meta property="og:site_name" content="ZTF'Blogs">
 <meta property="og:description" content="续运算来组织代码，与用顺序语句来组织代码，是两种不同的风格,运算式代码风格取代顺序语句来组织代码,使代码更简洁。
 通过表达式消灭分支语句单个分支的if语句，可以被转换成布尔表达式：12345if(tag&amp;gt;1)&amp;#123;    alert(&amp;apos;true&amp;apos;)&amp;#125;//转换成(tag&amp;gt;1)&amp;amp;&amp;amp;alert(&amp;apos;true&amp;apos;);
 if 条">
-<meta property="og:updated_time" content="2017-06-03T16:28:31.410Z">
+<meta property="og:updated_time" content="2017-06-03T16:32:17.838Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js运算式子代码">
+<meta name="twitter:title" content="js运算式代码">
 <meta name="twitter:description" content="续运算来组织代码，与用顺序语句来组织代码，是两种不同的风格,运算式代码风格取代顺序语句来组织代码,使代码更简洁。
 通过表达式消灭分支语句单个分支的if语句，可以被转换成布尔表达式：12345if(tag&amp;gt;1)&amp;#123;    alert(&amp;apos;true&amp;apos;)&amp;#125;//转换成(tag&amp;gt;1)&amp;amp;&amp;amp;alert(&amp;apos;true&amp;apos;);
 if 条">
@@ -122,7 +122,7 @@ if 条">
 
   <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2017/06/04/js运算式子代码/"/>
 
-  <title> js运算式子代码 | ZTF'Blogs </title>
+  <title> js运算式代码 | ZTF'Blogs </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@ if 条">
             
             
               
-                js运算式子代码
+                js运算式代码
               
             
           </h1>
@@ -323,7 +323,8 @@ if 条">
 <p>if 条件分支语句（一到两个），可以转换（三元）条件表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">if(tag&gt;1)&#123;</div><div class="line">	alert(&apos;true&apos;)</div><div class="line">&#125;</div><div class="line">//转换成</div><div class="line">(tag&gt;1)?alert(&apos;true&apos;):null;</div><div class="line"></div><div class="line">if(tag&gt;1)&#123;</div><div class="line">	alert(&apos;true&apos;);</div><div class="line">&#125;else&#123;</div><div class="line">	alert(&apos;false&apos;);</div><div class="line">&#125;</div><div class="line">//转换成</div><div class="line"></div><div class="line">(tag&gt;1)?alert(&apos;true&apos;):alert(&apos;false&apos;);</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>由一个多重分支语句可以被转换成if条件分支语句的连用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">swtich(value)&#123;</div><div class="line">	100:</div><div class="line">	200:alert(&apos;value is 200 or 100);break;</div><div class="line">	300:alert(&apos;value is 300&apos;);break;</div><div class="line">	default:alert(&apos;value is other number&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">if(value==100||value==200)&#123;</div><div class="line">	alert(&apos;value is 200 or 100);</div><div class="line">&#125;else if(value==300)&#123;</div><div class="line">	alert(&apos;value is 300&apos;);</div><div class="line">&#125;else&#123;</div><div class="line">	alert(&apos;value is other number&apos;);</div><div class="line">&#125;</div><div class="line">//转化为</div><div class="line">(value=100||value==200)?alert(&apos;value is 200 or 100&apos;)</div><div class="line">	:(value=300)?alert(&apos;value is 300&apos;)</div><div class="line">	:alert(&apos;value is other number&apos;);</div><div class="line"></div><div class="line">### 通过递归消灭循环语句</div><div class="line">var loop=100;</div><div class="line">var i=loop;</div><div class="line">do&#123;</div><div class="line">	//do something...</div><div class="line">	i--;</div><div class="line">&#125;</div><div class="line">while(i&gt;0);</div><div class="line">//转换为递归</div><div class="line">function foo(i)&#123;</div><div class="line">	//do something</div><div class="line">	if(--i&gt;0)</div><div class="line">		foo(i)</div><div class="line">&#125;</div><div class="line">foo(loop);</div><div class="line"></div><div class="line">//用函数递归模拟上述循环语句</div><div class="line">void function(i)&#123;</div><div class="line">	//do something</div><div class="line">	(--i&gt;0)&amp;&amp; arguments.callee(i);</div><div class="line">&#125;(loop);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">swtich(value)&#123;</div><div class="line">	100:</div><div class="line">	200:alert(&apos;value is 200 or 100);break;</div><div class="line">	300:alert(&apos;value is 300&apos;);break;</div><div class="line">	default:alert(&apos;value is other number&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">if(value==100||value==200)&#123;</div><div class="line">	alert(&apos;value is 200 or 100);</div><div class="line">&#125;else if(value==300)&#123;</div><div class="line">	alert(&apos;value is 300&apos;);</div><div class="line">&#125;else&#123;</div><div class="line">	alert(&apos;value is other number&apos;);</div><div class="line">&#125;</div><div class="line">//转化为</div><div class="line">(value=100||value==200)?alert(&apos;value is 200 or 100&apos;)</div><div class="line">	:(value=300)?alert(&apos;value is 300&apos;)</div><div class="line">	:alert(&apos;value is other number&apos;);</div></pre></td></tr></table></figure>
+<h3 id="通过递归消灭循环语句"><a href="#通过递归消灭循环语句" class="headerlink" title="通过递归消灭循环语句"></a>通过递归消灭循环语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var loop=100;</div><div class="line">var i=loop;</div><div class="line">do&#123;</div><div class="line">	//do something...</div><div class="line">	i--;</div><div class="line">&#125;</div><div class="line">while(i&gt;0);</div><div class="line">//转换为递归</div><div class="line">function foo(i)&#123;</div><div class="line">	//do something</div><div class="line">	if(--i&gt;0)</div><div class="line">		foo(i)</div><div class="line">&#125;</div><div class="line">foo(loop);</div><div class="line"></div><div class="line">//用函数递归模拟上述循环语句</div><div class="line">void function(i)&#123;</div><div class="line">	//do something</div><div class="line">	(--i&gt;0)&amp;&amp; arguments.callee(i);</div><div class="line">&#125;(loop);</div></pre></td></tr></table></figure>
 <p>函数来模拟循环，那么必然存在一个问题，就是栈溢出。 循环语句的一个良好特性就是开销很小，而在函数的递归调用过程中，由于需要为每次函数调用保留私有数据和上下文环境，因此将消耗大量的栈空间</p>
 
       
@@ -389,7 +390,7 @@ if 条">
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/06/04/js运算式子代码/"
-           data-title="js运算式子代码" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2017/06/04/js运算式子代码/">
+           data-title="js运算式代码" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2017/06/04/js运算式子代码/">
       </div>
     
   </div>
@@ -500,7 +501,7 @@ if 条">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过表达式消灭分支语句"><span class="nav-number">1.</span> <span class="nav-text">通过表达式消灭分支语句</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过表达式消灭分支语句"><span class="nav-number">1.</span> <span class="nav-text">通过表达式消灭分支语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过递归消灭循环语句"><span class="nav-number">2.</span> <span class="nav-text">通过递归消灭循环语句</span></a></li></ol></div>
             
           </div>
         </section>
