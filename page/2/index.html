@@ -248,6 +248,157 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/01/Sass进阶（一）/" itemprop="url">
+                  Sass进阶（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-01T15:53:24+08:00" content="2016-09-01">
+              2016-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Sass/" itemprop="url" rel="index">
+                    <span itemprop="name">Sass</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/01/Sass进阶（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/Sass进阶（一）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="if"><a href="#if" class="headerlink" title="@if"></a>@if</h4><p>@if 指令是一个 SassScript，它可以根据条件来处理样式块，如果条件为 true 返回一个样式块，反之 false 返回另一个样式块。在 Sass 中除了 @if 之，还可以配合 @else if 和 @else 一起使用。</p>
+<p>假设要控制一个元素隐藏或显示，我们就可以定义一个混合宏，通过 @if…@else… 来判断传进参数的值来控制 display 的值。如下所示：</p>
+<pre><code>//SCSS
+@mixin blockOrHidden($boolean:true) {
+  @if $boolean {
+      @debug &quot;$boolean is #{$boolean}&quot;;
+      display: block;
+    }
+  @else {
+      @debug &quot;$boolean is #{$boolean}&quot;;
+      display: none;
+    }
+}
+
+.block {
+  @include blockOrHidden;
+}
+
+.hidden{
+  @include blockOrHidden(false);
+}
+</code></pre><p>编译出来的CSS:</p>
+<pre><code>.block {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}    
+</code></pre><p>@for循环（上）<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/01/Sass进阶（一）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/30/Sass入门（二）/" itemprop="url">
                   Sass入门（二）
                 </a>
@@ -1425,7 +1576,7 @@ stu.intr();//输出：5 `
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1433,7 +1584,7 @@ stu.intr();//输出：5 `
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1442,7 +1593,7 @@ stu.intr();//输出：5 `
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1499,7 +1650,7 @@ stu.intr();//输出：5 `
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
