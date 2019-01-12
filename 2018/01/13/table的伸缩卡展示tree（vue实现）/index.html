@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="vue," />
+  <meta name="keywords" content="Vue," />
 
 
 
@@ -96,7 +96,7 @@
 具体实现以下按具体执行过程贴出代码。
 
 1.调用TableP组件1234&amp;lt;!-- 组件 init --&amp;gt;&amp;lt;!--  thead: [type:Array] des table‘s thead--&amp;">
-<meta property="og:updated_time" content="2018-01-13T07:04:08.615Z">
+<meta property="og:updated_time" content="2019-01-12T09:09:41.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="table的伸缩卡展示tree（vue实现）">
 <meta name="twitter:description" content="原理点击table的tr，若有子节点则在当前tr下插入一块区域展示该节点，若该节点下仍有节点则依次展示。说明：用div+css实现的table。以下内容其实也是官网示例tree的变形。
@@ -281,8 +281,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -327,6 +327,7 @@
 <p>1.调用TableP组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 组件 init --&gt;</div><div class="line">&lt;!--  thead: [type:Array] des table‘s thead--&gt;</div><div class="line">&lt;!-- treeData:[type:Array]&#123;&#125; des:树形结构数据[&#123;id:xx,openid:xx,tel:xx,lavel:xx,childItem:[]&#125;] --&gt;</div><div class="line">&lt;table-p :thead=&apos;ths&apos; :treeData=&apos;treeData&apos;&gt;&lt;/table-p&gt;</div></pre></td></tr></table></figure></p>
 <p>2.组件TableP<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div&gt;</div><div class="line">    &lt;div class=&quot;table-p&quot;&gt;</div><div class="line">      &lt;div class=&quot;table-p-thead&quot;&gt;</div><div class="line">        &lt;div class=&quot;table-p-tr&quot;&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot; v-for=&quot;item in thead&quot; :key=&quot;item&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">      &lt;div class=&quot;table-p-tbody&quot; </div><div class="line">        v-for=&quot;(item,index) in treeData&quot; </div><div class="line">        :key=&quot;index&quot;&gt;</div><div class="line">        &lt;div class=&quot;table-p-tr&quot; @click=&quot;dropDown(index)&quot;&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot;&gt;</div><div class="line">            &lt;span class=&quot;shrink&quot;&gt;</div><div class="line">              &#123;&#123;item.chidItem?isFlag !== index ? &quot;+&quot; : &quot;-&quot; :&quot;&amp;nbsp;&quot;&#125;&#125;</div><div class="line">            &lt;/span&gt; &#123;&#123;item.id&#125;&#125;</div><div class="line">          &lt;/div&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot;&gt;&#123;&#123;item.openid&#125;&#125;&lt;/div&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot;&gt;&#123;&#123;item.tel&#125;&#125;&lt;/div&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot;&gt;&#123;&#123;item.lavel&#125;&#125;&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;!-- 组件table-p-slot --&gt;</div><div class="line">        &lt;!-- type[number] des:当前节点层级 --&gt;</div><div class="line">        &lt;!-- type[Array] des:子节点 --&gt;</div><div class="line">        &lt;table-p-slot </div><div class="line">          v-if=&quot;index === isFlag&quot; </div><div class="line">          :layerNum=&quot;layerNum&quot;</div><div class="line">          :childArray=&quot;item.chidItem&quot;&gt;</div><div class="line">        &lt;/table-p-slot &gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
 </blockquote>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">import TablePSlot from &apos;./TablePSlot&apos;</div><div class="line">export default &#123;</div><div class="line">  data () &#123;</div><div class="line">    return &#123;</div><div class="line">      isFlag: -1,</div><div class="line">      layerNum:1,</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  props:[&apos;thead&apos;,&apos;treeData&apos;],</div><div class="line">  components: &#123; TablePSlot &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    //展示树的子节点的IO操作</div><div class="line">    dropDown (index) &#123;</div><div class="line">      this.isFlag === index ? this.isFlag = -1 : this.isFlag = index</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;style lang=&quot;less&quot;&gt;</div><div class="line">@import &apos;./style.less&apos;; </div><div class="line">.table-p &#123;</div><div class="line">    .table;</div><div class="line">    .table-p-thead &#123;</div><div class="line">        .table-p-tr &#123;</div><div class="line">            .table-tr(@background: #eff5fb);</div><div class="line">            .table-p-td &#123;</div><div class="line">                .table-td;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    .table-p-tbody &#123;</div><div class="line">        .table-p-tr &#123;</div><div class="line">            .table-tr;</div><div class="line">            .table-p-td &#123;</div><div class="line">                .table-td;</div><div class="line">                .shrink &#123;</div><div class="line">                    .shrink-style;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125; </div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
 <blockquote>
@@ -359,7 +360,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vue/" rel="tag">#vue</a>
+            <a href="/tags/Vue/" rel="tag">#Vue</a>
           
         </div>
       
@@ -375,6 +376,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/12/WebViewJavascriptBridge的demo，vue重写/" rel="prev" title="WebViewJavascriptBridge的demo,Vue重写">
+                WebViewJavascriptBridge的demo,Vue重写 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -446,7 +451,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -531,7 +536,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
