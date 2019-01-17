@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="RequireJS," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,40 +84,15 @@
 
 
 
-<meta name="description" content="为什么使用RequireJS
-有效防止命名冲突
-声明不同js文件之间的依赖
-可以是我们的代码以模块化的方式组织
-
-RequireJS常用的方法
-reuqirejs.config  为模块设置别名
-requirejs         将写好的模块进行引入
-define            用来编写模块，相应地方进行引入">
-<meta property="og:type" content="article">
-<meta property="og:title" content="RequireJS（一）">
-<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/08/RequireJS（一）/index.html">
+<meta name="description" content="一个三流前端的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZTF的博客">
+<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/categories/闲谈/index.html">
 <meta property="og:site_name" content="ZTF的博客">
-<meta property="og:description" content="为什么使用RequireJS
-有效防止命名冲突
-声明不同js文件之间的依赖
-可以是我们的代码以模块化的方式组织
-
-RequireJS常用的方法
-reuqirejs.config  为模块设置别名
-requirejs         将写好的模块进行引入
-define            用来编写模块，相应地方进行引入">
-<meta property="og:updated_time" content="2016-09-15T06:44:32.000Z">
+<meta property="og:description" content="一个三流前端的博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RequireJS（一）">
-<meta name="twitter:description" content="为什么使用RequireJS
-有效防止命名冲突
-声明不同js文件之间的依赖
-可以是我们的代码以模块化的方式组织
-
-RequireJS常用的方法
-reuqirejs.config  为模块设置别名
-requirejs         将写好的模块进行引入
-define            用来编写模块，相应地方进行引入">
+<meta name="twitter:title" content="ZTF的博客">
+<meta name="twitter:description" content="一个三流前端的博客">
 
 
 
@@ -138,9 +113,9 @@ define            用来编写模块，相应地方进行引入">
 
 
 
-  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/08/RequireJS（一）/"/>
+  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/categories/闲谈/"/>
 
-  <title> RequireJS（一） | ZTF的博客 </title>
+  <title> 分类: 闲谈 | ZTF的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -161,7 +136,7 @@ define            用来编写模块，相应地方进行引入">
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,200 +224,47 @@ define            用来编写模块，相应地方进行引入">
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                RequireJS（一）
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-08T00:05:16+08:00" content="2016-09-08">
-              2016-09-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/RequireJS/" itemprop="url" rel="index">
-                    <span itemprop="name">RequireJS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/08/RequireJS（一）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/08/RequireJS（一）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h4 id="为什么使用RequireJS"><a href="#为什么使用RequireJS" class="headerlink" title="为什么使用RequireJS"></a>为什么使用RequireJS</h4><ol>
-<li>有效防止命名冲突</li>
-<li>声明不同js文件之间的依赖</li>
-<li>可以是我们的代码以模块化的方式组织</li>
-</ol>
-<h4 id="RequireJS常用的方法"><a href="#RequireJS常用的方法" class="headerlink" title="RequireJS常用的方法"></a>RequireJS常用的方法</h4><ol>
-<li>reuqirejs.config  为模块设置别名</li>
-<li>requirejs         将写好的模块进行引入</li>
-<li>define            用来编写模块，相应地方进行引入</li>
-</ol>
-<a id="more"></a>
-<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>index.html:引入require.js</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;Document&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;script src=&quot;js/require.js&quot; data-main=&quot;js/main&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;    
-</code></pre><p>main.js:引入jquery，validate.js定义别名</p>
-<pre><code>requirejs.config({
-    paths:{
-        jquery:&apos;jquery-1.11.1&apos;
-    }
-});
-//传入引入模块
-requirejs([&apos;jquery&apos;,&apos;validate&apos;],function($,validate){
-
-    console.log(validate.isEqual(1,2))
-
-});
-</code></pre><p>validate.js:define定义模块</p>
-<pre><code>define([&apos;jquery&apos;],function($){ //需要引入模块，此处并没有使用引入的jqury模块
-    return {
-        isEmpty:function(){},
-        checkLength:function(){},
-        isEqual:function(str1,str2){
-
-            return str1=== str2;
-
-        }
-    }
-});
-</code></pre><blockquote>
-<p>更多资料：<a href="http://www.requirejs.cn/home.html" target="_blank" rel="external">http://www.requirejs.cn/home.html</a></p>
-</blockquote>
-
-      
+  <section id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        闲谈
+        <small>分类</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-
-      
-    </div>
-
-    <div>
-      
+            <a class="post-title-link" href="/2019/01/17/MEM（工程管理）备考的一些东～西/" itemprop="url">
+              
+                <span itemprop="name">MEM（工程管理）备考的一些东～西</span>
+              
+            </a>
         
+      </h1>
 
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-01-17T14:22:57+08:00"
+              content="2019-01-17" >
+          01-17
+        </time>
+      </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/RequireJS/" rel="tag">#RequireJS</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/09/02/H5-DeviceMotionEvent/" rel="next" title="Html5重力感应事件-DeviceMotionEvent">
-                <i class="fa fa-chevron-left"></i> Html5重力感应事件-DeviceMotionEvent
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/12/Underscore-js笔记（一）/" rel="prev" title="Underscore.js笔记（一）">
-                Underscore.js笔记（一） <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+
 
 
           </div>
@@ -450,14 +272,6 @@ requirejs([&apos;jquery&apos;,&apos;validate&apos;],function($,validate){
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/09/08/RequireJS（一）/"
-           data-title="RequireJS（一）" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2016/09/08/RequireJS（一）/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -477,17 +291,8 @@ requirejs([&apos;jquery&apos;,&apos;validate&apos;],function($,validate){
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -557,17 +362,6 @@ requirejs([&apos;jquery&apos;,&apos;validate&apos;],function($,validate){
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么使用RequireJS"><span class="nav-number">1.</span> <span class="nav-text">为什么使用RequireJS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RequireJS常用的方法"><span class="nav-number">2.</span> <span class="nav-text">RequireJS常用的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例："><span class="nav-number">3.</span> <span class="nav-text">实例：</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -671,10 +465,6 @@ requirejs([&apos;jquery&apos;,&apos;validate&apos;],function($,validate){
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
