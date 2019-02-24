@@ -1,0 +1,672 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Vue," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Typescript是什么TypeScript 是 Microsoft 开发和维护的一种面向对象的编程语言。它是 JavaScript 的超集，包含了 JavaScript 的所有元素，可以载入JavaScript 代码运行，并扩展了 JavaScript 的语法。
+为什么用Typescript
+TypeScript 增加了静态类型、类、模块、接口和类型注解。（关于静态类型系统看这篇文章）
+Typ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript重写vue网格组件demo">
+<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2019/02/24/typescript重写vue网格组件demo/index.html">
+<meta property="og:site_name" content="ZTF的博客">
+<meta property="og:description" content="Typescript是什么TypeScript 是 Microsoft 开发和维护的一种面向对象的编程语言。它是 JavaScript 的超集，包含了 JavaScript 的所有元素，可以载入JavaScript 代码运行，并扩展了 JavaScript 的语法。
+为什么用Typescript
+TypeScript 增加了静态类型、类、模块、接口和类型注解。（关于静态类型系统看这篇文章）
+Typ">
+<meta property="og:updated_time" content="2019-02-24T13:32:35.962Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript重写vue网格组件demo">
+<meta name="twitter:description" content="Typescript是什么TypeScript 是 Microsoft 开发和维护的一种面向对象的编程语言。它是 JavaScript 的超集，包含了 JavaScript 的所有元素，可以载入JavaScript 代码运行，并扩展了 JavaScript 的语法。
+为什么用Typescript
+TypeScript 增加了静态类型、类、模块、接口和类型注解。（关于静态类型系统看这篇文章）
+Typ">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2019/02/24/typescript重写vue网格组件demo/"/>
+
+  <title> typescript重写vue网格组件demo | ZTF的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZTF的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Web开发、Java、</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                typescript重写vue网格组件demo
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-02-24T21:05:47+08:00" content="2019-02-24">
+              2019-02-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/02/24/typescript重写vue网格组件demo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/24/typescript重写vue网格组件demo/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="Typescript是什么"><a href="#Typescript是什么" class="headerlink" title="Typescript是什么"></a>Typescript是什么</h4><p>TypeScript 是 Microsoft 开发和维护的一种面向对象的编程语言。它是 JavaScript 的超集，包含了 JavaScript 的所有元素，可以载入JavaScript 代码运行，并扩展了 JavaScript 的语法。</p>
+<h4 id="为什么用Typescript"><a href="#为什么用Typescript" class="headerlink" title="为什么用Typescript"></a>为什么用Typescript</h4><ul>
+<li>TypeScript 增加了静态类型、类、模块、接口和类型注解。（关于静态类型系统看这篇<a href="http://taobaofed.org/blog/2017/03/09/head-first-typescript/" target="_blank" rel="external">文章</a>）</li>
+<li>TypeScript 可用于开发大型的应用。</li>
+</ul>
+<h4 id="Vue网格组件Ty的实现"><a href="#Vue网格组件Ty的实现" class="headerlink" title="Vue网格组件Ty的实现"></a>Vue网格组件Ty的实现</h4><ol>
+<li>Demo容器组件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;demo&quot;&gt;</div><div class="line">    &lt;form id=&quot;search&quot;&gt;</div><div class="line">      Search &lt;input name=&quot;query&quot; v-model=&quot;searchQuery&quot;&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">    &lt;grid</div><div class="line">      :data=&quot;gridData&quot;</div><div class="line">      :columns=&quot;gridColumns&quot;</div><div class="line">      :filter-key=&quot;searchQuery&quot;&gt;</div><div class="line">    &lt;/grid&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script lang=&quot;ts&quot;&gt;</div><div class="line">import &#123; Component, Vue &#125; from &apos;vue-property-decorator&apos;;</div><div class="line">import Grid from &apos;@/components/Grid.vue&apos;; // @ is an alias to /src</div><div class="line">interface GridDataObject &#123;</div><div class="line">  name: string;</div><div class="line">  power: number;</div><div class="line">  [index: string]: any;</div><div class="line">&#125;</div><div class="line">@Component(&#123;</div><div class="line">  components: &#123;</div><div class="line">    Grid,</div><div class="line">  &#125;,</div><div class="line">&#125;)</div><div class="line"></div><div class="line">export default class Home extends Vue &#123;</div><div class="line">  private searchQuery: string = &apos;&apos;;</div><div class="line">  private gridColumns: string[] = [&apos;name&apos;, &apos;power&apos;];</div><div class="line">  private gridData: GridDataObject[] = [</div><div class="line">      &#123; name: &apos;Chuck Norris&apos;, power: 5000 &#125;,</div><div class="line">      &#123; name: &apos;Bruce Lee&apos;, power: 9000 &#125;,</div><div class="line">      &#123; name: &apos;Jackie Chan&apos;, power: 7000 &#125;,</div><div class="line">      &#123; name: &apos;Jet Li&apos;, power: 8000 &#125;,</div><div class="line">    ];</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li>Grid组件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;table&gt;</div><div class="line">    &lt;thead&gt;</div><div class="line">      &lt;tr&gt;</div><div class="line">        &lt;th v-for=&quot;key in columns&quot;</div><div class="line">          @click=&quot;sortBy(key)&quot;</div><div class="line">          :class=&quot;&#123; active: sortKey == key &#125;&quot;&gt;</div><div class="line">          &#123;&#123; key | capitalize &#125;&#125;</div><div class="line">          &lt;span class=&quot;arrow&quot; :class=&quot;sortOrders[key] &gt; 0 ? &apos;asc&apos; : &apos;dsc&apos;&quot;&gt;</div><div class="line">          &lt;/span&gt;</div><div class="line">        &lt;/th&gt;</div><div class="line">      &lt;/tr&gt;</div><div class="line">    &lt;/thead&gt;</div><div class="line">    &lt;tbody&gt;</div><div class="line">      &lt;tr v-for=&quot;entry in filteredData&quot;&gt;</div><div class="line">        &lt;td v-for=&quot;key in columns&quot;&gt;</div><div class="line">          &#123;&#123;entry[key]&#125;&#125;</div><div class="line">        &lt;/td&gt;</div><div class="line">      &lt;/tr&gt;</div><div class="line">    &lt;/tbody&gt;</div><div class="line">  &lt;/table&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&lt;script lang=&quot;ts&quot;&gt;</div><div class="line">import &#123; Component, Vue, Prop &#125; from &apos;vue-property-decorator&apos;;</div><div class="line">interface DataObj &#123;</div><div class="line">  [row: string]: any;</div><div class="line">&#125;</div><div class="line">@Component(&#123;</div><div class="line">  filters: &#123;</div><div class="line">    capitalize(str: string) &#123;</div><div class="line">      return str.charAt(0).toUpperCase() + str.slice(1);</div><div class="line">    &#125;,</div><div class="line">  &#125;,</div><div class="line">&#125;)</div><div class="line">export default class Grid extends Vue &#123;</div><div class="line">  @Prop() private data!: object[];</div><div class="line">  @Prop() private columns!: string[];</div><div class="line">  @Prop(String) private filterKey!: string;</div><div class="line"></div><div class="line">  private sortOrder: any = &#123;&#125;;</div><div class="line">  private sortKey: string = &apos;&apos;;</div><div class="line">  private sortOrders: any = &#123;&#125;;</div><div class="line"></div><div class="line">  private created(): void &#123;</div><div class="line">    this.columns.forEach((key) =&gt; &#123;</div><div class="line">      this.sortOrders[key] = 1;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get filteredData(): object[] &#123;</div><div class="line">    const sortKey = this.sortKey;</div><div class="line">    const filterKey = this.filterKey &amp;&amp; this.filterKey.toLowerCase();</div><div class="line">    const order: any = this.sortOrders[sortKey] || 1;</div><div class="line">    let data: DataObj[] = this.data;</div><div class="line">    if (filterKey) &#123;</div><div class="line">      data = data.filter((row) =&gt; &#123;</div><div class="line">        return Object.keys(row).some((key) =&gt; &#123;</div><div class="line">          return String(row[key]).toLowerCase().indexOf(filterKey) &gt; -1;</div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">    if (sortKey) &#123;</div><div class="line">      data = data.slice().sort((a, b) =&gt; &#123;</div><div class="line">        a = a[sortKey];</div><div class="line">        b = b[sortKey];</div><div class="line">        return (a === b ? 0 : a &gt; b ? 1 : -1) * order;</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">    return data;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private sortBy(key: string) &#123;</div><div class="line">    this.sortKey = key;</div><div class="line">    this.sortOrders[key] = this.sortOrders[key] * -1;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag">#Vue</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/29/node-clinic/" rel="next" title="node-clinic">
+                <i class="fa fa-chevron-left"></i> node-clinic
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2019/02/24/typescript重写vue网格组件demo/"
+           data-title="typescript重写vue网格组件demo" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2019/02/24/typescript重写vue网格组件demo/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="shengteng" />
+          <p class="site-author-name" itemprop="name">shengteng</p>
+          <p class="site-description motion-element" itemprop="description">再见杰克再见凯鲁亚克</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shengteng9" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005051821208013/home?from=page_100505_profile&wvr=6&mod=data#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Typescript是什么"><span class="nav-number">1.</span> <span class="nav-text">Typescript是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用Typescript"><span class="nav-number">2.</span> <span class="nav-text">为什么用Typescript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue网格组件Ty的实现"><span class="nav-number">3.</span> <span class="nav-text">Vue网格组件Ty的实现</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shengteng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shengteng9"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

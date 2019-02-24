@@ -248,6 +248,136 @@
             
               
                 
+                <a class="post-title-link" href="/2019/02/24/typescript重写vue网格组件demo/" itemprop="url">
+                  typescript重写vue网格组件demo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-02-24T21:05:47+08:00" content="2019-02-24">
+              2019-02-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/02/24/typescript重写vue网格组件demo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/24/typescript重写vue网格组件demo/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="Typescript是什么"><a href="#Typescript是什么" class="headerlink" title="Typescript是什么"></a>Typescript是什么</h4><p>TypeScript 是 Microsoft 开发和维护的一种面向对象的编程语言。它是 JavaScript 的超集，包含了 JavaScript 的所有元素，可以载入JavaScript 代码运行，并扩展了 JavaScript 的语法。</p>
+<h4 id="为什么用Typescript"><a href="#为什么用Typescript" class="headerlink" title="为什么用Typescript"></a>为什么用Typescript</h4><ul>
+<li>TypeScript 增加了静态类型、类、模块、接口和类型注解。（关于静态类型系统看这篇<a href="http://taobaofed.org/blog/2017/03/09/head-first-typescript/">文章</a>）</li>
+<li>TypeScript 可用于开发大型的应用。</li>
+</ul>
+<h4 id="Vue网格组件Ty的实现"><a href="#Vue网格组件Ty的实现" class="headerlink" title="Vue网格组件Ty的实现"></a>Vue网格组件Ty的实现</h4><ol>
+<li>Demo容器组件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;demo&quot;&gt;</div><div class="line">    &lt;form id=&quot;search&quot;&gt;</div><div class="line">      Search &lt;input name=&quot;query&quot; v-model=&quot;searchQuery&quot;&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">    &lt;grid</div><div class="line">      :data=&quot;gridData&quot;</div><div class="line">      :columns=&quot;gridColumns&quot;</div><div class="line">      :filter-key=&quot;searchQuery&quot;&gt;</div><div class="line">    &lt;/grid&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script lang=&quot;ts&quot;&gt;</div><div class="line">import &#123; Component, Vue &#125; from &apos;vue-property-decorator&apos;;</div><div class="line">import Grid from &apos;@/components/Grid.vue&apos;; // @ is an alias to /src</div><div class="line">interface GridDataObject &#123;</div><div class="line">  name: string;</div><div class="line">  power: number;</div><div class="line">  [index: string]: any;</div><div class="line">&#125;</div><div class="line">@Component(&#123;</div><div class="line">  components: &#123;</div><div class="line">    Grid,</div><div class="line">  &#125;,</div><div class="line">&#125;)</div><div class="line"></div><div class="line">export default class Home extends Vue &#123;</div><div class="line">  private searchQuery: string = &apos;&apos;;</div><div class="line">  private gridColumns: string[] = [&apos;name&apos;, &apos;power&apos;];</div><div class="line">  private gridData: GridDataObject[] = [</div><div class="line">      &#123; name: &apos;Chuck Norris&apos;, power: 5000 &#125;,</div><div class="line">      &#123; name: &apos;Bruce Lee&apos;, power: 9000 &#125;,</div><div class="line">      &#123; name: &apos;Jackie Chan&apos;, power: 7000 &#125;,</div><div class="line">      &#123; name: &apos;Jet Li&apos;, power: 8000 &#125;,</div><div class="line">    ];</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/02/24/typescript重写vue网格组件demo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/01/29/node-clinic/" itemprop="url">
                   node-clinic
                 </a>
@@ -1344,131 +1474,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/10/hexo部署出的一些问题/" itemprop="url">
-                  hexo部署出的一些问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-10T19:14:22+08:00" content="2017-02-10">
-              2017-02-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/10/hexo部署出的一些问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/10/hexo部署出的一些问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>自己用hexo搭的博客部署碰到些问题，在此总结。</p>
-<p>1._config.yml配置文件要保证缩进、空格的正确，否则如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">You should configure deployment settings in _config.yml first!</div><div class="line"></div><div class="line">Available deployer plugins:</div><div class="line">git</div><div class="line"></div><div class="line">For more help, you can check the online docs: http://hexo.io/</div></pre></td></tr></table></figure></p>
-<p>以下是在下正确的配置：username为你的用户名，branch name为你的分支名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:shengteng9/shengteng9.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p>2.安装npm i hexo-deployer-git –save 否则报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RROR Deployer not found: git</div></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/10/hexo部署出的一些问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1514,7 +1519,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
