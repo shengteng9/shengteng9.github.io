@@ -248,6 +248,147 @@
             
               
                 
+                <a class="post-title-link" href="/2019/03/09/React高阶组件/" itemprop="url">
+                  React高阶组件&微信H5支付
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-03-09T02:26:09+08:00" content="2019-03-09">
+              2019-03-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/03/09/React高阶组件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/09/React高阶组件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="1-微信H5支付流程简述："><a href="#1-微信H5支付流程简述：" class="headerlink" title="1. 微信H5支付流程简述："></a>1. 微信H5支付流程简述：</h4><ol>
+<li>前端向后台发起支付</li>
+<li>后台向微信支付发起请求</li>
+<li>微信下单接口返回支付相关参数给后台，如支付跳转url（参数名“mweb_url”）</li>
+<li>前端跳转到支付的url拉起微信支付。如需返回至指定页面，则可以在MWEB_URL后拼接上redirect_url参数，来指定回调页面</li>
+<li><a href="https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=15_4">详细</a></li>
+</ol>
+<h5 id="中间问题"><a href="#中间问题" class="headerlink" title="中间问题"></a>中间问题</h5><blockquote>
+<p>微信支付是完全跳离app，所以必须配置redirect_url跳回app。又由于尽管重定向到app,但不能获取支付状态。需要用户手动确认支付状态（是否完成支付），那么常规做法是重定向到支付发起页面，根据redirect_url传的参数去弹出对话框，让用户手动确认状态。</p>
+</blockquote>
+<h4 id="2-React高阶组件简介"><a href="#2-React高阶组件简介" class="headerlink" title="2. React高阶组件简介"></a>2. React高阶组件简介</h4><ol>
+<li>高阶函数的概念：函数可以作为参数被传递。函数可以作为返回值被输出。</li>
+<li>高阶组件（函数组件）：接受一个组件作为参数并返回一个新的组件的函数。高阶组件是一个函数并不是一个组件。</li>
+<li>使用高阶组件：直接使用高阶组件名称并传入组件，或者使用ES6的装饰器。</li>
+<li>高阶组件应用的两种模式：</li>
+</ol>
+<ul>
+<li>代理方式的高阶组件。返回的组件直接继承React.Component类，新组件扮演的角色是传入组件的一个代理，在新组件的render函数中，将被包裹组件渲染出来，除了高阶组件自己要做的工作，其余功能全部交给被包裹的组件。</li>
+<li>继承方式的高阶组件。采用继承的方式作为参数组件和返回组件，假如传入的组件是WrappedComponent,那么返回的组件是直接继承的WrappedComponent。</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/03/09/React高阶组件/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/02/24/typescript重写vue网格组件demo/" itemprop="url">
                   typescript重写vue网格组件demo
                 </a>
@@ -1352,128 +1493,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/20/React简单实例/" itemprop="url">
-                  React简单实例
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-20T15:00:23+08:00" content="2017-02-20">
-              2017-02-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/20/React简单实例/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/React简单实例/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="简单实例，十分钟上手"><a href="#简单实例，十分钟上手" class="headerlink" title="简单实例，十分钟上手"></a>简单实例，十分钟上手</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><p>使用node安装依赖，以下我的package.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"test"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"react"</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"start"</span>: <span class="string">"webpack-dev-server --hot"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">    <span class="attr">"babel"</span>: <span class="string">"^6.5.2"</span>,</div><div class="line">    <span class="attr">"babel-core"</span>: <span class="string">"^6.22.1"</span>,</div><div class="line">    <span class="attr">"babel-loader"</span>: <span class="string">"^6.2.10"</span>,</div><div class="line">    <span class="attr">"babel-preset-es2015"</span>: <span class="string">"^6.22.0"</span>,</div><div class="line">    <span class="attr">"react"</span>: <span class="string">"^15.4.2"</span>,</div><div class="line">    <span class="attr">"react-dom"</span>: <span class="string">"^15.4.2"</span>,</div><div class="line">    <span class="attr">"webpack"</span>: <span class="string">"^1.14.0"</span>,</div><div class="line">    <span class="attr">"webpack-dev-server"</span>: <span class="string">"^1.16.2"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/20/React简单实例/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1519,7 +1538,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
