@@ -248,6 +248,139 @@
             
               
                 
+                <a class="post-title-link" href="/2019/03/16/Vue-cli3-TypeScript-mint-ui多页应用模版/" itemprop="url">
+                  Vue-cli3+TypeScript+mint-ui多页应用模版
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-03-16T14:24:46+08:00" content="2019-03-16">
+              2019-03-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/03/16/Vue-cli3-TypeScript-mint-ui多页应用模版/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/16/Vue-cli3-TypeScript-mint-ui多页应用模版/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>碰到个项目没有做前端工程。项目主要是给第三方接入的h5页面，均是各种插件直接引入。造成页面引入js体积大，加载速度慢，难维护。那么优化就无从谈起。所以用vue-cli3加typescript和mint-ui做了个多页应用的框架。把typescript项目中axios、mint-ui、vuex与非ts项目的差异做下记录。</p>
+<h4 id="所用插件"><a href="#所用插件" class="headerlink" title="所用插件"></a>所用插件</h4><ul>
+<li>vue-router</li>
+<li>mint-ui</li>
+<li>axios</li>
+<li>vuex</li>
+<li>vue-class-component</li>
+<li>vue-property-decorator</li>
+<li>vuex-class</li>
+</ul>
+<h4 id="mint-ui应用"><a href="#mint-ui应用" class="headerlink" title="mint-ui应用"></a>mint-ui应用</h4><p>mint-ui直接全局引用，安装babel-plugin-component作按需加载。与非typescript的项目不同的是，需要在项目用ts做文件声明。创建mint-ui.d.ts文件内容如下，然后在main.ts文件中直接引用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">declare <span class="built_in">module</span> <span class="string">'mint-ui'</span> &#123;</div><div class="line">  <span class="keyword">const</span> MintUi: any</div><div class="line">  <span class="keyword">export</span> <span class="keyword">default</span> MintUi</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>babel.config.js的配置与非ts项目中的配置相同<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  presets: [</div><div class="line">    <span class="string">'@vue/app'</span></div><div class="line">  ],</div><div class="line">  plugins: [</div><div class="line">    [</div><div class="line">      <span class="string">'component'</span>,</div><div class="line">      &#123;</div><div class="line">        <span class="string">'libraryName'</span>: <span class="string">'mint-ui'</span>,</div><div class="line">        <span class="string">'style'</span>: <span class="literal">true</span></div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="axios的配置"><a href="#axios的配置" class="headerlink" title="axios的配置"></a>axios的配置</h4><p>axios在项目中直接引用，返回会有类型报错，类型声明如下(只配置了常规的修改项）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></div><div class="line"><span class="keyword">let</span> host = <span class="string">'http://localhost:8080'</span></div><div class="line"></div><div class="line">process.env.NODE_ENV === <span class="string">'development'</span></div><div class="line">  ? host = <span class="string">'http://localhost:8080'</span></div><div class="line">  : host = <span class="string">'http://xxx.com'</span></div><div class="line"></div><div class="line">type Method =</div><div class="line">  | <span class="string">'get'</span> | <span class="string">'GET'</span></div><div class="line">  | <span class="string">'delete'</span> | <span class="string">'DELETE'</span></div><div class="line">  | <span class="string">'head'</span> | <span class="string">'HEAD'</span></div><div class="line">  | <span class="string">'options'</span> | <span class="string">'OPTIONS'</span></div><div class="line">  | <span class="string">'post'</span> | <span class="string">'POST'</span></div><div class="line">  | <span class="string">'put'</span> | <span class="string">'PUT'</span></div><div class="line">  | <span class="string">'patch'</span> | <span class="string">'PATCH'</span></div><div class="line"></div><div class="line">type ResponseType =</div><div class="line">  | <span class="string">'arraybuffer'</span></div><div class="line">  | <span class="string">'blob'</span></div><div class="line">  | <span class="string">'document'</span></div><div class="line">  | <span class="string">'json'</span></div><div class="line">  | <span class="string">'text'</span></div><div class="line">  | <span class="string">'stream'</span></div><div class="line"></div><div class="line">interface AxiosRequestConfig &#123;</div><div class="line">  url?: string;</div><div class="line">  method?: Method;</div><div class="line">  baseURL?: string;</div><div class="line">  headers?: any;</div><div class="line">  params?: any;</div><div class="line">  data?: any;</div><div class="line">  timeout?: number;</div><div class="line">  withCredentials?: boolean;</div><div class="line">  responseType?: ResponseType;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> config: AxiosRequestConfig = &#123;</div><div class="line">  baseURL: host,</div><div class="line">  method: <span class="string">'get'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> api = &#123;</div><div class="line">  postProductDetail (params: object) &#123;</div><div class="line">    <span class="keyword">return</span> axios(&#123; </div><div class="line">      ...config,</div><div class="line">      url: <span class="string">'/your/url'</span>,</div><div class="line">      method: <span class="string">'post'</span>, </div><div class="line">      data: params &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> api</div></pre></td></tr></table></figure></p>
+<h4 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'../mutation-types'</span></div><div class="line"><span class="keyword">import</span> &#123; Commit &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"><span class="keyword">import</span> API <span class="keyword">from</span> <span class="string">'../../common/api'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> interface State &#123;</div><div class="line">  product: object</div><div class="line">  count: number</div><div class="line">  loading: boolean</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// =================================================</span></div><div class="line"><span class="comment">// State</span></div><div class="line"><span class="comment">// =================================================</span></div><div class="line"><span class="keyword">const</span> initState: State = &#123;</div><div class="line">  product: &#123;&#125;,</div><div class="line">  count: <span class="number">0</span>,</div><div class="line">  loading: <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// =================================================</span></div><div class="line"><span class="comment">// Mutations</span></div><div class="line"><span class="comment">// =================================================</span></div><div class="line"><span class="keyword">const</span> getters = &#123;</div><div class="line">  product: (state: State) =&gt; state.product,</div><div class="line">  count: (state: State) =&gt; state.count,</div><div class="line">  loading: (state: State) =&gt; state.loading</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// =================================================</span></div><div class="line"><span class="comment">// Mutations</span></div><div class="line"><span class="comment">// =================================================</span></div><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">  [types.POST_PRODUCT] (state: State, data: any) &#123;</div><div class="line">    state.product = &#123; ...data &#125;</div><div class="line">    state.loading = <span class="literal">false</span></div><div class="line">  &#125;,</div><div class="line">  [types.COUNT] (state: State) &#123;</div><div class="line">    state.count++</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// =================================================</span></div><div class="line"><span class="comment">// Actions</span></div><div class="line"><span class="comment">// =================================================</span></div><div class="line"><span class="keyword">const</span> actions = &#123;</div><div class="line">  postProduct (context: &#123; commit: Commit; state: State&#125;, params: any) &#123;</div><div class="line">    API.postProductDetail(params)</div><div class="line">      .then((res) =&gt; &#123;</div><div class="line">        <span class="keyword">if</span> (res.data.success) &#123;</div><div class="line">          context.commit(types.POST_PRODUCT, res.data)</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">      .catch((err) =&gt; &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'error:'</span>, err)</div><div class="line">      &#125;)</div><div class="line">  &#125;,</div><div class="line">  countHandler (context: &#123; commit: Commit; state: State &#125;) &#123;</div><div class="line">    context.commit(types.COUNT)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  state: initState,</div><div class="line">  getters,</div><div class="line">  actions,</div><div class="line">  mutations</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/03/09/React高阶组件/" itemprop="url">
                   React高阶组件&微信H5支付
                 </a>
@@ -1371,128 +1504,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/15/github上贡献的代码没有被统计/" itemprop="url">
-                  github上commit的代码没有被统计
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-15T23:32:16+08:00" content="2017-05-15">
-              2017-05-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/15/github上贡献的代码没有被统计/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/15/github上贡献的代码没有被统计/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>git上自己仓库里的代码提交却发现contributions的统计视图没有更新。</p>
-<h4 id="找原因"><a href="#找原因" class="headerlink" title="找原因"></a>找原因</h4><p>打开自己的github，在contributions的统计视图下有行小字，Learn how we count contributions. github对这情况出现的解释。很详细不再赘诉。</p>
-<h4 id="笔者的情况-amp-解决办法"><a href="#笔者的情况-amp-解决办法" class="headerlink" title="笔者的情况&amp;解决办法"></a>笔者的情况&amp;解决办法</h4><p>笔者情况为工作git账号邮箱提交了私人的github。The email address used for the commits is associated with your GitHub account.<br>解决办法：查看该branch的账号（git config user.name）和邮箱（ git config user.email）。若和提交仓库的账号邮箱不一致，重新设置账号邮箱。<br>    修改当前的project的用户名的命令为：git config user.name 你的目标用户名;<br>    修改当前的project提交邮箱的命令为：git config user.email 你的目标邮箱名;</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1538,7 +1549,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
