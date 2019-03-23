@@ -248,6 +248,131 @@
             
               
                 
+                <a class="post-title-link" href="/2019/03/23/mac上默认python的切换/" itemprop="url">
+                  mac上默认python版本的切换
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-03-23T20:36:21+08:00" content="2019-03-23">
+              2019-03-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/03/23/mac上默认python的切换/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/23/mac上默认python的切换/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Mac上自带python为2.X版本，该版本已停止更新。而用Homebrew下载新的版本后，bash打开依然是默认的2.X版本。</p>
+<h4 id="不同的路径"><a href="#不同的路径" class="headerlink" title="不同的路径"></a>不同的路径</h4><p>Mac上自带python的安装路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/System/Library/Frameworks/Python.framework/Versions</div></pre></td></tr></table></figure></p>
+<p>brew新安装的路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/Cellar/python</div></pre></td></tr></table></figure></p>
+<h4 id="路径的切换"><a href="#路径的切换" class="headerlink" title="路径的切换"></a>路径的切换</h4><p>1&gt; open ~/.bash_profile打开外部环境变量&amp;配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=$&#123;PATH&#125;:/usr/local/Cellar/python/3.7.x(你的版本)/bin</div></pre></td></tr></table></figure></p>
+<p>2&gt; 重新命名python<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias python=&quot;/usr/local/Cellar/python/3.7.x/bin/python3.7&quot;</div></pre></td></tr></table></figure></p>
+<p>3&gt; source ~/.bash_profile 让配置文件生效<br>4&gt; done</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/03/16/Vue-cli3-TypeScript-mint-ui多页应用模版/" itemprop="url">
                   Vue-cli3+TypeScript+mint-ui多页应用模版
                 </a>
@@ -1380,130 +1505,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/04/js运算式子代码/" itemprop="url">
-                  js运算式代码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-04T00:26:49+08:00" content="2017-06-04">
-              2017-06-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/06/04/js运算式子代码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/04/js运算式子代码/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>续运算来组织代码，与用顺序语句来组织代码，是两种不同的风格,运算式代码风格取代顺序语句来组织代码,使代码更简洁。</p>
-<h3 id="通过表达式消灭分支语句"><a href="#通过表达式消灭分支语句" class="headerlink" title="通过表达式消灭分支语句"></a>通过表达式消灭分支语句</h3><p>单个分支的if语句，可以被转换成布尔表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if(tag&gt;1)&#123;</div><div class="line">    alert(&apos;true&apos;)</div><div class="line">&#125;</div><div class="line">//转换成</div><div class="line">(tag&gt;1)&amp;&amp;alert(&apos;true&apos;);</div></pre></td></tr></table></figure></p>
-<p>if 条件分支语句（一到两个），可以转换（三元）条件表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">if(tag&gt;1)&#123;</div><div class="line">	alert(&apos;true&apos;)</div><div class="line">&#125;</div><div class="line">//转换成</div><div class="line">(tag&gt;1)?alert(&apos;true&apos;):null;</div><div class="line"></div><div class="line">if(tag&gt;1)&#123;</div><div class="line">	alert(&apos;true&apos;);</div><div class="line">&#125;else&#123;</div><div class="line">	alert(&apos;false&apos;);</div><div class="line">&#125;</div><div class="line">//转换成</div><div class="line"></div><div class="line">(tag&gt;1)?alert(&apos;true&apos;):alert(&apos;false&apos;);</div></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/06/04/js运算式子代码/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1549,7 +1550,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1557,7 +1558,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1566,7 +1567,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
