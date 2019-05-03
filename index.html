@@ -248,6 +248,128 @@
             
               
                 
+                <a class="post-title-link" href="/2019/05/03/自定义属性和Vue的指令/" itemprop="url">
+                  自定义属性和Vue的指令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-05-03T17:50:56+08:00" content="2019-05-03">
+              2019-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/05/03/自定义属性和Vue的指令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/05/03/自定义属性和Vue的指令/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>H5的自定义属性与Vue的指令形似，但二者有着根本上的差别，不能武断的说二者原理一样。</p>
+<p>data-*全局属性是一类被称为自定义属性的属性，它赋予我们所有HTML元素上嵌入自定义数据属性的能力，并可以通过js与HTML之间进行数据的交换。所有这些自定义数据属性都可以通过所属元素的HTMLElement接口来访问。 </p>
+<p>Vue的实现则是拿到dom后通过其parse()函数Convert HTML string to AST.后解析出Vue的指令，根据其不同的作用做不同的操作。差别显而易见，前者可以通过所属元素的HTMLElement的接口访问，后者显然不行。范围不同,自定义属性只是js与HTML之间数据交换，后者的作用则要丰富的多。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/03/23/mac上默认python的切换/" itemprop="url">
                   mac上默认python版本的切换
                 </a>
@@ -1378,133 +1500,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/13/table的伸缩卡展示tree（vue实现）/" itemprop="url">
-                  table的伸缩卡展示tree（vue实现）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-13T14:50:22+08:00" content="2018-01-13">
-              2018-01-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2018/01/13/table的伸缩卡展示tree（vue实现）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/13/table的伸缩卡展示tree（vue实现）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>点击table的tr，若有子节点则在当前tr下插入一块区域展示该节点，若该节点下仍有节点则依次展示。<br>说明：用div+css实现的table。以下内容其实也是官网示例tree的变形。</p>
-<h4 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h4><p>以下按具体执行过程贴出代码。</p>
-<blockquote>
-<p>1.调用TableP组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 组件 init --&gt;</div><div class="line">&lt;!--  thead: [type:Array] des table‘s thead--&gt;</div><div class="line">&lt;!-- treeData:[type:Array]&#123;&#125; des:树形结构数据[&#123;id:xx,openid:xx,tel:xx,lavel:xx,childItem:[]&#125;] --&gt;</div><div class="line">&lt;table-p :thead=&apos;ths&apos; :treeData=&apos;treeData&apos;&gt;&lt;/table-p&gt;</div></pre></td></tr></table></figure></p>
-<p>2.组件TableP<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div&gt;</div><div class="line">    &lt;div class=&quot;table-p&quot;&gt;</div><div class="line">      &lt;div class=&quot;table-p-thead&quot;&gt;</div><div class="line">        &lt;div class=&quot;table-p-tr&quot;&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot; v-for=&quot;item in thead&quot; :key=&quot;item&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">      &lt;div class=&quot;table-p-tbody&quot; </div><div class="line">        v-for=&quot;(item,index) in treeData&quot; </div><div class="line">        :key=&quot;index&quot;&gt;</div><div class="line">        &lt;div class=&quot;table-p-tr&quot; @click=&quot;dropDown(index)&quot;&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot;&gt;</div><div class="line">            &lt;span class=&quot;shrink&quot;&gt;</div><div class="line">              &#123;&#123;item.chidItem?isFlag !== index ? &quot;+&quot; : &quot;-&quot; :&quot;&amp;nbsp;&quot;&#125;&#125;</div><div class="line">            &lt;/span&gt; &#123;&#123;item.id&#125;&#125;</div><div class="line">          &lt;/div&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot;&gt;&#123;&#123;item.openid&#125;&#125;&lt;/div&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot;&gt;&#123;&#123;item.tel&#125;&#125;&lt;/div&gt;</div><div class="line">          &lt;div class=&quot;table-p-td&quot;&gt;&#123;&#123;item.lavel&#125;&#125;&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;!-- 组件table-p-slot --&gt;</div><div class="line">        &lt;!-- type[number] des:当前节点层级 --&gt;</div><div class="line">        &lt;!-- type[Array] des:子节点 --&gt;</div><div class="line">        &lt;table-p-slot </div><div class="line">          v-if=&quot;index === isFlag&quot; </div><div class="line">          :layerNum=&quot;layerNum&quot;</div><div class="line">          :childArray=&quot;item.chidItem&quot;&gt;</div><div class="line">        &lt;/table-p-slot &gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/13/table的伸缩卡展示tree（vue实现）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1550,7 +1545,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

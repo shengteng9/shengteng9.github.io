@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Vue," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="写作写作之前当然得先创建一个.md文件，使用命令hexo new [layout] ，其中layout默认为post。1.Layout布局Hexo提供了3种默认的布局，post、page和draft，路径分别为：source/_posts、source、source/_draft。如果你将在文章前置申明中，将layout设置为false，那么这篇文章将不会有任何的布局。2.Filename文件名H">
+<meta name="description" content="H5的自定义属性与Vue的指令形似，但二者有着根本上的差别，不能武断的说二者原理一样。
+data-*全局属性是一类被称为自定义属性的属性，它赋予我们所有HTML元素上嵌入自定义数据属性的能力，并可以通过js与HTML之间进行数据的交换。所有这些自定义数据属性都可以通过所属元素的HTMLElement接口来访问。 
+Vue的实现则是拿到dom后通过其parse()函数Convert HTML str">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo基本用法">
-<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/28/hexo基本用法/index.html">
+<meta property="og:title" content="自定义属性和Vue的指令">
+<meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2019/05/03/自定义属性和Vue的指令/index.html">
 <meta property="og:site_name" content="ZTF的博客">
-<meta property="og:description" content="写作写作之前当然得先创建一个.md文件，使用命令hexo new [layout] ，其中layout默认为post。1.Layout布局Hexo提供了3种默认的布局，post、page和draft，路径分别为：source/_posts、source、source/_draft。如果你将在文章前置申明中，将layout设置为false，那么这篇文章将不会有任何的布局。2.Filename文件名H">
-<meta property="og:updated_time" content="2016-08-28T05:54:14.000Z">
+<meta property="og:description" content="H5的自定义属性与Vue的指令形似，但二者有着根本上的差别，不能武断的说二者原理一样。
+data-*全局属性是一类被称为自定义属性的属性，它赋予我们所有HTML元素上嵌入自定义数据属性的能力，并可以通过js与HTML之间进行数据的交换。所有这些自定义数据属性都可以通过所属元素的HTMLElement接口来访问。 
+Vue的实现则是拿到dom后通过其parse()函数Convert HTML str">
+<meta property="og:updated_time" content="2019-05-03T10:32:11.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo基本用法">
-<meta name="twitter:description" content="写作写作之前当然得先创建一个.md文件，使用命令hexo new [layout] ，其中layout默认为post。1.Layout布局Hexo提供了3种默认的布局，post、page和draft，路径分别为：source/_posts、source、source/_draft。如果你将在文章前置申明中，将layout设置为false，那么这篇文章将不会有任何的布局。2.Filename文件名H">
+<meta name="twitter:title" content="自定义属性和Vue的指令">
+<meta name="twitter:description" content="H5的自定义属性与Vue的指令形似，但二者有着根本上的差别，不能武断的说二者原理一样。
+data-*全局属性是一类被称为自定义属性的属性，它赋予我们所有HTML元素上嵌入自定义数据属性的能力，并可以通过js与HTML之间进行数据的交换。所有这些自定义数据属性都可以通过所属元素的HTMLElement接口来访问。 
+Vue的实现则是拿到dom后通过其parse()函数Convert HTML str">
 
 
 
@@ -114,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/28/hexo基本用法/"/>
+  <link rel="canonical" href="https://github.com/shengteng9/shengteng9.github.io.git/2019/05/03/自定义属性和Vue的指令/"/>
 
-  <title> hexo基本用法 | ZTF的博客 </title>
+  <title> 自定义属性和Vue的指令 | ZTF的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -246,7 +252,7 @@
             
             
               
-                hexo基本用法
+                自定义属性和Vue的指令
               
             
           </h1>
@@ -258,19 +264,38 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T13:49:34+08:00" content="2016-08-28">
-              2016-08-28
+            <time itemprop="dateCreated" datetime="2019-05-03T17:50:56+08:00" content="2019-05-03">
+              2019-05-03
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/28/hexo基本用法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/hexo基本用法/" itemprop="commentsCount"></span>
+                <a href="/2019/05/03/自定义属性和Vue的指令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/05/03/自定义属性和Vue的指令/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -293,10 +318,9 @@
       
 
       
-        <h5 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h5><p>写作之前当然得先创建一个.md文件，使用命令hexo new [layout] <title>，其中layout默认为post。<br>1.Layout布局<br>Hexo提供了3种默认的布局，post、page和draft，路径分别为：source/_posts、source、source/_draft。如果你将在文章前置申明中，将layout设置为false，那么这篇文章将不会有任何的布局。<br>2.Filename文件名<br>Hexo会默认将文章的标题当做文件名，但是你可以编辑_config.yml配置文件中的new_post_name来改变默认的文件名。</title></p>
-<blockquote>
-<p>例如：使用hexo new hello命令创建一篇为hello文章，Hexo会默认在_posts目录下给你创建一个名为hello.md的文件。假如你将new_post_name改为了:year-:month-:day-:title.md，那么hexo就自动帮你创建名为2015-05-16-hello.md（当前日期为2015年5月16）</p>
-</blockquote>
+        <p>H5的自定义属性与Vue的指令形似，但二者有着根本上的差别，不能武断的说二者原理一样。</p>
+<p>data-*全局属性是一类被称为自定义属性的属性，它赋予我们所有HTML元素上嵌入自定义数据属性的能力，并可以通过js与HTML之间进行数据的交换。所有这些自定义数据属性都可以通过所属元素的HTMLElement接口来访问。 </p>
+<p>Vue的实现则是拿到dom后通过其parse()函数Convert HTML string to AST.后解析出Vue的指令，根据其不同的作用做不同的操作。差别显而易见，前者可以通过所属元素的HTMLElement的接口访问，后者显然不行。范围不同,自定义属性只是js与HTML之间数据交换，后者的作用则要丰富的多。</p>
 
       
     </div>
@@ -317,22 +341,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag">#Vue</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/28/REM/" rel="next" title="REM">
-                <i class="fa fa-chevron-left"></i> REM
+              <a href="/2019/03/23/mac上默认python的切换/" rel="next" title="mac上默认python版本的切换">
+                <i class="fa fa-chevron-left"></i> mac上默认python版本的切换
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/29/Sass入门（一）/" rel="prev" title="Sass入门（一）">
-                Sass入门（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -358,8 +384,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/28/hexo基本用法/"
-           data-title="hexo基本用法" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2016/08/28/hexo基本用法/">
+      <div class="ds-thread" data-thread-key="2019/05/03/自定义属性和Vue的指令/"
+           data-title="自定义属性和Vue的指令" data-url="https://github.com/shengteng9/shengteng9.github.io.git/2019/05/03/自定义属性和Vue的指令/">
       </div>
     
   </div>
@@ -470,7 +496,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#写作"><span class="nav-number">1.</span> <span class="nav-text">写作</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
