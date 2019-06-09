@@ -248,6 +248,134 @@
             
               
                 
+                <a class="post-title-link" href="/2019/01/12/WebViewJavascriptBridge的demo，vue重写/" itemprop="url">
+                  WebViewJavascriptBridge的demo,Vue重写
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-01-12T16:32:25+08:00" content="2019-01-12">
+              2019-01-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/01/12/WebViewJavascriptBridge的demo，vue重写/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/12/WebViewJavascriptBridge的demo，vue重写/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="Native与H5的通信"><a href="#Native与H5的通信" class="headerlink" title="Native与H5的通信"></a>Native与H5的通信</h4><p>URL schema的方式：App实现对WebView URL观察者模式，H5利用iframe发出请求改变URL的哈希值，APP会通过解析哈希值的变化执行对应操作。WebViewJavascriptBridge就是这种方式。详细的不再赘述，可以Google之。</p>
+<h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><p>对<a href="https://github.com/marcuswestin/WebViewJavascriptBridge">WebViewJavascriptBridge</a>的demo H5部分用vue简单重写。    </p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><blockquote>
+<p>1.下载来<a href="https://github.com/marcuswestin/WebViewJavascriptBridge">WebViewJavascriptBridge</a>的demo Example Apps。xcode启动ExampleApps-IOS项目，将ExampleUIWebViewController.m文件修改桥接到你前端工程目录，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)loadExamplePage:(UIWebView*)webView &#123;</div><div class="line">//    NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;ExampleApp&quot; ofType:@&quot;html&quot;];</div><div class="line">//    NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</div><div class="line">//    NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];</div><div class="line">//    [webView loadHTMLString:appHtml baseURL:baseURL];</div><div class="line">    </div><div class="line">    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://192.168.0.4:8080&quot;]]];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="http://192.168.0.4:8080为前端工程地址，此处不能用localhost">http://192.168.0.4:8080为前端工程地址，此处不能用localhost</a>.</p>
+<p>2.我是将插入iframe部分逻辑单独分隔出来，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">const _ = &#123;</div><div class="line">  //js &amp; native request</div><div class="line">  setupWViewJsBridge(callback)&#123;</div><div class="line">    if(!window)&#123;</div><div class="line">      return </div><div class="line">    &#125;</div><div class="line">    if (window.WebViewJavascriptBridge) &#123; </div><div class="line">      return callback(WebViewJavascriptBridge); </div><div class="line">    &#125;</div><div class="line">    if (window.WVJBCallbacks) &#123; </div><div class="line">      return window.WVJBCallbacks.push(callback); </div><div class="line">    &#125;</div><div class="line">    window.WVJBCallbacks = [callback];</div><div class="line">    var WVJBIframe = document.createElement(&apos;iframe&apos;);</div><div class="line">    WVJBIframe.style.display = &apos;none&apos;;</div><div class="line">    WVJBIframe.src = &apos;https://__bridge_loaded__&apos;;</div><div class="line">    document.documentElement.appendChild(WVJBIframe);</div><div class="line">    setTimeout(function () &#123;</div><div class="line">      document.documentElement.removeChild(WVJBIframe) </div><div class="line">    &#125;, 0)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default _;</div></pre></td></tr></table></figure></p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/01/12/WebViewJavascriptBridge的demo，vue重写/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/01/13/table的伸缩卡展示tree（vue实现）/" itemprop="url">
                   table的伸缩卡展示tree（vue实现）
                 </a>
@@ -1373,142 +1501,11 @@ underscoreData.value();
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/02/H5-DeviceMotionEvent/" itemprop="url">
-                  Html5重力感应事件-DeviceMotionEvent
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-02T14:00:21+08:00" content="2016-09-02">
-              2016-09-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Html5/" itemprop="url" rel="index">
-                    <span itemprop="name">Html5</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/02/H5-DeviceMotionEvent/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/02/H5-DeviceMotionEvent/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>相关文档：<a href="http://w3c.github.io/deviceorientation/spec-source-orientation.html">http://w3c.github.io/deviceorientation/spec-source-orientation.html</a></p>
-</blockquote>
-<h3 id="事件介绍"><a href="#事件介绍" class="headerlink" title="事件介绍"></a>事件介绍</h3><blockquote>
-<ol>
-<li><p>deviceorientation 提供设备的物理方向信息，表示为一系列本地坐标系的旋角。</p>
-</li>
-<li><p>devicemotion 提供设备的加速信息，表示为定义在设备上的坐标系中的卡尔迪坐标。其还提供了设备在坐标系中的自转速率。若可行的话，事件应该提供设备重心处的加速信息。</p>
-</li>
-<li><p>compassneedscalibration 用于通知Web站点使用罗盘信息校准上述事件。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/02/H5-DeviceMotionEvent/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1549,7 +1546,7 @@ underscoreData.value();
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
