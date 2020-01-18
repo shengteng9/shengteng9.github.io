@@ -84,22 +84,22 @@
 
 
 
-<meta name="description" content="大文件的分片上传文件的分片大文件由于自身体积较大造成上传时间较长，一旦中断重传必须重新开始，导致用户体验差开销的浪费。分片上传就有效的避免了以上问题。分片上传是将一个文件切割为一系列特定大小的数据片，分别将这些小数据片上传到服务端，全部上传完后再在服务端将这些数据片合并成为一个资源。
+<meta name="description" content="文件的分片大文件由于自身体积较大造成上传时间较长，一旦中断重传必须重新开始，导致用户体验差开销的浪费。分片上传就有效的避免了以上问题。分片上传是将一个文件切割为一系列特定大小的数据片，分别将这些小数据片上传到服务端，全部上传完后再在服务端将这些数据片合并成为一个资源。
 具体实现步骤* 对文件进行md5加密，生成该文件的md5值。
-* 后端判断该文件是否已经上传完成过，上传过则不再重">
+* 后端判断该文件是否已经上传完成过，上传过则不再重传，前端进行上传">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件分片上传">
 <meta property="og:url" content="https://github.com/shengteng9/shengteng9.github.io.git/2020/01/18/文件分片上传/index.html">
 <meta property="og:site_name" content="ZTF的博客">
-<meta property="og:description" content="大文件的分片上传文件的分片大文件由于自身体积较大造成上传时间较长，一旦中断重传必须重新开始，导致用户体验差开销的浪费。分片上传就有效的避免了以上问题。分片上传是将一个文件切割为一系列特定大小的数据片，分别将这些小数据片上传到服务端，全部上传完后再在服务端将这些数据片合并成为一个资源。
+<meta property="og:description" content="文件的分片大文件由于自身体积较大造成上传时间较长，一旦中断重传必须重新开始，导致用户体验差开销的浪费。分片上传就有效的避免了以上问题。分片上传是将一个文件切割为一系列特定大小的数据片，分别将这些小数据片上传到服务端，全部上传完后再在服务端将这些数据片合并成为一个资源。
 具体实现步骤* 对文件进行md5加密，生成该文件的md5值。
-* 后端判断该文件是否已经上传完成过，上传过则不再重">
-<meta property="og:updated_time" content="2020-01-18T10:34:40.012Z">
+* 后端判断该文件是否已经上传完成过，上传过则不再重传，前端进行上传">
+<meta property="og:updated_time" content="2020-01-18T10:52:34.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件分片上传">
-<meta name="twitter:description" content="大文件的分片上传文件的分片大文件由于自身体积较大造成上传时间较长，一旦中断重传必须重新开始，导致用户体验差开销的浪费。分片上传就有效的避免了以上问题。分片上传是将一个文件切割为一系列特定大小的数据片，分别将这些小数据片上传到服务端，全部上传完后再在服务端将这些数据片合并成为一个资源。
+<meta name="twitter:description" content="文件的分片大文件由于自身体积较大造成上传时间较长，一旦中断重传必须重新开始，导致用户体验差开销的浪费。分片上传就有效的避免了以上问题。分片上传是将一个文件切割为一系列特定大小的数据片，分别将这些小数据片上传到服务端，全部上传完后再在服务端将这些数据片合并成为一个资源。
 具体实现步骤* 对文件进行md5加密，生成该文件的md5值。
-* 后端判断该文件是否已经上传完成过，上传过则不再重">
+* 后端判断该文件是否已经上传完成过，上传过则不再重传，前端进行上传">
 
 
 
@@ -318,7 +318,7 @@
       
 
       
-        <h3 id="大文件的分片上传"><a href="#大文件的分片上传" class="headerlink" title="大文件的分片上传"></a>大文件的分片上传</h3><h4 id="文件的分片"><a href="#文件的分片" class="headerlink" title="文件的分片"></a>文件的分片</h4><pre><code>大文件由于自身体积较大造成上传时间较长，一旦中断重传必须重新开始，导致用户体验差开销的浪费。分片上传就有效的避免了以上问题。分片上传是将一个文件切割为一系列特定大小的数据片，分别将这些小数据片上传到服务端，全部上传完后再在服务端将这些数据片合并成为一个资源。
+        <h4 id="文件的分片"><a href="#文件的分片" class="headerlink" title="文件的分片"></a>文件的分片</h4><pre><code>大文件由于自身体积较大造成上传时间较长，一旦中断重传必须重新开始，导致用户体验差开销的浪费。分片上传就有效的避免了以上问题。分片上传是将一个文件切割为一系列特定大小的数据片，分别将这些小数据片上传到服务端，全部上传完后再在服务端将这些数据片合并成为一个资源。
 </code></pre><h4 id="具体实现步骤"><a href="#具体实现步骤" class="headerlink" title="具体实现步骤"></a>具体实现步骤</h4><pre><code>* 对文件进行md5加密，生成该文件的md5值。
 * 后端判断该文件是否已经上传完成过，上传过则不再重传，前端进行上传结束展示。
 * 如果未上传，对大文件分片。
@@ -501,7 +501,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#大文件的分片上传"><span class="nav-number">1.</span> <span class="nav-text">大文件的分片上传</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的分片"><span class="nav-number">1.1.</span> <span class="nav-text">文件的分片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体实现步骤"><span class="nav-number">1.2.</span> <span class="nav-text">具体实现步骤</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的分片"><span class="nav-number">1.</span> <span class="nav-text">文件的分片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体实现步骤"><span class="nav-number">2.</span> <span class="nav-text">具体实现步骤</span></a></li></ol></div>
             
           </div>
         </section>
