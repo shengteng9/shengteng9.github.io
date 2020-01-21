@@ -248,6 +248,129 @@
             
               
                 
+                <a class="post-title-link" href="/2020/01/21/算法（二）/" itemprop="url">
+                  算法（二）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-01-21T11:57:46+08:00" content="2020-01-21">
+              2020-01-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2020/01/21/算法（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2020/01/21/算法（二）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><p>队列是一种特殊的线性结构，它只允许在队列的首部（head）进行删除操作，称为出队。而在队列的尾部（tail)进行插入操作，称为入队。当队列中没有原素时（即head==tail),称为空队列。最初放入的元素能够最先被取出（这种行为被叫作FIFO：First In First Out，先进先出）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">struct</span> <span class="built_in">queue</span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> data[<span class="number">30</span>]; <span class="comment">// 定义数组用来存储</span></div><div class="line">	<span class="keyword">int</span> head; <span class="comment">// 队首</span></div><div class="line">	<span class="keyword">int</span> tail; <span class="comment">// 队尾</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></div><div class="line"></span>&#123;</div><div class="line">	<span class="keyword">struct</span> <span class="built_in">queue</span> q;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	q.head=<span class="number">0</span>;</div><div class="line">	q.tail=<span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="comment">// 依次向队列插入9个数</span></div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q.data[q.tail]);</div><div class="line">		q.tail++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// 队列不为空时执行循环</span></div><div class="line">	<span class="keyword">while</span>(q.head&lt;q.tail) </div><div class="line">	&#123;</div><div class="line">		<span class="comment">// 打印队首并将队首出队</span></div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,q.data[q.head]);</div><div class="line">		q.head++;</div><div class="line">		<span class="comment">// 将新队首添加到队尾</span></div><div class="line">		q.data[q.tail] = q.data[q.head];</div><div class="line">		q.tail++;</div><div class="line">		<span class="comment">// 再将队首出队</span></div><div class="line">		q.head++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2020/01/21/算法（二）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2020/01/19/算法（一）/" itemprop="url">
                   算法（一）
                 </a>
@@ -1377,129 +1500,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/01/29/node-clinic/" itemprop="url">
-                  node-clinic
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2019-01-29T16:36:53+08:00" content="2019-01-29">
-              2019-01-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">Nodejs</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2019/01/29/node-clinic/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/29/node-clinic/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="Node-clinic"><a href="#Node-clinic" class="headerlink" title="Node clinic"></a>Node clinic</h4><p>Node <a href="https://clinicjs.org/">clinic</a>是一款诊断Node.js性能监控的可视化工具，有较丰富的功能。主要包括Doctor，Flame，Bubbleprof三部分。我只对Doctor做了尝试。<br>Doctor可以帮助您诊断应用程序中的性能问题，并指导您使用更专业的工具来深入了解您的具体问题。诸如CPU使用率低，阻止垃圾收集，频繁的事件循环延迟或混乱数量的活动句柄等症状可能表明存在许多潜在问题。 Doctor通过根据这些症状生成推荐来帮助缩小可能性。 诸如I / O问题，非优化垃圾收集和阻塞事件循环等示例非常常见。 Doctor会帮助你解决所有这些问题。</p>
-<h4 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g clinic</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2019/01/29/node-clinic/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1545,7 +1545,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
